@@ -14,6 +14,7 @@ h2 {
 h6 {
 	text-align: center;
 	letter-spacing: 0.5px;
+	line-height: 0.5;
 }
 p {
 	letter-spacing: 0.5px;
@@ -28,13 +29,17 @@ a:hover {
 	color: goldenrod;
 	background-color: green;
 }
+footer {
+	border-top: 2px solid;
+	text-align: center;
+	font-size: 50%;
+}
 .header {
 	top: 0;
 	left: 0;
-	width: 100%;
 	border-bottom: 2px solid;
 	text-align: left;
-	padding: 5px 20px;
+	padding: 5px 20px;	
 }
 .leftside {
 	flex: 1;
