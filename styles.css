@@ -50,6 +50,10 @@ footer {
 .rightside {
 	flex: 1;
 }
+.rightsidecenter{
+	flex: 1;
+	text-align: center;
+}
 .flex-container {
 	display: flex;
 }

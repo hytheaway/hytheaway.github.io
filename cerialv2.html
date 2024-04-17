@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cerial ver. 2</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='icon' type='image/x-icon' href='assets/Pikachu.png'>
+	<link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+	<link rel='stylesheet' href='styles.css'>
+</head>
+
+<body>
+	<div class='content'>
+		<div class='header'>
+			<div class='links'>
+				[ path: 
+				<a href="/">home</a>
+				/
+				<a href='journal.html'>projects</a>
+				/
+				<a href="cerialv2.html">cerial ver. 2</a>
+				] 
+			</div>
+		</div>
+
+		<div class='container'>
+			<div class='title'>
+				<h1>hytheaway</h1>
+				<h6><i>(.github.io)</i></h6>
+			</div>
+			<div class='navigationbar'>
+				<ul>
+					<li><a href='/'>home</a></li>
+					|
+					<li><a href='projects.html'>projects</a></li>
+					|
+					<li><a href='journal.html'>journal</a></li>
+					|
+					<li><a href='contact.html'>contact</a></li>
+				</ul>
+			</div>
+			<hr>			
+			<h2 style="text-align: center;">cerial ver. 2 (dec 2023)</h2>
+			<p style='text-align: center;'><i>a lot of this is being written retroactively,<br>so here's the state of things as of dec 20, 2023.</i></p>
+			<br>
+			<!-- entry 1 -->
+			<div class="flex-container">
+				<div class="leftside">
+					<br>
+					<br>
+					<img src="assets/cerial ver2.png" width='300' height='400'>
+				</div>
+				<div class="rightside">
+					<p style="font-size: 80%;"><i>dec 12, 2023.</i>
+						<br>by the time this photo was taken, this was only a fight stick.
+						<br>there were no components that had anything to do with music.
+						<br>still, i was super thrilled i got anything to work.
+						<br>
+						<br>the new biggest hold up was how was i going to connect the buttons
+						<br>to both the fight stick's usb controller <i>and</i> to the meap board?
+						<br>
+						<br>there are a few main components to the fight stick: the buttons and the joystick
+						<br>connect to the cables which connects to the board/microcontroller.
+						<br>
+						<br>a button normally works by completing a circuit when pressed. some voltage goes
+						<br>into the button, and then only passes through the button when it's pressed.
+						<br>when the voltage passes, a button press is registered.
+						<br>
+						<br>looking at the microcontroller, i gathered it was sending +5v to the button on one pin,
+						<br>and (presumably) the board would measure when those +5v went to ground on another pin.
+						<br>the problem is that there was a third pin.
+						<br>
+						<br>since these buttons lit up, there was a pin dedicated to delivering power
+						<br>to the leds under the button.
+						<br>
+						<br>as dumb as it is, this simply stumped me for a few days. i'm not the most acute
+						<br>when it comes to industry norms in electronics at all.
+					</p>
+				</div>
+			</div>
+			<br>
+			<br>
+			<!-- entry 2 -->
+			<div class="flex-container">
+				<div class="leftside">
+					<p style="font-size: 80%; text-align: right;"><i>dec 16, 2023.</i>
+						<br>the a-ha moment for me came while i was on break during a bartending class.
+						<br>zooming in on this picture of my notebook will probably make most
+						<br>properly trained circuit-designers cringe, but i was frantic to record my ramblings
+						<br>
+						<br><i>this information may be incorrect but it works for me.</i>
+						<br>i realized that each button was basically just a series connection. the leds were
+						<br>always on, so i knew that the +5v first went to the led. the voltage then leaves the
+						<br>led (and goes into a resistor first, but that's less important) and enters one leg of
+						<br>the button's switch. this leg connects to a pin on the bottom of the button, which goes to
+						<br>a dedicated pin on the board/microcontroller. when this pin is receiving voltage,
+						<br>the logic on the board determines that the button is not being pressed. however,
+						<br>when this pin is <i>not</i> receiving voltage, then that means that the button
+						<br>has been pressed, and the voltage post-led is going straight to ground.
+						<br>
+						<br>i think.
+					</p>
+				</div>
+				<div class="rightsidecenter">
+					<img src="assets/cerial2_insane-ramblings.png" width="400" height="300">
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<footer>
+		created by garrett.
+	</footer>
+
+</body>
+</html>
