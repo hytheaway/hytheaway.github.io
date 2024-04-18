@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" charset="utf-8" content="text/html; initial-scale=1.0; width='device-width" width="device-width" name="viewport">
+    <link rel='icon' type="image/x-icon" href="assets/Pikachu.png">
+    <link href="https://fonts.googleapis.com/css?family=DotGothic16" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>audio player</title>
+    <!-- <style>button</style> -->
+  </head>
+
+  <body>
+    <div class="content">
+        <div class="header">
+            <div class="links">
+                [ path: 
+				<a href="/">home</a>
+				/
+				<a href='projects.html'>projects</a>
+				/
+				<a href="height-layer.html">height layer comparison</a>
+				] 
+            </div>
+        </div>
+        <div class="container">
+            <div class="title">
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class="navigationbar">
+                <ul>
+                    <li><a href='/'>home</a></li>
+					|
+					<li><a href='projects.html'>projects</a></li>
+					|
+					<li><a href='journal.html'>journal</a></li>
+					|
+					<li><a href='contact.html'>contact</a></li>
+                </ul>
+            </div>
+            <hr>
+            <br>
+            <p style="text-align: center; font-size: 85%;">
+                Atmos
+                <br>
+                <audio id="audio1" src="assets/virtuoso-layer1.wav"></audio>
+                <audio id="audio2" src="assets/virtuoso-layer2.wav"></audio>
+                <br>Mix A: <span id="playStatus1">stopped</span>
+                <br>Mix B: <span id="playStatus2">stopped</span>
+                <br>Listening to: <span id="currTrack">nothing</span>
+                <button id="start">Play</button>
+                <button id="toggle" disabled>Switch Mixes</button>
+            </p>
+        </div>
+    </div>
+    
+    <!-- pulled (& tweaked) from user:James_Hibbard at https://www.sitepoint.com/community/t/switching-audio-between-two-clips/27407/6 -->
+
+   <script>
+     var startButton = document.getElementById("start");
+     var toggleButton = document.getElementById("toggle");
+     var track1 = document.getElementById("audio1");
+     var track2 = document.getElementById("audio2");
+     var status1 = document.getElementById("playStatus1");
+     var status2 = document.getElementById("playStatus2");
+     var currTrack = document.getElementById("currTrack");
+
+     function updatePlayStatus(track, status, t){
+       if (track.paused == true){
+         status.innerHTML = "stopped";
+         clearInterval(t);
+         startButton.disabled = false;
+         toggleButton.disabled = true;
+         currTrack.innerHTML = "nothing";
+       }
+     }
+
+     startButton.onclick = function(){
+       this.disabled = true;
+       track1.play();
+       track2.play();
+       track2.muted = true;
+       status1.innerHTML = "playing";
+       status2.innerHTML = "playing";
+       currTrack.innerHTML = "Track 1";
+       toggleButton.disabled = false;
+
+       var t1 = window.setInterval(function() { updatePlayStatus(track1, status1, t1) }, 500);
+       var t2 = window.setInterval(function() { updatePlayStatus(track2, status2, t2) }, 500);
+     }
+
+     toggleButton.onclick = function(){
+       if (track1.muted == true){
+         track1.muted = false;
+         track2.muted = true;
+         currTrack.innerHTML = "Track 1";
+       } else {
+         track2.muted = false;
+         track1.muted = true;
+         currTrack.innerHTML = "Track 2";
+       }
+     }
+   </script>
+  </body>
+</html>
