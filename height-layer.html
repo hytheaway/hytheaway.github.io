@@ -38,10 +38,9 @@
               </ul>
           </div>
           <hr>
-          <br>
+          <h4 style="text-align: center;">height layer comparison</h4>
           <p style="text-align: center; font-size: 100%;">
-            select a binaural renderer.
-            <br>
+            <br>select a binaural renderer.
             <br>
             <select name="renderer" id="renderer" onchange="changeRenderer(this.selectedIndex+1);">
               <option value="1" selected>atmos</option>
@@ -50,7 +49,6 @@
             </select>
             <br>
             current renderer: <span id="currentRenderer">atmos</span>
-            <br>
             <audio id="audio1">
               <source id="audio1Source" src="assets/atmos-layer1.wav"></source>
             </audio>
@@ -58,7 +56,6 @@
               <source id="audio2Source" src="assets/atmos-layer2.wav"></source>
             </audio>
             <br>listening to: <span id="currTrack">nothing</span>
-            <br>
             <br>
             <button id="start">Play</button>
             <button id="stop" disabled>Stop</button>
@@ -248,5 +245,9 @@
         }
       }
     </script>
+    <br>
+    <footer>
+      created by garrett.
+    </footer>
   </body>
 </html>
