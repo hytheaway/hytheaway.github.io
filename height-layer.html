@@ -5,101 +5,247 @@
     <link rel='icon' type="image/x-icon" href="assets/Pikachu.png">
     <link href="https://fonts.googleapis.com/css?family=DotGothic16" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>audio player</title>
-    <!-- <style>button</style> -->
+    <title>height layer comparison</title>
   </head>
 
   <body>
     <div class="content">
-        <div class="header">
-            <div class="links">
-                [ path: 
-				<a href="/">home</a>
-				/
-				<a href='projects.html'>projects</a>
-				/
-				<a href="height-layer.html">height layer comparison</a>
-				] 
-            </div>
-        </div>
-        <div class="container">
-            <div class="title">
-                <h1>hytheaway</h1>
-                <h6><i>(.github.io)</i></h6>
-            </div>
-            <div class="navigationbar">
-                <ul>
-                    <li><a href='/'>home</a></li>
-					|
-					<li><a href='projects.html'>projects</a></li>
-					|
-					<li><a href='journal.html'>journal</a></li>
-					|
-					<li><a href='contact.html'>contact</a></li>
-                </ul>
-            </div>
-            <hr>
+      <div class="header">
+          <div class="links">
+              [ path: 
+      <a href="/">home</a>
+      /
+      <a href='projects.html'>projects</a>
+      /
+      <a href="height-layer.html">height layer comparison</a>
+      ] 
+          </div>
+      </div>
+      <div class="container">
+          <div class="title">
+              <h1>hytheaway</h1>
+              <h6><i>(.github.io)</i></h6>
+          </div>
+          <div class="navigationbar">
+              <ul>
+                  <li><a href='/'>home</a></li>
+        |
+        <li><a href='projects.html'>projects</a></li>
+        |
+        <li><a href='journal.html'>journal</a></li>
+        |
+        <li><a href='contact.html'>contact</a></li>
+              </ul>
+          </div>
+          <hr>
+          <br>
+          <p style="text-align: center; font-size: 100%;">
+            select a binaural renderer.
             <br>
-            <p style="text-align: center; font-size: 85%;">
-                Atmos
-                <br>
-                <audio id="audio1" src="assets/virtuoso-layer1.wav"></audio>
-                <audio id="audio2" src="assets/virtuoso-layer2.wav"></audio>
-                <br>Mix A: <span id="playStatus1">stopped</span>
-                <br>Mix B: <span id="playStatus2">stopped</span>
-                <br>Listening to: <span id="currTrack">nothing</span>
-                <button id="start">Play</button>
-                <button id="toggle" disabled>Switch Mixes</button>
-            </p>
-        </div>
+            <br>
+            <select name="renderer" id="renderer" onchange="changeRenderer(this.selectedIndex+1);">
+              <option value="1" selected>atmos</option>
+              <option value="2">virtuoso</option>
+              <option value="3">dearvr</option>
+            </select>
+            <br>
+            current renderer: <span id="currentRenderer">atmos</span>
+            <br>
+            <audio id="audio1">
+              <source id="audio1Source" src="assets/atmos-layer1.wav"></source>
+            </audio>
+            <audio id="audio2">
+              <source id="audio2Source" src="assets/atmos-layer2.wav"></source>
+            </audio>
+            <br>listening to: <span id="currTrack">nothing</span>
+            <br>
+            <br>
+            <button id="start">Play</button>
+            <button id="stop" disabled>Stop</button>
+            <button id="toggle" disabled>Switch Mixes</button>
+          </p>
+          <p style="text-align: center; font-size: 80%;">
+            <br>this experience is intended to be enjoyed with headphones or earbuds.
+            <br>while it may be enjoyed through speakers, the binauralization will not be impactful.
+            <br>
+            <br>
+            <br>
+            <br>about this project:
+            <br>
+            <br>louis vierne (1870 - 1937)
+            <br>24 pièces en style libre, op. 31 no. 15 - arabesque.
+            <br>performed by canon larry tremsky on apr 16, 2024.
+            <br>
+            <br>the array used is the pcma-3d array, as outlined by dr lee & dr johnson <a href="https://www.aes.org/tmpFiles/elib/20240409/21536.pdf">here.</a>
+            <br>each mix contains 9 microphones: 5 as a main array and 4 as a height array.
+            <br>the height array for mix a is coincident with the main array.
+            <br>the height array for mix b is 2 meters above the main array.
+            <br>
+            <br>the recording was rendered with 3 different binauralization renderers/methods: atmos, virtuoso, & dearvr.
+          </p>
+      </div>
     </div>
     
     <!-- pulled (& tweaked) from user:James_Hibbard at https://www.sitepoint.com/community/t/switching-audio-between-two-clips/27407/6 -->
 
-   <script>
-     var startButton = document.getElementById("start");
-     var toggleButton = document.getElementById("toggle");
-     var track1 = document.getElementById("audio1");
-     var track2 = document.getElementById("audio2");
-     var status1 = document.getElementById("playStatus1");
-     var status2 = document.getElementById("playStatus2");
-     var currTrack = document.getElementById("currTrack");
+    <script>
+      var startButton = document.getElementById("start");
+      var toggleButton = document.getElementById("toggle");
+      var track1 = document.getElementById("audio1");
+      var track2 = document.getElementById("audio2");
+      var currTrack = document.getElementById("currTrack");
+      var currentRenderer = document.getElementById("currentRenderer");
+      var delayValue = 10;
+      var stopButton = document.getElementById("stop");
+      var layer1_src = "assets/atmos-layer1.wav";
+      var layer2_src = "assets/atmos-layer2.wav";
+      var track1source = document.getElementById('audio1Source');
+      var track2source = document.getElementById('audio2Source');
 
-     function updatePlayStatus(track, status, t){
-       if (track.paused == true){
-         status.innerHTML = "stopped";
-         clearInterval(t);
-         startButton.disabled = false;
-         toggleButton.disabled = true;
-         currTrack.innerHTML = "nothing";
-       }
-     }
+      function changeRenderer(rendererIndex){
+        if (rendererIndex == 1){
+          track1.pause();
+          track2.pause();
+          track1source.src = "assets/atmos-layer1.wav";
+          track2source.src = "assets/atmos-layer2.wav";
+          currentRenderer.innerHTML = "atmos";
+          track1.load();
+          track2.load();
+          console.log('the renderer is now atmos');
+        }
+        if (rendererIndex == 2){
+          track1.pause();
+          track2.pause();
+          track1source.src = "assets/virtuoso-layer1.wav";
+          track2source.src = "assets/virtuoso-layer2.wav";
+          currentRenderer.innerHTML = "virtuoso";
+          track1.load();
+          track2.load();
+          console.log('the renderer is now virtuoso');
+        }
+        if (rendererIndex == 3){
+          track1.pause();
+          track2.pause();
+          track1source.src = "assets/dearvr-layer1.wav";
+          track2source.src = "assets/dearvr-layer2.wav";
+          currentRenderer.innerHTML = "dearvr";
+          track1.load();
+          track2.load();
+          console.log('the renderer is now dearvr');
+        }
+      }
 
-     startButton.onclick = function(){
-       this.disabled = true;
-       track1.play();
-       track2.play();
-       track2.muted = true;
-       status1.innerHTML = "playing";
-       status2.innerHTML = "playing";
-       currTrack.innerHTML = "Track 1";
-       toggleButton.disabled = false;
+      function updatePlayStatus(track, status, t){
+        if (track.paused == true){
+          status.innerHTML = "stopped";
+          clearInterval(t);
+          startButton.disabled = false;
+          toggleButton.disabled = true;
+          stopButton.disabled = true;
+          currTrack.innerHTML = "nothing";
+        }
+      }
 
-       var t1 = window.setInterval(function() { updatePlayStatus(track1, status1, t1) }, 500);
-       var t2 = window.setInterval(function() { updatePlayStatus(track2, status2, t2) }, 500);
-     }
+      startButton.onclick = function(){
+        this.disabled = true;
+        track1.volume = 0.5;
+        track2.volume = 0.5;
+        track1.play();
+        track2.play();
+        track2.muted = true;
+        currTrack.innerHTML = "mix a";
+        toggleButton.disabled = false;
+        stopButton.disabled = false;
 
-     toggleButton.onclick = function(){
-       if (track1.muted == true){
-         track1.muted = false;
-         track2.muted = true;
-         currTrack.innerHTML = "Track 1";
-       } else {
-         track2.muted = false;
-         track1.muted = true;
-         currTrack.innerHTML = "Track 2";
-       }
-     }
-   </script>
+        var t1 = window.setInterval(function() { updatePlayStatus(track1, t1) }, 500);
+        var t2 = window.setInterval(function() { updatePlayStatus(track2, t2) }, 500);
+
+      }
+
+      stopButton.onclick = function(){
+        this.disabled = true;
+        toggleButton.disabled = true;
+        currTrack.innerHTML = "nothing";
+        track1.pause();
+        track2.pause();
+        track1.load();
+        track2.load();
+      }
+
+      function volumeFade(old_mix, new_mix){
+        var max_volume = 0.5;
+        var volume_multiplier = 0.5;
+        var ninety = 0.9 * 1.207;
+        var eighty = 0.8 * 1.207;
+        var seventy = 0.7 * 1.207;
+        var sixty = 0.6 * 1.207;
+        var fifty = 0.5 * 1.207;
+        var fourty = 0.4 * 1.207;
+        var thirty = 0.3 * 1.207;
+        var twenty = 0.2 * 1.207;
+        var ten = 0.1 * 1.207;
+        setTimeout(()=>{
+          old_mix.volume = max_volume;
+          new_mix.volume = 0.0;
+          new_mix.muted = false;
+          setTimeout(()=>{
+            old_mix.volume = ninety * volume_multiplier;
+            new_mix.volume = ten * volume_multiplier;
+            setTimeout(()=>{
+              old_mix.volume = eighty * volume_multiplier;
+              new_mix.volume = twenty * volume_multiplier;
+              setTimeout(()=>{
+                old_mix.volume = seventy * volume_multiplier;
+                new_mix.volume = thirty * volume_multiplier;
+                setTimeout(()=>{
+                  old_mix.volume = sixty * volume_multiplier;
+                  new_mix.volume = fourty * volume_multiplier;
+                  setTimeout(()=>{
+                    old_mix.volume = fifty * volume_multiplier;
+                    new_mix.volume = fifty * volume_multiplier;
+                    setTimeout(()=>{
+                      old_mix.volume = fourty * volume_multiplier;
+                      new_mix.volume = sixty * volume_multiplier;
+                      setTimeout(()=>{
+                        old_mix.volume = thirty * volume_multiplier;
+                        new_mix.volume = seventy * volume_multiplier;
+                        setTimeout(()=>{
+                          old_mix.volume = twenty * volume_multiplier;
+                          new_mix.volume = eighty * volume_multiplier;
+                          setTimeout(()=>{
+                            old_mix.volume = ten * volume_multiplier;
+                            new_mix.volume = ninety * volume_multiplier;
+                            setTimeout(()=>{
+                              old_mix.volume = 0.0;
+                              new_mix.volume = max_volume;
+                              setTimeout(()=>{
+                                old_mix.muted = true;
+                              }, delayValue);
+                            }, delayValue);
+                          }, delayValue);
+                        }, delayValue);
+                      }, delayValue);
+                    }, delayValue);
+                  }, delayValue);
+                }, delayValue);
+              }, delayValue);
+            }, delayValue);
+          }, delayValue);
+        }, delayValue);
+      }
+
+      toggleButton.onclick = function(){
+    //  track 2 is playing here
+        if (track1.muted == true){
+          volumeFade(track2, track1);
+          currTrack.innerHTML = "mix a";
+        } 
+      //  track 1 is playing here
+        if (track2.muted == true){
+          volumeFade(track1, track2);
+          currTrack.innerHTML = "mix b";
+        }
+      }
+    </script>
   </body>
 </html>
