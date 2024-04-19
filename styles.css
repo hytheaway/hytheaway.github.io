@@ -9,7 +9,7 @@ h1 {
 }
 h2 {
 	letter-spacing: 0.5px;
-	line-height: 0.5;
+	line-height: 1.0;
 }
 h6 {
 	text-align: center;
@@ -56,4 +56,11 @@ footer {
 }
 .flex-container {
 	display: flex;
+}
+.hiddenText {
+	display: none;
+}
+.imageToHideText:hover + .hiddenText {
+	display: block;
+	text-align: center;
 }
