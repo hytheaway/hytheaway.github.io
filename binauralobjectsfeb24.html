@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>binaural objects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='assets/Pikachu.png'>
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+    <link rel='stylesheet' href='styles.css'>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='journal.html'>projects</a>
+                /
+                <a href="cerialv2.html">binaural objects</a>
+                ]
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='projects.html'>projects</a></li>
+                    |
+                    <li><a href='journal.html'>journal</a></li>
+                    |
+                    <li><a href='contact.html'>contact</a></li>
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <audio id="danseAudio" src="assets/danse_de_la_chevre_remix.mp3"></audio>
+            <h2 style="text-align: center;">binaural objects (feb 2024)</h2>
+            <p style="text-align: center;">and the demands involved.</p>
+            <div class="flex-container">
+                <div class="leftside">
+                    <p style="font-size: 70%; text-align: right;">
+                        well, the first demand is lugging the damn thing around.
+                        <br>
+                        <br>i mean, no one really tells you how cumbersome a head is until you're the one
+                        <br>attempting to remain inconspicuous on the subway with a featureless, decapitated
+                        <br>facsimile of a head in a roadcase. and it's not just the weight of it - the head is
+                        <br>heavy enough, sure, but the weight of the sins you carry everyday makes its heft
+                        <br>a negligable task.
+                        <br>
+                        <br>no, it's the unwieldiness of it all. the roadcase's clasps just barely hanging on,
+                        <br>jangling against the side of your hip as if threatening to become undone at any moment,
+                        <br>spilling this severed head and its guts (cables) all over the very public and very policed
+                        <br>mode of transportation you've resigned yourself to.
+                        <br>
+                        <br>it's the anxiety, swiftly drenching your hand in a cold sweat once you mindlessly google the price of
+                        <br>the apparatus, naturally weakening your hand and making it all the more likely that you lose your
+                        <br>grip and inadvertently drop the poor man's head from a height that most newborns wouldn't survive.
+                        <br>
+                        <br>it's the stress associated with missing your stop after losing your focus to a train of
+                        <br>thought hellbent on ascertaining the whereabouts of his other body parts. i mean, after all,
+                        <br>brüel & kjær <i>made sure</i> his counterpart still has his torso. am i really meant to
+                        <br>believe whatever story neumann makes up about his other body parts? unlikely.
+                        <br>they must be hoarding his arms and legs, saving his torso and appendages for some grand feast.
+                    </p>
+                    <p style="font-size: 70%; text-align: center;">
+                        <i>...ew.</i>
+                    </p>
+                    <p style="font-size: 70%; text-align: right;">
+                        seizing your own attention back from... ... ...whatever depths you just came from, the weight
+                        <br>is hardly insurmountable, and as long as you keep your wits about you, you should be fine.
+                        <br>
+                        <br>besides, you've arrived at your destination, and it's time to <button id="start">start.</button>
+                    </p>
+                </div>
+                <div class="rightsidecenter">
+                    <img src="assets/danse-ku100subway.jpg" style="max-width: 45%; max-height: 100vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+    <script>
+        var startButton = document.getElementById("start");
+        var audioTrack = document.getElementById("danseAudio");
+
+        startButton.onclick = function() {
+            audioTrack.play();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -64,3 +64,12 @@ footer {
 	display: block;
 	text-align: center;
 }
+.hoverZoomImage {
+	background-position: 50% 50%;
+	position: relative;
+}
+.hoverZoomImage:hover {
+	transition: transform 0.2s ease-in-out;
+	transform: scale(1.2);
+	object-fit: none;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pkmnMaxMSP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='assets/Pikachu.png'>
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+    <link rel='stylesheet' href='styles.css'>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='journal.html'>projects</a>
+                /
+                <a href="cerialv2.html">pkmnMaxMSP</a>
+                ]
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='projects.html'>projects</a></li>
+                    |
+                    <li><a href='journal.html'>journal</a></li>
+                    |
+                    <li><a href='contact.html'>contact</a></li>
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <h2 style="text-align: center;">pkmnMaxMSP (mar 2024)</h2>
+            <p style="text-align: center;">how i fixed gen i.
+                <br><a href="https://github.com/hytheaway/pkmnMaxMSP" target="_blank">github</a> | <a href="https://youtu.be/AFi1Px7UF9E" target="_blank">youtube demo</a>
+            </p>
+            <div class="flex-container">
+                <div class="leftside">
+                    <br>
+                    <iframe style="float: left; position: relative; top: 15%; left: 2%;" width="448" height="252" src="https://www.youtube-nocookie.com/embed/AFi1Px7UF9E?si=RLHygyfYmIistpI2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <!-- i think this literally only works because the image is higher res. than the space it's placed - idk what happens on higher res. displays -->
+                    <img class="hoverZoomImage" id="pkmnImage" src="assets/pkmnMaxMSP.jpg" style="float: right; position: relative; max-width: 40%; max-height: 100vh; border: 10px solid darkgrey; outline-style: dashed; outline-color: lightgrey; outline-width: 4px; outline-offset: -5px;" onmousemove="zoom(event)" onmouseleave="resetZoom(event)">
+                    <!-- <br>hover over me to zoom in -->
+                </div>
+                <div class="rightside" style="padding-left: 2%;">
+                    <p style="font-size: 65%;">
+                        alright let's explain this mess.
+                        <br>i've never been the best at max, but this is functional.
+                        <br>and sometimes that's all you can ask for.
+                        <br>this patch can be broken up into three major chunks: the top, the middle, and the bottom.
+                        <br>the patcher is centered around a camera - it won't do much of anything without one active.
+                        <br>---
+                        <br><b>the top.</b>
+                        <br>- all the attached video devices are indexed by max with getvdevlist.
+                        <br>- then, a jitter object is created with jit.grab and its dimensions.
+                        <br>- the drop down box lists all the connected video devices (which were indexed earlier), and they're received by max
+                        <br>with the dimensions listed by the jit.grab object
+                        <br>which, after selecting the video device, is then sent back into the object to be portrayed onto the object's canvas.
+                        <br>- the jit.grab object (which is now just displaying whatever you've fed it) is sent to 4 jit.matrix objects which
+                        <br>take all those pixels you sent them and forces them to be 320x288. 
+                        <br>- but wait! at the same time, each jit.matrix <i>also</i> gets fed some user determined coordinates. each jit.matrix gets
+                        <br>4 coordinates - a top left corner's x&y, and a bottom right corner's x&y.
+                        <br>- because either max or jitter or computers in general are not that good at being perfect, i also have a bunch of
+                        <br>buttons that force these dimensions in place, since they seem to get lost sometimes.
+                        <br><b>the middle.</b>
+                        <br>this part is simple! we have 4 jit.pwindow objects, and the output of each of the 4 matrices gets sent to the input
+                        <br>of each pwindow, so it just displays whatever was already within that matrix. i have them arranged in this pretty
+                        <br>format, but they can be moved around, too. you may have noticed i did skip over one object earlier - the qmetro object.
+                        <br>in this case, it's just serving as a clock. each pulse pushes a new frame. i felt it was better to bring that up here
+                        <br>since it's easier to visualize.
+                        <br><b>the bottom.</b>
+                        <br>this is where all the audio processing is, really. the pwindow objects output a matrix of data about whatever is currently
+                        <br>on the screen. the multiplexer object takes two matrices and combines them into one, and the release object takes a stream
+                        <br>of data and converts it into a signal. the peek object takes that signal and converts it into an audio signal, which is
+                        <br>then combined with the game audio signal (which is coming from the adc object), and <i>then</i> it's all sent to this cute lil
+                        <br>granulizer before finally being output.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+</body>
+
+<script>
+    function zoom(e) {
+        var zoomer = e.currentTarget;
+        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX;
+        e.offsetY ? offsetY = e.offsetY : offsetY = e.touches[0].pageX;
+        x = offsetX/zoomer.offsetWidth*100;
+        y = offsetY/zoomer.offsetHeight*100;
+        zoomer.style.objectPosition = x + '%' + y + '%';
+    }
+    function resetZoom(e) {
+        var zoomer = e.currentTarget;
+        zoomer.style.objectPosition = 50 + '%' + 50 + '%';
+    }
+</script>
+
+</html>
