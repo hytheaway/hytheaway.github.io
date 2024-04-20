@@ -76,3 +76,36 @@ footer {
 	transform: scale(1.2);
 	object-fit: none;
 }
+@media only screen and (max-width: 800px){
+	.mobileHidden {
+		display: none;
+	}
+	.flex-container {
+		flex-direction: column;
+	}
+	.rightside {
+		text-align: center;
+	}
+	.danseText {
+		text-align: center !important;
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+}
+@media only screen and (max-width: 1630px){
+	#pkmnVideo {
+		display: none;
+	}
+	#pkmnLeftSideText{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	#pkmnImage {
+		float: none !important;
+		max-width: 52% !important;
+	}
+}
