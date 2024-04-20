@@ -86,13 +86,16 @@ footer {
 	.rightside {
 		text-align: center;
 	}
-	.danseText {
+	.mobileCenterText {
 		text-align: center !important;
 	}
 	ul {
 		margin: 0;
 		padding: 0;
 		border: 0;
+	}
+	.cerialEntry {
+		justify-content: center !important;
 	}
 }
 @media only screen and (max-width: 1630px){
