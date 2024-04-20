@@ -111,4 +111,15 @@ footer {
 		float: none !important;
 		max-width: 52% !important;
 	}
+	#fourierifierFlexContainer {
+		flex-direction: column;
+	}
+	#fourierifierRightSide {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	#fourierifierImage {
+		max-width: 35% !important;
+	}
 }

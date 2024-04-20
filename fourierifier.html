@@ -45,14 +45,14 @@
             <p style="text-align: center;">how i fixed music.
                 <br><a href="https://github.com/hytheaway/fourierifier" target="_blank">github</a> | <a href="https://youtu.be/f8CTX8Tqclg" target="_blank">youtube demo</a>
             </p>
-            <div class="flex-container">
+            <div id="fourierifierFlexContainer" class="flex-container">
                 <div class="leftside" id="pkmnLeftSideText">
                     <br>
                     <iframe id="pkmnVideo" width="560" height="315" src="https://www.youtube-nocookie.com/embed/f8CTX8Tqclg?si=39Xe85C359U0jz9N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <!-- i think this literally only works because the image is higher res. than the space it's placed - idk what happens on higher res. displays -->
                 </div>
-                <div class="rightside">
-                    <img class="hoverZoomImage" id="pkmnImage" src="assets/fourierifier_patcher.jpg" style="max-width: 70%; max-height: 100vh; border: 10px solid darkgrey; outline-style: dashed; outline-color: lightgrey; outline-width: 4px; outline-offset: -5px;" onmousemove="zoom(event)" onmouseleave="resetZoom(event)">
+                <div class="rightside" id="fourierifierRightSide">
+                    <img class="hoverZoomImage" id="fourierifierImage" src="assets/fourierifier_patcher.jpg" style="max-width: 70%; max-height: 100vh; border: 10px solid darkgrey; outline-style: dashed; outline-color: lightgrey; outline-width: 4px; outline-offset: -5px;" onmousemove="zoom(event)" onmouseleave="resetZoom(event)">
                 </div>
             </div>
         </div>
