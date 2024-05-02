@@ -1,7 +1,11 @@
 body {
 	margin: 0;
 	font-family: 'DotGothic16';
-	background: rgba(219, 112, 147, 1);
+	/* background: rgba(219, 112, 147, 1); */
+	background-image: url('assets/bg-test-purple4.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 h1 {
 	text-align: center;
@@ -122,4 +126,15 @@ footer {
 	#fourierifierImage {
 		max-width: 35% !important;
 	}
+}
+#borderimg1 {
+	border: 12px solid transparent;
+	padding: 0px;
+	border-image: url('assets/img-border.png') 50 stretch;
+}
+#textborder1 {
+	border: 12px solid transparent;
+	padding: 0px;
+	border-image: url('assets/img-border.png') 50 stretch;
+	background-color: white;
 }
