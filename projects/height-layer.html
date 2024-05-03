@@ -4,9 +4,9 @@
 <head>
   <meta http-equiv="Content-Type" charset="utf-8" content="text/html; initial-scale=1.0; width='device-width"
     width="device-width" name="viewport">
-  <link rel='icon' type="image/x-icon" href="assets/the-best-fav.gif">
+  <link rel='icon' type="image/x-icon" href="../assets/the-best-fav.gif">
   <link href="https://fonts.googleapis.com/css?family=DotGothic16" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <title>height layer comparison</title>
 </head>
 
@@ -17,7 +17,7 @@
         [ path:
         <a href="/">home</a>
         /
-        <a href='projects.html'>projects</a>
+        <a href='../projects.html'>projects</a>
         /
         <a href="height-layer.html">height layer comparison</a>
         ]
@@ -32,11 +32,11 @@
         <ul>
           <li><a href='/'>home</a></li>
           |
-          <li><a href='projects.html'>projects</a></li>
+          <li><a href='../projects.html'>projects</a></li>
           |
-          <li><a href='journal.html'>journal</a></li>
+          <li><a href='../journal.html'>journal</a></li>
           |
-          <li><a href='contact.html'>contact</a></li>
+          <li><a href='../contact.html'>contact</a></li>
         </ul>
       </div>
       <hr>
@@ -52,11 +52,11 @@
         <br>
         current renderer: <span id="currentRenderer">atmos</span>
         <audio id="audio1">
-          <source id="audio1Source" src="assets/atmos-layer1.wav">
+          <source id="audio1Source" src="../assets/atmos-layer1.wav">
           </source>
         </audio>
         <audio id="audio2">
-          <source id="audio2Source" src="assets/atmos-layer2.wav">
+          <source id="audio2Source" src="../assets/atmos-layer2.wav">
           </source>
         </audio>
         <br>
@@ -65,7 +65,7 @@
         <button id="stop" disabled>stop</button>
         <button id="toggle" disabled>switch mixes</button>
         <br>listening to: <span id="currTrack">nothing</span>
-        <br><div class="imageToHideText" style="text-align: center;"><img id="micPositionsPic" src="assets/height_layer_no-mix.png" style="width: 7%; max-height: 100vh; margin: auto;"></div>
+        <br><div class="imageToHideText" style="text-align: center;"><img id="micPositionsPic" src="../assets/height_layer_no-mix.png" style="width: 7%; max-height: 100vh; margin: auto;"></div>
         <div class="hiddenText" id="micPositionsText" style="font-size: 80%;">there is no mix selected.</div>
       </p>
       <p style="text-align: center; font-size: 80%;">
@@ -97,8 +97,8 @@
     var currentRenderer = document.getElementById("currentRenderer");
     var delayValue = 10;
     var stopButton = document.getElementById("stop");
-    var layer1_src = "assets/atmos-layer1.wav";
-    var layer2_src = "assets/atmos-layer2.wav";
+    var layer1_src = "../assets/atmos-layer1.wav";
+    var layer2_src = "../assets/atmos-layer2.wav";
     var track1source = document.getElementById('audio1Source');
     var track2source = document.getElementById('audio2Source');
     var micPositionSource = document.getElementById('micPositionsPic');
@@ -111,8 +111,8 @@
       if (rendererIndex == 1) {
         track1.pause();
         track2.pause();
-        track1source.src = "assets/atmos-layer1.wav";
-        track2source.src = "assets/atmos-layer2.wav";
+        track1source.src = "../assets/atmos-layer1.wav";
+        track2source.src = "../assets/atmos-layer2.wav";
         currentRenderer.innerHTML = "atmos";
         track1.load();
         track2.load();
@@ -121,8 +121,8 @@
       if (rendererIndex == 2) {
         track1.pause();
         track2.pause();
-        track1source.src = "assets/virtuoso-layer1.wav";
-        track2source.src = "assets/virtuoso-layer2.wav";
+        track1source.src = "../assets/virtuoso-layer1.wav";
+        track2source.src = "../assets/virtuoso-layer2.wav";
         currentRenderer.innerHTML = "virtuoso";
         track1.load();
         track2.load();
@@ -131,8 +131,8 @@
       if (rendererIndex == 3) {
         track1.pause();
         track2.pause();
-        track1source.src = "assets/dearvr-layer1.wav";
-        track2source.src = "assets/dearvr-layer2.wav";
+        track1source.src = "../assets/dearvr-layer1.wav";
+        track2source.src = "../assets/dearvr-layer2.wav";
         currentRenderer.innerHTML = "dearvr";
         track1.load();
         track2.load();
@@ -159,7 +159,7 @@
       track2.play();
       track2.muted = true;
       currTrack.innerHTML = "mix a (heights coincident with main array)";
-      micPositionSource.src = "assets/height_layer_mix-a.png";
+      micPositionSource.src = "../assets/height_layer_mix-a.png";
       micPositionsTextSource.innerHTML = "the highlighted microphones are active.";
       toggleButton.disabled = false;
       stopButton.disabled = false;
@@ -173,7 +173,7 @@
       this.disabled = true;
       toggleButton.disabled = true;
       currTrack.innerHTML = "nothing";
-      micPositionSource.src = "assets/height_layer_no-mix.png";
+      micPositionSource.src = "../assets/height_layer_no-mix.png";
       micPositionsTextSource.innerHTML = "there is no mix selected.";
       track1.pause();
       track2.pause();
@@ -247,12 +247,12 @@
       if (track1.muted == true) {
         volumeFade(track2, track1);
         currTrack.innerHTML = "mix a (heights coincident with main array)";
-        micPositionSource.src = "assets/height_layer_mix-a.png";
+        micPositionSource.src = "../assets/height_layer_mix-a.png";
       }
       if (track2.muted == true) {
         volumeFade(track1, track2);
         currTrack.innerHTML = "mix b (heights 2m above main array)";
-        micPositionSource.src = "assets/height_layer_mix-b.png";
+        micPositionSource.src = "../assets/height_layer_mix-b.png";
       }
     }
   </script>

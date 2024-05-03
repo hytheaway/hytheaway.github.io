@@ -41,7 +41,7 @@
 			<div class='flex-container'>
 
 				<div class='leftside'>
-					<img src='assets/me1.jpg' id="borderimg1" style='max-width: 35%; max-height: 100vh; margin: auto;'>
+					<img id="randImg" src='' />
 					<p style='line-height: 0.25;'>this is a photo of me.</p>
 				</div>
 
@@ -68,4 +68,14 @@
 	</footer>
 
 </body>
+
+<script>
+	const images = ["assets/me2.jpg", "assets/me3.jpg", "assets/me4.jpg"];
+	document.addEventListener(
+		'DOMContentLoaded', _ => {
+			const randImageIndex = ~~(Math.random() * images.length); document.getElementById('randImg').src = images[randImageIndex];
+		}
+	);
+</script>
+
 </html>

@@ -80,6 +80,9 @@ footer {
 	transform: scale(1.2);
 	object-fit: none;
 }
+.body-content {
+	display: flex;
+}
 @media only screen and (max-width: 800px){
 	.mobileHidden {
 		display: none;
@@ -137,4 +140,12 @@ footer {
 	padding: 0px;
 	border-image: url('assets/img-border.png') 50 stretch;
 	background-color: white;
+}
+#randImg {
+	border: 12px solid transparent;
+	padding: 0px;
+	border-image: url('assets/img-border.png') 50 stretch;
+	max-width: 35%; 
+	max-height: 100vh; 
+	margin: auto;
 }
