@@ -3,15 +3,6 @@ html{
 	font-family: 'DotGothic16';
 	/* background: rgba(219, 112, 147, 1); */
 }
-/* body {
-	margin: 0;
-	font-family: 'DotGothic16'; */
-	/* background: rgba(219, 112, 147, 1); */
-	/* background-image: url('assets/bg-test-purple4.png');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover; */
-/* } */
 body:before {
 	content: "";
 	display: block;
@@ -39,6 +30,21 @@ h6 {
 	text-align: center;
 	letter-spacing: 0.5px;
 	line-height: 0.5;
+}
+hr {
+	border: none;
+	border-top: 3px double #333;
+	color: #333;
+	overflow: visible;
+	text-align: center;
+	height: 5px;
+}
+hr:after {
+	background: rgba(213,108,140,255);
+	content: '§';
+	padding: 0 4px;
+	position: relative;
+	top: -13px;
 }
 p {
 	letter-spacing: 0.5px;
