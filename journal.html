@@ -11,7 +11,6 @@
 
 <body>
 	<div class='content'>
-
 		<div class='header'>
 			<div class='links'>
 				[ path: 
@@ -21,7 +20,6 @@
 				] 
 			</div>
 		</div>
-
 		<div class='container'>
 			<div class='title'>
 				<h1>hytheaway</h1>
@@ -39,18 +37,140 @@
 				</ul>
 			</div>
 			<hr>
-			<!-- <h2 style="text-align: center;">journal</h2> -->
+			<h2 style="text-align: center;">journal</h2>
 			<br>
-			<div class='journalnavbar'>
-				<ul style="padding: 0px;">
-					<!-- <li><a href='videogames.html'>video games</a></li>
-					| -->
-					<li><a href='journal/audiothings.html'>audio things</a></li>
-					|
-					<li><a href='journal/keyboards.html'>computer keyboards</a></li>
-					|
-					<li><a href='journal/consolemods.html'>console mods</a></li>
-				</ul>
+			<div id="borderimg1" class="sidenav">
+				<a class="active" href="#may2024" id="may2024nav" onclick="navBarActive('may2024nav')">may 2024</a>
+				<a href="#apr2024" id="apr2024nav" onclick="navBarActive('apr2024nav')">apr 2024</a>
+				<a href="#mar2024" id="mar2024nav" onclick="navBarActive('mar2024nav')">mar 2024</a>
+				<a href="#feb2024" id="feb2024nav" onclick="navBarActive('feb2024nav')">feb 2024</a>
+				<a href="#jan2024" id="jan2024nav" onclick="navBarActive('jan2024nav')">jan 2024</a>
+				<a href="#dec2023" id="dec2023nav" onclick="navBarActive('dec2023nav')">dec 2023</a>
+			</div>
+			<div class="main">
+				<!-- new article -->
+				<article id="may2024">
+					<!-- article title -->
+					<h3>a return to form (may 2024)</h3>
+					<div class="flex-container" style='border-bottom: 2px dashed lightgrey;'>
+						<div class="leftside" style="text-align: left;">
+							<p style="font-size: 90%;">
+								and it is!
+								<br>i mean, over function, for sure.
+								<br>
+								<br>anyone purchasing a ps2 keyboard in the year 2024 probably knows that:
+								<br>- they're incompatible with modern computers
+								<br>- they don't support hotswap, so anytime it's plugged in or unplugged, the computer has to be restarted
+								<br>- usb compatibility relies on third party dongles that are often hit or miss 
+								<br>- the price of good quality ps2 keyboards is rising
+								<br>
+								<br>but when i was walking back to my apartment the other day, i stopped by a hardware shop to search for any fine point soldering tips (long shot, i know, but it was on the way), when i met face to face with this beauty, still in the box. no surprise there, though. <a href="https://www.chicony.com/chicony/en/Product/Input*Device/Wired*entry*keyboard" target="_blank">these are still manufactured, after all</a>.
+								<br>
+								<br>but, hey, how often do you get to try out a rubber dome keyboard that looks straight out of the 80s?
+							</p>
+						</div>
+						<div class="rightsidecenter">
+							<img src="assets/ps2cool.jpg" id="borderimg1" style="max-width: 50%; max-height: 100vh; margin: auto;">
+							<img src="assets/ififits.jpg" id="borderimg1" style="max-width: 30%; max-height: 100vh; margin: auto;">
+							<br>and odhrán seems to like it too.
+						</div>
+					</div>
+				</article>
+				<!-- new article -->
+				<article id="apr2024">
+					<!-- article title -->
+					<h3>fpgbc (apr 2024)</h3>
+					<div class="flex-container" style='border-bottom: 2px dashed lightgrey;'>
+						<div class="leftside" style="text-align: left;">
+							<p style="font-size: 90%;">
+								akin to that one flight i took that one time.
+								<br>overwhelmingly exciting for what's ahead, but a bit of a rocky start.
+								<br>
+								<br>reproducing "retro" consoles with fpgas at incredibly accessible prices is an amazing future that i hope to see.
+								<br>i can't imagine the complexity associated with reverse engineering a console at all, though.
+								<br><a href="https://www.analogue.co/">analogue has been doing this for years</a>, but their business model has devolved to scarcity tactics, 
+								their prices are insane <a href='https://www.reddit.com/r/AnalogueInc/comments/xgu7pi/analogues_shipping_prices_are_outrageous/'>(with reportedly absurd shipping prices)</a>
+								and their marketing revolves around the idea that their products are "no emulation". my reach is limited, but let me communicate this clearly:
+							</p>
+							<p style="text-align: center;">
+								<b>hardware emulation <i>is</i> emulation.</b>
+							</p>
+							<p style="font-size: 90%;">
+								they even clarify that their products use no <i>software</i> emulation in the small print of their website - they're <i>aware</i> that this claim is unambiguously false.
+								<br>
+								<br>hardware emulation does suffer from inaccuracy issues, the exact same way that software emulation does. 
+								<a href="https://endrift.com/2021/12/13/analogue-pocket-hate-story/">inaccurate (albeit infrequent) cycle speeds</a>, 
+								<a href="https://github.com/ninbura/pokemon-on-the-analogue-pocket">rtc</a>, 
+								<a href="https://twitter.com/krikzz/status/1473050368154255373">write/read compatibility</a>, 
+								<a href='https://github.com/frederic-mahe/Analogue-Pocket/issues/21'>color reproduction</a>, etc. - these all contribute to a less than 
+								authentic experience, <u><b>and the analogue pocket is no different.</b></u>
+								and yet, it seems like all i hear about the analogue products is from people frothing at the mouth saying "but it's not emulation so it's better!!1!", and analogue directly
+								benefits from this misconception.
+								<br>
+								<br>so, i'm not about to drop $220 (+$60 shipping!!!) on a product i don't need, to support a company whose business practices i believe are immoral, and whose marketing tactics so carefully dance 
+								the line of deception that it's remarkable all they've been required to disclaim is in small print on their website.
+								<br>
+								<br>so. <a href='https://funnyplaying.com/products/fpgbc-kit'>the funnyplaying fpgbc</a>.
+								<br>imagine if the analogue pocket was maybe 10% worse at it's aimed goal, about 120% less expensive, and about 50% more fun.
+								<br>at like $85 all in, with free shipping, it's not just one of the easiest diy kits for the gameboy family, but you also don't need to have a gameboy or gbc to mod.
+								<br>this entire device is kind of sold as if it's just another mod kit for gbc, but no - it's entirely its own console.
+								<br>
+								<br>that's not to say it's without it's issues.
+								<br>the most glaring one is that it doesn't seem to work with most reliable flash carts, including krikzz's everdrive-gb, and the ez-flash junior (which is the one i have).
+								<br>beyond that, there are a few options for the display, including 4x integer scaling and a non-integer scaled view that fills the whole screen, which obviously
+								will include shimmering, but honestly, i don't care about that. it looks amazing filling up the whole screen. so what's the problem? well, for each of the sizing options, there's a version that includes a color profile that attempts to emulate what a gameboy color looks like.
+								<br>it's honestly not worth complaining about - just don't use it. turn it off, and don't turn it back on. it doesn't look good, i don't feel like it's particularly
+								accurate, and i await a day when a firmware update patches it properly.
+								<br>
+								<br>i've had the fpgbc in my backpack with my copy of pokémon crystal since i put it together, and i've loved it. maybe my cartridge is borked, but the rtc doesn't work.
+								i haven't tried it with my actual gameboy color (see <a href="#dec2023">dec2023 entry</a>), so while i cannot fathom why it would be an issue with the fpgbc, i still don't care to rule it out
+								as a possibility.
+								<br>i do believe that the best game console is the one you have with you, the same way the best flashlight is the one you have with you, the best knife is the one you have with you, etc. etc.,
+								so it should come as no surprise that this has quickly become my more favorite game console recently, even with its flashcart shortcomings.
+								<br>
+								<br>love this little thing.
+							</p>
+						</div>
+						<div class="rightsidecenter">
+							<img src="assets/fpgbc-1.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-2.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<br>
+							<img src="assets/fpgbc-3.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-4.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<br>
+							<img src="assets/fpgbc-5.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+						</div>
+					</div>
+				</article>
+				<!-- new article -->
+				<article id="dec2023">
+					<!-- article title -->
+					<h3>gameboy color mod no. 1 (dec 2023)</h3>
+					<div class="flex-container" style='border-bottom: 2px dashed lightgrey;'>
+						<div class="leftside" style="text-align: left;">
+							<p style="font-size: 90%;">
+								can you spot the difference between these two?
+								<br>
+							</p>
+							<br>
+							<p style="font-size: 70%; text-align: center;">
+								i mean like obviously yes you can they look incredibly different but that's besides the point.
+							</p>
+							<br>
+							<p style="font-size: 90%; text-align: left;">
+								more like, what would you expect to be different between these two?
+								<br>
+								<br>
+								<br>i'll tell ya, not much.
+							</p>
+						</div>
+						<div class="rightsidecenter">
+							<img src="assets/both_gameboys.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/modded_gameboy.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<br>but it's cool enough.
+						</div>
+					</div>
+				</article>
 			</div>
 		</div>
 	</div>
@@ -60,4 +180,57 @@
 	</footer>
 
 </body>
+<script>
+	// pls dont criticize my variable names. i'm a python programmer, javascript scares me -_-
+	// also if you're reading this, please understand that i spent countless hours on this script. 
+
+	// each month for the articles are listed here in reverse chronological order (so that i=0 is always the most recent article)
+	// when a new article is published, please add the month and year here:
+	const current_articles = ['may2024', 'apr2024', 'dec2023'];
+
+	// most recent article is set to be the default:
+	var previousMonthNav = document.getElementById(current_articles[0].concat('nav'));
+
+	// temporary width, gets updated as soon as the client scrolls - just there so that createObserver() doesn't throw an undefined error
+	var clientDeviceWidth = 1000;
+
+	let callback = (entries, observer) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				navBarActive(String(entry.target.id).concat('nav'));
+			}
+			clientDeviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+		});
+	};
+
+	window.addEventListener('scroll', (event) => {
+		for (let i = 0; i < current_articles.length; i++){
+			createObserver('#'.concat(current_articles[i]));
+		}},
+	);
+
+	function createObserver(articleBeingChecked){
+		let articleBeingCheckedDocument = document.querySelector(articleBeingChecked);
+		let observer;
+
+		// threshold of the observer is relative to the device width - generally ensures that the movement between categories is consistent between devices. 
+		let myThreshold = clientDeviceWidth * 0.0005;
+		let options = {
+			root: document.querySelector('#scrollArea'),
+			rootMargin: '0px',
+			threshold: myThreshold,
+		};
+
+		observer = new IntersectionObserver(callback, options);
+		observer.observe(articleBeingCheckedDocument);
+	}
+
+	function navBarActive(linkid){
+		previousMonthNav.classList.toggle('active');
+		var monthClickedNav = document.getElementById(linkid);
+		monthClickedNav.classList.toggle('active');
+		previousMonthNav = monthClickedNav;
+	}
+
+</script>
 </html>

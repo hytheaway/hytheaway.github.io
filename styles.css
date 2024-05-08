@@ -1,12 +1,32 @@
-body {
+html{
 	margin: 0;
 	font-family: 'DotGothic16';
 	/* background: rgba(219, 112, 147, 1); */
-	background-image: url('assets/bg-test-purple4.png');
+}
+/* body {
+	margin: 0;
+	font-family: 'DotGothic16'; */
+	/* background: rgba(219, 112, 147, 1); */
+	/* background-image: url('assets/bg-test-purple4.png');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	background-size: cover; */
+/* } */
+body:before {
+	content: "";
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+	background: url('assets/bg-test-purple4.png') no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
-}
+  }
 h1 {
 	text-align: center;
 	line-height: 0.5;
@@ -83,6 +103,37 @@ footer {
 .body-content {
 	display: flex;
 }
+.sidenav {
+	margin-left: 15px;
+	padding: 0;
+	width: 100px;
+	position: fixed;
+	overflow: auto;
+}
+.sidenav a {
+	display: block;
+	color: black;
+	padding: 16px;
+	text-decoration: none;
+	background-color: gainsboro;
+}
+.sidenav a.active {
+	background-color: green;
+	color: goldenrod;
+	font-style: italic;
+	font-weight: bold;
+}
+.sidenav a:hover:not(.active) {
+	background-color: green;
+	color: goldenrod;
+}
+.main {
+	margin-left: 140px;
+	margin-right: 40px;
+	overflow: auto;
+	padding: 1px 16px;
+
+}
 @media only screen and (max-width: 800px){
 	.mobileHidden {
 		display: none;
@@ -127,7 +178,7 @@ footer {
 		justify-content: center;
 	}
 	#fourierifierImage {
-		max-width: 35% !important;
+		max-width: 65% !important;
 	}
 }
 #borderimg1 {
