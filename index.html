@@ -39,7 +39,6 @@
 			<hr>
 			<br>
 			<div class='flex-container'>
-
 				<div class='leftside'>
 					<img id="randImg" src='' />
 					<p style='line-height: 0.25;'>this is a photo of <a href="me.html">me</a>.</p>
@@ -66,18 +65,20 @@
 	<footer>
 		created by garrett.
 		<br>
-		<br>this website is designed to be viewed on desktop.
+		<br>this website is designed to be viewed on desktop. | last updated:
+		<span id="lastUpdateDate">11 may 2024</span>.
 	</footer>
 
 </body>
 
 <script>
-	const images = ["assets/me2.jpg", "assets/me3.jpg", "assets/me4.jpg", "assets/me5.jpg"];
+	const images = ["assets/me400-1.jpg", "assets/me400-2.jpg", "assets/me400-3.jpg", "assets/me400-4.jpg", "assets/me400-5.jpg", "assets/me400-6.jpg"];
 	document.addEventListener(
 		'DOMContentLoaded', _ => {
 			const randImageIndex = ~~(Math.random() * images.length); document.getElementById('randImg').src = images[randImageIndex];
 		}
 	);
+
 </script>
 
 </html>
