@@ -18,8 +18,10 @@
 				<a href="/">home</a>
 				/
 				<a href="projects.html">projects</a>
-				] 
+				]
+				<img id="dither_button" src="assets/dither-toggle-button.png" style="float: right;" onclick="backToOriginal()">
 			</div>
+			
 		</div>
 
 		<div class='container'>
@@ -43,7 +45,7 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/height_layer_comparison.jpg' id="borderimg1" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/height_layer_comparison-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>height layer comparison</p>
 					<p style='line-height: 1.0;'><small><i>what kind of monster takes the screws out of a d sub?</i></small></p>
 				</div>
@@ -66,7 +68,7 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/fourierifier.jpg' id="borderimg1" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/fourierifier-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>fourierifier</p>
 					<p style='line-height: 1.0;'><small><i>like a guitar pedal for making all your music good.</i></small></p>
 				</div>
@@ -86,7 +88,7 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/pkmnMaxMSP.jpg' id="borderimg1" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/pkmnMaxMSP-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>pkmnMaxMSP</p>
 					<p style='line-height: 1.0;'><small><i>making noise music fun for once.</i></small></p>
 				</div>
@@ -106,7 +108,7 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/danse-ku100glasses.jpeg' id="borderimg1" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/danse-ku100glasses-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>binaural objects</p>
 					<p style='line-height: 1.0;'><small><i>so, yes head?</i></small></p>
 				</div>
@@ -124,7 +126,7 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/cerial ver2.jpg' id="borderimg1" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/cerial-ver2-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>cerial ver. 2</p>
 					<p style='line-height: 1.0;'><small><i>do not mind the scattered energy drinks.</i></small></p>
 				</div>
@@ -146,7 +148,7 @@
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
 					<br>
-					<img src='assets/python-logo.png' style="max-width: 25%; max-height: 100vh; margin: auto;">
+					<img src='assets/python-logo-dither.jpg' class="borderimg1class" style="max-width: 25%; max-height: 100vh; margin: auto;">
 					<p style="line-height: 0.25;">rmg (dec 2023)</p>
 				</div>
 				<div class='rightside'>
@@ -166,7 +168,7 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/cerial ver1.jpg' id="borderimg1" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/cerial-ver1-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>cerial ver. 1</p>
 					<p style='line-height: 1.0;'><small><i>the tupperware was cleaned before use.</i></small></p>
 				</div>
@@ -187,7 +189,7 @@
 			<div class='flex-container'>
 				<div class='leftside'>
 					<br>
-					<img src="assets/python-logo.png" style="max-width: 25%; max-height: 100vh; margin: auto;">
+					<img src="assets/python-logo-dither.jpg" class="borderimg1class" style="max-width: 25%; max-height: 100vh; margin: auto;">
 					<p style="line-height: 0.25;">rmg (oct 2023)</p>
 				</div>
 				<div class="rightside">
@@ -205,9 +207,32 @@
 		</div>
 	</div>
 	<footer>
-		created by garrett.
+		<!-- <img id="dither_button" onclick="backToOriginal()" src="assets/dither-toggle-button.png"> -->
+		<!-- <br> -->
+		created by garrett.	
 	</footer>
 
-
 </body>
+<script>
+	var projectImageList = document.getElementsByClassName('borderimg1class');
+	var ditherButton = document.getElementById('dither_button');
+
+	function backToOriginal() {
+		for (let i = 0; i < projectImageList.length; i++) {
+			var currentSource = String(projectImageList[i].src);
+			ditheredString = currentSource.replace('-dither', '');
+			projectImageList[i].src = ditheredString;
+		}
+		ditherButton.onclick = replaceWithDither;
+	}
+	
+	function replaceWithDither() {
+		for (let i = 0; i < projectImageList.length; i++) {
+			var currentSource = String(projectImageList[i].src);
+			ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+			projectImageList[i].src = ditheredString;
+		}
+		ditherButton.onclick = backToOriginal;
+	}
+</script>
 </html>

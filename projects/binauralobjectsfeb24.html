@@ -21,6 +21,7 @@
                 /
                 <a href="binauralobjectsfeb24.html">binaural objects</a>
                 ]
+                <img id="dither_button" src="../assets/dither-toggle-button.png" style="float: right;" onclick="backToOriginal()">
             </div>
         </div>
         <div class='container'>
@@ -81,7 +82,7 @@
                     </p>
                 </div>
                 <div class="rightsidecenter">
-                    <img src="../assets/danse-ku100subway.jpg" id="borderimg1" style="max-width: 40%; max-height: 100vh;">
+                    <img src="../assets/danse-ku100subway-dither.jpg" class="borderimg1class" style="max-width: 40%; max-height: 100vh;">
                 </div>
             </div>
         </div>
@@ -97,6 +98,27 @@
 
         startButton.onclick = function() {
             audioTrack.play();
+        }
+
+        var projectImageList = document.getElementsByClassName('borderimg1class');
+        var ditherButton = document.getElementById('dither_button');
+
+        function backToOriginal() {
+            for (let i = 0; i < projectImageList.length; i++) {
+                var currentSource = String(projectImageList[i].src);
+                ditheredString = currentSource.replace('-dither', '');
+                projectImageList[i].src = ditheredString;
+            }
+            ditherButton.onclick = replaceWithDither;
+        }
+        
+        function replaceWithDither() {
+            for (let i = 0; i < projectImageList.length; i++) {
+                var currentSource = String(projectImageList[i].src);
+                ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+                projectImageList[i].src = ditheredString;
+            }
+            ditherButton.onclick = backToOriginal;
         }
     </script>
 

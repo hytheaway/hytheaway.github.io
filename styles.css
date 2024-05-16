@@ -55,6 +55,12 @@ li {
 ul {
 	text-align: center;
 }
+a {
+	color: #575757;
+}
+a:visited {
+	color: #575757;
+}
 a:hover {
 	color: goldenrod;
 	background-color: green;
@@ -71,7 +77,14 @@ footer {
 	left: 0;
 	border-bottom: 2px solid;
 	text-align: left;
-	padding: 5px 20px;	
+	padding-bottom: 9px;
+	padding-left: 20px;
+}
+/* .header span {
+	padding-left: 20px;
+} */
+.header img {
+	padding-right: 20px;
 }
 .leftside {
 	flex: 1;
@@ -188,6 +201,11 @@ footer {
 	}
 }
 #borderimg1 {
+	border: 12px solid transparent;
+	padding: 0px;
+	border-image: url('assets/img-border.png') 50 stretch;
+}
+.borderimg1class {
 	border: 12px solid transparent;
 	padding: 0px;
 	border-image: url('assets/img-border.png') 50 stretch;

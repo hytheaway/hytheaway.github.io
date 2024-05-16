@@ -17,7 +17,8 @@
 				<a href="/">home</a>
 				/
 				<a href="journal.html">journal</a>
-				] 
+				]
+				<img id="dither_button" src="assets/dither-toggle-button.png" style="float: right;" onclick="backToOriginal()">
 			</div>
 		</div>
 		<div class='container'>
@@ -72,8 +73,8 @@
 							</p>
 						</div>
 						<div class="rightsidecenter">
-							<img src="assets/ps2cool.jpg" id="borderimg1" style="max-width: 50%; max-height: 100vh; margin: auto;">
-							<img src="assets/ififits.jpg" id="borderimg1" style="max-width: 30%; max-height: 100vh; margin: auto;">
+							<img src="assets/ps2cool-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh; margin: auto;">
+							<img src="assets/ififits-dither.jpg" class="borderimg1class" style="max-width: 30%; max-height: 100vh; margin: auto;">
 							<br>and odhrán seems to like it too.
 						</div>
 					</div>
@@ -134,13 +135,13 @@
 							</p>
 						</div>
 						<div class="rightsidecenter">
-							<img src="assets/fpgbc-1.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
-							<img src="assets/fpgbc-2.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-1-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-2-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
 							<br>
-							<img src="assets/fpgbc-3.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
-							<img src="assets/fpgbc-4.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-3-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-4-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
 							<br>
-							<img src="assets/fpgbc-5.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/fpgbc-5-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
 						</div>
 					</div>
 				</article>
@@ -167,8 +168,8 @@
 							</p>
 						</div>
 						<div class="rightsidecenter">
-							<img src="assets/both_gameboys.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
-							<img src="assets/modded_gameboy.jpg" id="borderimg1" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/both_gameboys-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
+							<img src="assets/modded_gameboy-dither.jpg" class="borderimg1class" style="max-width: 45%; max-height: 100vh; margin: auto;">
 							<br>but it's cool enough.
 						</div>
 					</div>
@@ -232,6 +233,27 @@
 		var monthClickedNav = document.getElementById(linkid);
 		monthClickedNav.classList.toggle('active');
 		previousMonthNav = monthClickedNav;
+	}
+
+	var projectImageList = document.getElementsByClassName('borderimg1class');
+	var ditherButton = document.getElementById('dither_button');
+
+	function backToOriginal() {
+		for (let i = 0; i < projectImageList.length; i++) {
+			var currentSource = String(projectImageList[i].src);
+			ditheredString = currentSource.replace('-dither', '');
+			projectImageList[i].src = ditheredString;
+		}
+		ditherButton.onclick = replaceWithDither;
+	}
+	
+	function replaceWithDither() {
+		for (let i = 0; i < projectImageList.length; i++) {
+			var currentSource = String(projectImageList[i].src);
+			ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+			projectImageList[i].src = ditheredString;
+		}
+		ditherButton.onclick = backToOriginal;
 	}
 
 </script>
