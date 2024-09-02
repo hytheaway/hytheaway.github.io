@@ -72,6 +72,9 @@ footer {
 	padding-top: 20px;
 	padding-bottom:20px;
 }
+span {
+	display: block;
+}
 .header {
 	top: 0;
 	left: 0;
