@@ -1,0 +1,18 @@
+.play-pause {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.on-buttons {
+    /* height: 10vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.off-buttons {
+    /* height: 10vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
