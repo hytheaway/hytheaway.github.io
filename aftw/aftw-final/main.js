@@ -5,7 +5,6 @@ var sax_angle;
 var previous_value = 0;
 var number_assigned = 0;
 var timer = 15;
-var datasetSelected;
 
 // insanely convoluted code for drag and drop
 const instrument_buttons = document.querySelectorAll('.draggable_instrument');
@@ -60,11 +59,11 @@ function drop(event){
     if (previous_value == 1){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '000';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '000';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '000';
@@ -76,11 +75,11 @@ function drop(event){
     if (previous_value == 2){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '315';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '315';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '315';
@@ -92,11 +91,11 @@ function drop(event){
     if (previous_value == 3){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '270';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '270';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '270';
@@ -108,11 +107,11 @@ function drop(event){
     if (previous_value == 4){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '225';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '225';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '225';
@@ -124,11 +123,11 @@ function drop(event){
     if (previous_value == 5){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '180';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '180';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '180';
@@ -140,11 +139,11 @@ function drop(event){
     if (previous_value == 6){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '135';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '135';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '135';
@@ -156,11 +155,11 @@ function drop(event){
     if (previous_value == 7){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '090';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '090';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '090';
@@ -172,11 +171,11 @@ function drop(event){
     if (previous_value == 8){
         if (draggedInstrument.innerText == "Drums"){
             drums_angle = '045';
-            console.log("switch drums:", drums_angle);
+            // console.log("switch drums:", drums_angle);
         }
         if (draggedInstrument.innerText == "Bass"){
             bass_angle = '045';
-            console.log("switch bass:", bass_angle);
+            // console.log("switch bass:", bass_angle);
         }
         if (draggedInstrument.innerText == 'Piano'){
             piano_angle = '045';
@@ -191,13 +190,15 @@ function resetDragged(){
     location.reload();
 }
 // audio processing code
-async function convolveInstrument(instrument, angle){
+async function convolveInstrument(instrument, angle, useStereoPair = false){
     let strAngle = angle.toString();
     let instrumentPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/';
     let instrumentPathEnd = '.wav';
-    let leftIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/D1/L0e';
-    let rightIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/D1/R0e';
+    let leftIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/MIT/L0e';
+    let rightIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/MIT/R0e';
+    let stereoIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/D1/'
     let IRPathEnd = 'a.wav';
+
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const sourceNode = audioContext.createBufferSource();
     const splitterNode = audioContext.createChannelSplitter(2);
@@ -214,35 +215,54 @@ async function convolveInstrument(instrument, angle){
         return await audioContext.decodeAudioData(arrayBuffer);
     }
 
-    const [monoBuffer, leftIR, rightIR] = await Promise.all([
-        loadAudioBuffer(instrumentPathStart.concat(instrument, instrumentPathEnd)),
-        loadAudioBuffer(leftIRPathStart.concat(strAngle, IRPathEnd)),
-        loadAudioBuffer(rightIRPathStart.concat(strAngle, IRPathEnd))
-    ]);
+    let monoBuffer, leftIR, rightIR;
 
-    sourceNode.buffer = monoBuffer;
-    leftConvolver.buffer = leftIR;
-    rightConvolver.buffer = rightIR;
+    if (useStereoPair){
+        [monoBuffer, stereoIR] = await Promise.all([loadAudioBuffer(instrumentPathStart.concat(instrument, instrumentPathEnd)),
+            loadAudioBuffer(stereoIRPathStart.concat(strAngle, IRPathEnd))
+        ]);
 
-    sourceNode.connect(splitterNode);
-    splitterNode.connect(leftConvolver, 0);
-    splitterNode.connect(rightConvolver, 0);
-    leftConvolver.connect(mergerNode, 0, 0);
-    rightConvolver.connect(mergerNode, 0, 1);
-    mergerNode.connect(audioContext.destination);
+        const stereoConvolver = audioContext.createConvolver();
+        stereoConvolver.buffer = stereoIR;
+        stereoConvolver.normalize = false;
+
+        sourceNode.buffer = monoBuffer;
+        sourceNode.connect(stereoConvolver);
+        stereoConvolver.connect(audioContext.destination);
+    }
+    else{
+        [monoBuffer, leftIR, rightIR] = await Promise.all([
+            loadAudioBuffer(instrumentPathStart.concat(instrument, instrumentPathEnd)),
+            loadAudioBuffer(leftIRPathStart.concat(strAngle, IRPathEnd)),
+            loadAudioBuffer(rightIRPathStart.concat(strAngle, IRPathEnd))
+        ]);
+
+        sourceNode.buffer = monoBuffer;
+        leftConvolver.buffer = leftIR;
+        rightConvolver.buffer = rightIR;
+
+        sourceNode.connect(splitterNode);
+        splitterNode.connect(leftConvolver, 0);
+        splitterNode.connect(rightConvolver, 0);
+        leftConvolver.connect(mergerNode, 0, 0);
+        rightConvolver.connect(mergerNode, 0, 1);
+        mergerNode.connect(audioContext.destination);
+    }
 
     sourceNode.start(timer); //takes around 10 seconds for each of the instruments to be cached and ready to go; 15 is safety. 
 }
 
 function playTogether(){
+    const useStereoPair = document.getElementById('dataset-select').value == 'stereo';
+    console.log(useStereoPair);
     const statusText = document.getElementById('statusText');
     const stoppedText = 'Not Playing';
     const loadingText = 'Loading...';
     const playingText = 'Playing';
-    // if (number_assigned != 4){
-    //     statusText.innerText = 'Please drag every instrument to a position around the head.';
-    //     return;
-    // }
+    if (number_assigned != 4){
+        statusText.innerText = 'Please drag every instrument to a position around the head.';
+        return;
+    }
     console.log('Drums:', drums_angle);
     console.log('Bass:', bass_angle);
     console.log('Piano:', piano_angle);
@@ -251,10 +271,9 @@ function playTogether(){
     setInterval(() => {
         statusText.innerText = playingText;
     }, (timer * 1000));
-    convolveInstrument('Drums', drums_angle);
-    convolveInstrument('Bass', bass_angle);
-    convolveInstrument('Piano', piano_angle);
-    convolveInstrument('Wind', sax_angle);
+    convolveInstrument('Drums', drums_angle, useStereoPair);
+    convolveInstrument('Bass', bass_angle, useStereoPair);
+    convolveInstrument('Piano', piano_angle, useStereoPair);
+    convolveInstrument('Wind', sax_angle, useStereoPair);
 
-    
 }
