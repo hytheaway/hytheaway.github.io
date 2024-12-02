@@ -4,6 +4,8 @@ var piano_angle;
 var sax_angle;
 var previous_value = 0;
 var number_assigned = 0;
+var timer = 15;
+var datasetSelected;
 
 // insanely convoluted code for drag and drop
 const instrument_buttons = document.querySelectorAll('.draggable_instrument');
@@ -189,12 +191,12 @@ function resetDragged(){
     location.reload();
 }
 // audio processing code
-async function convolveInstrument(instrument, angle){
+async function convolveInstrument(instrument, angle, dataset){
     let strAngle = angle.toString();
     let instrumentPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/';
     let instrumentPathEnd = '.wav';
-    let leftIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/L0e';
-    let rightIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/R0e';
+    let leftIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/D1/L0e';
+    let rightIRPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/impulse_responses/D1/R0e';
     let IRPathEnd = 'a.wav';
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const sourceNode = audioContext.createBufferSource();
@@ -229,20 +231,30 @@ async function convolveInstrument(instrument, angle){
     rightConvolver.connect(mergerNode, 0, 1);
     mergerNode.connect(audioContext.destination);
 
-    sourceNode.start(15);
+    sourceNode.start(timer); //takes around 10 seconds for each of the instruments to be cached and ready to go; 15 is safety. 
 }
 
 function playTogether(){
+    const statusText = document.getElementById('statusText');
+    const stoppedText = 'Not Playing';
+    const loadingText = 'Loading...';
+    const playingText = 'Playing';
     if (number_assigned != 4){
-        console.log('Assign more!');
+        statusText.innerText = 'Please drag every instrument to a position around the head.';
         return;
     }
     console.log('Drums:', drums_angle);
     console.log('Bass:', bass_angle);
     console.log('Piano:', piano_angle);
     console.log('Sax:', sax_angle);
+    statusText.innerText = loadingText;
+    setInterval(() => {
+        statusText.innerText = playingText;
+    }, (timer * 1000));
     convolveInstrument('Drums', drums_angle);
     convolveInstrument('Bass', bass_angle);
     convolveInstrument('Piano', piano_angle);
     convolveInstrument('Wind', sax_angle);
+
+    
 }

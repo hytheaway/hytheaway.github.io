@@ -40,8 +40,6 @@
                 <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Piano</div>
                 <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Saxophone</div>
             </div>
-            <br>
-            <br>
             <div class="viewport-centering">
                 <div class="circle-container">
                     <img src="face.png" alt="orientation_face" class="center-image">
@@ -55,18 +53,22 @@
                     <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">8</button>
                 </div>
             </div>
+            <span id="statusText" style="display: block; text-align: center; justify-content: center; align-items: center;">Not Playing</span>
             <br>
+            <label for="datasets" style="display: block; text-align: center; justify-content: center; align-items: center;">Choose an HRTF profile:</label>
+            <select name="datasets" id="dataset-select" style="display: block; margin-left: auto; margin-right: auto;">
+                <option value="MIT">MIT (1999)</option>
+                <option value="D1">Dummy Head 1</option>
+            </select>
             <br>
-            <!-- <div class="play-stop">
-                <button class="play" onclick="startPlaying()">Play</button>
-                <button class="pause" onclick="pausePlaying()">Pause</button>
-                <button class="stop" onclick="stopPlaying()">Stop</button>
-            </div> -->
+            <div class="play-convolved">
+                <button onclick="playTogether()">Play</button>
+            </div>
             <br>
             <div class="reset-dragged">
-                <button onclick="resetDragged()">Reset Positions</button>
+                <button onclick="resetDragged()">Stop & Reset Positions</button>
             </div>
-            <button onclick="playTogether()">convolve test</button>
+            
         </div>
     </div>
 </body>

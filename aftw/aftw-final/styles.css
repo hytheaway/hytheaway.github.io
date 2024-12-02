@@ -8,6 +8,11 @@
     justify-content: center;
     align-items: center;
 }
+.play-convolved {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .reset-dragged {
     display: flex;
     justify-content: center;
