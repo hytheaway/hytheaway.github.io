@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .viewport-centering {
     display: flex;
@@ -56,7 +56,7 @@
     width: 80px;
     height: 80px;
     margin: -25px;
-    background-color: #04AA6D;
+    background-color: goldenrod;
     border: none;
     border-radius: 50%;
     color: white;
