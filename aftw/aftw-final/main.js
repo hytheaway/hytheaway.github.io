@@ -254,7 +254,7 @@ async function convolveInstrument(instrument, angle, useStereoPair = false){
 
 function playTogether(){
     const useStereoPair = document.getElementById('dataset-select').value == 'stereo';
-    console.log(useStereoPair);
+    console.log('is using stereo HRIR?', useStereoPair);
     const statusText = document.getElementById('statusText');
     const stoppedText = 'Not Playing';
     const loadingText = 'Loading...';
