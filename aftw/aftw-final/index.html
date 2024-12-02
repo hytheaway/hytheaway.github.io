@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>aftw final project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='../../assets/the-best-fav.gif'>
+    <link rel='stylesheet' href='styles.css'>
+    <script src="Sofa.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="../../">home</a>
+                /
+                <a href='../'>audio for the web</a>
+                /
+                <a href="/">audio for the web final project</a>
+                ]
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class='container'>
+            <audio src="./audio/Drums.wav" id="drums"></audio>
+            <audio src="./audio/Bass.wav" id="bass"></audio>
+            <audio src="./audio/Piano.wav" id="piano"></audio>
+            <audio src="./audio/Wind.wav" id="sax"></audio>
+
+            <div class="instrument-buttons">
+                <!-- <button class="draggable_instrument" draggable="true">Drums</button>
+                <button class="draggable_instrument" draggable="true">Bass</button>
+                <button class="draggable_instrument" draggable="true">Piano</button>
+                <button class="draggable_instrument" draggable="true">Saxophone</button> -->
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Drums</div>
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Bass</div>
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Piano</div>
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Saxophone</div>
+            </div>
+            <br>
+            <br>
+            <div class="viewport-centering">
+                <div class="circle-container">
+                    <img src="face.png" alt="orientation_face" class="center-image">
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">7</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">6</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">5</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">4</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">3</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">2</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">1</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">8</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="play-stop">
+                <button class="play" onclick="startPlaying()">Play</button>
+                <button class="pause" onclick="pausePlaying()">Pause</button>
+                <button class="stop" onclick="stopPlaying()">Stop</button>
+            </div>
+            <br>
+            <div class="reset-dragged">
+                <button onclick="resetDragged()">Reset Positions</button>
+                <br>
+                <br>
+                <button onclick="convolve90()">go button</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

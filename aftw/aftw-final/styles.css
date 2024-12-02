@@ -1,0 +1,86 @@
+.container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+.play-stop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reset-dragged {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.instrument-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.viewport-centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 99vw;
+}
+.circle-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+}
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+    border-radius: 50%;
+}
+.circle-button {
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 80px;
+    height: 80px;
+    margin: -25px;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+.draggable_instrument {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: move;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+.draggable_instrument:hover {
+    background-color: #e0e0e0;
+}
+.draggable_instrument.dragging {
+    opacity: 0.5;
+}
+.circle-button:nth-child(2) { transform: rotate(0deg) translate(150px) rotate(0deg); }
+.circle-button:nth-child(3) { transform: rotate(45deg) translate(150px) rotate(-45deg); }
+.circle-button:nth-child(4) { transform: rotate(90deg) translate(150px) rotate(-90deg); }
+.circle-button:nth-child(5) { transform: rotate(135deg) translate(150px) rotate(-135deg); }
+.circle-button:nth-child(6) { transform: rotate(180deg) translate(150px) rotate(-180deg); }
+.circle-button:nth-child(7) { transform: rotate(225deg) translate(150px) rotate(-225deg); }
+.circle-button:nth-child(8) { transform: rotate(270deg) translate(150px) rotate(-270deg); }
+.circle-button:nth-child(9) { transform: rotate(315deg) translate(150px) rotate(-315deg); }
