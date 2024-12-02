@@ -191,7 +191,7 @@ function resetDragged(){
     location.reload();
 }
 // audio processing code
-async function convolveInstrument(instrument, angle, dataset){
+async function convolveInstrument(instrument, angle){
     let strAngle = angle.toString();
     let instrumentPathStart = 'https://hytheaway.github.io/aftw/aftw-final/audio/';
     let instrumentPathEnd = '.wav';
@@ -239,10 +239,10 @@ function playTogether(){
     const stoppedText = 'Not Playing';
     const loadingText = 'Loading...';
     const playingText = 'Playing';
-    if (number_assigned != 4){
-        statusText.innerText = 'Please drag every instrument to a position around the head.';
-        return;
-    }
+    // if (number_assigned != 4){
+    //     statusText.innerText = 'Please drag every instrument to a position around the head.';
+    //     return;
+    // }
     console.log('Drums:', drums_angle);
     console.log('Bass:', bass_angle);
     console.log('Piano:', piano_angle);
