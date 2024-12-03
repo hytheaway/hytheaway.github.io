@@ -1,3 +1,9 @@
+a {
+	color: #575757;
+}
+a:visited {
+	color: #575757;
+}
 .container {
     /* display: flex; */
     justify-content: center;
