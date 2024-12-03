@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ggm&scnbrmwaa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='../../assets/the-best-fav.gif'>
+    <link rel='stylesheet' href='styles.css'>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <h1 style="margin-bottom: -20px; margin-top: 0px;"><a href="../../">garrett</a>'s great mono & stereo <u>c</u>onvolution<u>n</u>ode binaural renderer made with web audio api</h1>
+            <h3>(GGM&SCNBRMWWAA)</h3>
+        </div>
+        <br>
+        <div class="container">
+            <audio src="./audio/Drums.wav" id="drums"></audio>
+            <audio src="./audio/Bass.wav" id="bass"></audio>
+            <audio src="./audio/Piano.wav" id="piano"></audio>
+            <audio src="./audio/Wind.wav" id="sax"></audio>
+
+            <div class="instrument-buttons">
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Drums</div>
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Bass</div>
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Piano</div>
+                <div class="draggable_instrument" draggable="true" ondragstart="drag(event)" ondragend="dragEnd(event)" style="opacity: 1.0;">Saxophone</div>
+            </div>
+            <div class="viewport-centering">
+                <div class="circle-container">
+                    <img src="face.png" alt="orientation_face" class="center-image">
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">7</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">6</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">5</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">4</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">3</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">2</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">1</button>
+                    <button class="circle-button" ondrop="drop(event)" ondragover="allowDrop(event)">8</button>
+                </div>
+            </div>
+            <span id="statusText" style="display: block; text-align: center; justify-content: center; align-items: center;">Not Playing</span>
+            <br>
+            <label for="datasets" style="display: block; text-align: center; justify-content: center; align-items: center;">Choose an HRTF profile:</label>
+            <select name="datasets" id="dataset-select" style="display: block; margin-left: auto; margin-right: auto;">
+                <option value="separate">MIT KEMAR (1994)</option>
+                <option value="stereo">SADIE KU-100 (2018)</option>
+            </select>
+            <br>
+            <div class="play-convolved">
+                <button onclick="playTogether()">Play</button>
+            </div>
+            <br>
+            <div class="reset-dragged">
+                <button onclick="resetDragged()">Stop & Reset Positions</button>
+            </div>
+            
+        </div>
+    </div>
+    <footer>
+        created by garrett.
+    </footer>
+</body>
+</html>
