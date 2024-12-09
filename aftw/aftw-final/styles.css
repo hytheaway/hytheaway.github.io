@@ -34,8 +34,11 @@ a:visited {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
-    width: 99vw;
+    /* height: 60vh; */
+    margin-top: 60px;
+    margin-bottom: 50px;
+    /* width: 99vw; */
+    /* margin-left: 10px; */
 }
 .circle-container {
     position: relative;
@@ -59,8 +62,8 @@ a:visited {
     position: absolute;
     top: 45%;
     left: 45%;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     margin: -25px;
     background-color: goldenrod;
     border: none;

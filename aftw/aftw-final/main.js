@@ -4,7 +4,7 @@ var piano_angle;
 var sax_angle;
 var previous_value = 0;
 var number_assigned = 0;
-var timer = 15; //takes around 10 seconds for each of the instruments to be cached and ready to go; 15 is safety. 
+var timer = 12; //takes around 10 seconds for each of the instruments to be cached and ready to go; 15 is safety. 
 
 // insanely convoluted code for drag and drop
 const instrument_buttons = document.querySelectorAll('.draggable_instrument');
