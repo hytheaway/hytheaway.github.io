@@ -4,6 +4,22 @@ a {
 a:visited {
 	color: #575757;
 }
+.progressBar {
+    margin: auto;
+    width: 25%;
+}
+.progressBarActive {
+    margin: auto;
+    width: 25%;
+    background-color: #f1f1f1;
+    border: 12px solid transparent;
+    border-image: url('../../assets/img-border.png') 50 stretch;
+}
+.currentProgress {
+    width: 0%;
+    height: 30px;
+    background-color: green;
+}
 .container {
     /* display: flex; */
     justify-content: center;

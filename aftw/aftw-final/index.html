@@ -42,6 +42,9 @@
                 </div>
             </div>
             <span id="statusText" style="display: block; text-align: center; justify-content: center; align-items: center; margin-bottom: 5px;">Not Playing</span>
+            <div class="progressBar" id="progressBar">
+                <div class="currentProgress" id="currentProgress"></div>
+            </div>
             <label for="datasets" style="display: block; text-align: center; justify-content: center; align-items: center;">Choose an HRTF profile:</label>
             <select name="datasets" id="dataset-select" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: -10px;">
                 <option value="separate">MIT KEMAR (1994)</option>
@@ -58,6 +61,7 @@
             
         </div>
     </div>
+    <button onclick="progressBarFunc()">test</button>
     <footer>
         created by garrett.
     </footer>

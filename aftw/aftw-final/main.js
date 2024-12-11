@@ -4,7 +4,8 @@ var piano_angle;
 var sax_angle;
 var previous_value = 0;
 var number_assigned = 0;
-var timer = 12; //takes around 10 seconds for each of the instruments to be cached and ready to go; 15 is safety. 
+var timer = 5; //takes around 10 seconds for each of the instruments to be cached and ready to go; 15 is safety. 
+var progBar_i = 0;
 
 // insanely convoluted code for drag and drop
 const instrument_buttons = document.querySelectorAll('.draggable_instrument');
@@ -251,12 +252,36 @@ function playTogether(){
     console.log('Piano:', piano_angle);
     console.log('Sax:', sax_angle);
     statusText.innerText = loadingText;
+    progressBarFunc();
     setInterval(() => {
         statusText.innerText = playingText;
+        document.getElementById('currentProgress').style.width = 100 + '%'
+        document.getElementById('currentProgress').innerHTML = 100 + '%'
     }, (timer * 1000));
     convolveInstrument('Drums', drums_angle, useStereoPair);
     convolveInstrument('Bass', bass_angle, useStereoPair);
     convolveInstrument('Piano', piano_angle, useStereoPair);
     convolveInstrument('Wind', sax_angle, useStereoPair);
 
+}
+
+function progressBarFunc() {
+    document.getElementById('progressBar').classList.add('progressBarActive');
+    if (progBar_i == 0){
+        progBar_i = 1;
+        var elem = document.getElementById("currentProgress");
+        var width = 0;
+        var id = setInterval(frame, timer*9.5);
+        function frame(){
+            if (width >= 99){
+                clearInterval(id);
+                i = 0;
+            }
+            else {
+                width++;
+                elem.style.width = width + "%";
+                elem.innerHTML = width + "%";
+            }
+        }
+    }
 }
