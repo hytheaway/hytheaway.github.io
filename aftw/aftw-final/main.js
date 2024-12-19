@@ -254,9 +254,9 @@ function playTogether(){
     statusText.innerText = loadingText;
     progressBarFunc();
     setInterval(() => {
+        document.getElementById("currentProgress").style.width = 100 + "%";
+        document.getElementById("currentProgress").innerHTML = 100 + "%";
         statusText.innerText = playingText;
-        document.getElementById('currentProgress').style.width = 100 + '%'
-        document.getElementById('currentProgress').innerHTML = 100 + '%'
     }, (timer * 1000));
     convolveInstrument('Drums', drums_angle, useStereoPair);
     convolveInstrument('Bass', bass_angle, useStereoPair);

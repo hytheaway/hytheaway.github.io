@@ -19,7 +19,7 @@
 				/
 				<a href="projects.html">projects</a>
 				]
-				<img id="dither_button" src="assets/dither-toggle-button.png" style="float: right;" onclick="backToOriginal()">
+				<img id="ditherButton" src="assets/dither-toggle-button.png" style="float: right;">
 			</div>
 			
 		</div>
@@ -45,25 +45,6 @@
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/m3--_fully_working-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
-					<p style='line-height: 0.25;'>m3--</p>
-					<p style='line-height: 1.0;'><small><i>aoifernet is a cuter name.</i></small></p>
-				</div>
-				<div class='rightside'>
-					<h2><a href='projects/aoifernet.html'>m3-- (dec 2024)</a></h2>
-					<p>no longer a peripheral.</p>
-					<br>
-					<p style='font-size: 80%;'>this isn't even my final form.
-					</p>
-					<br>
-					<p style="line-height: 0.25;">tools:</p>
-					<p style='font-size: 90%;'><a href="https://www.pjrc.com/store/teensy41.html" target="_blank">teensy</a>, <a href="https://www.pjrc.com/store/teensy3_audio.html" target="_blank"> teensy audio adapter</a>, <a href="https://asindo.pro/products/cardimod" target="_blank">cardimod+</a>, fusion360, kicad.</p>
-				</div>
-			</div>
-			<!-- entry -->
-			<br>
-			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
-				<div class='leftside'>
 					<img src='assets/ggm-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>ggm&scnbrmwaa</p>
 					<p style='line-height: 1.0;'><small><i>exactly what it sounds like.</i></small></p>
@@ -80,14 +61,14 @@
 						<br>u in?</p>
 					<br>
 					<p style="line-height: 0.25;">tools:</p>
-					<p style='font-size: 90%;'>html, javascript, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank">web audio api</a>, <a href="https://sourceforge.net/projects/hesuvi/" target="_blank"><b>h</b><small>e</small><b>s</b><small>u</small><b>v</b><small>i</small></a>.</p>
+					<p style='font-size: 90%;'>html, javascript, web audio api, <b>h</b><small>e</small><b>s</b><small>u</small><b>v</b><small>i</small>.</p>
 				</div>
 			</div>
-			<!-- entry -->
+			<!-- entry 2 -->
 			<br>
 			<div class='flex-container' style='border-bottom: 2px dashed lightgrey;'>
 				<div class='leftside'>
-					<img src='assets/height_layer_comparison-dither.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
+					<img src='assets/height_layer_comparison.jpg' class="borderimg1class" style="max-width: 35%; max-height: 100vh; margin: auto;">
 					<p style='line-height: 0.25;'>height layer comparison</p>
 					<p style='line-height: 1.0;'><small><i>what kind of monster takes the screws out of a d sub?</i></small></p>
 				</div>
@@ -255,24 +236,74 @@
 </body>
 <script>
 	var projectImageList = document.getElementsByClassName('borderimg1class');
-	var ditherButton = document.getElementById('dither_button');
+	// var ditherButton = document.getElementById('dither_button');
 
-	function backToOriginal() {
-		for (let i = 0; i < projectImageList.length; i++) {
-			var currentSource = String(projectImageList[i].src);
-			ditheredString = currentSource.replace('-dither', '');
-			projectImageList[i].src = ditheredString;
+	function orderedDither(imageData, width, height) {
+		const bayerMatrix = [
+			[ 0, 48, 12, 60,  3, 51, 15, 63],
+			[32, 16, 44, 28, 35, 19, 47, 31],
+			[ 8, 56,  4, 52, 11, 59,  7, 55],
+			[40, 24, 36, 20, 43, 27, 39, 23],
+			[ 2, 50, 14, 62,  1, 49, 13, 61],
+			[34, 18, 46, 30, 33, 17, 45, 29],
+			[10, 58,  6, 54,  9, 57,  5, 53],
+			[42, 26, 38, 22, 41, 25, 37, 21]
+		];
+
+		for (let y = 0; y < height; y++) {
+			for (let x = 0; x < width; x++) {
+			const i = (y * width + x) * 4;
+			const gray = (imageData[i] + imageData[i + 1] + imageData[i + 2]) / 3;
+			const threshold = (bayerMatrix[y % 8][x % 8] + 1) / 65 * 255;
+			const newColor = gray > threshold ? 255 : 0;
+			imageData[i] = imageData[i + 1] = imageData[i + 2] = newColor;
+			}
 		}
-		ditherButton.onclick = replaceWithDither;
+		return imageData;
 	}
+
+	function ditherImage(img) {
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d');
+		canvas.width = img.width;
+		canvas.height = img.height;
+		ctx.drawImage(img, 0, 0);
+
+		const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+		const ditheredData = orderedDither(imageData.data, canvas.width, canvas.height);
+		
+		ctx.putImageData(new ImageData(ditheredData, canvas.width, canvas.height), 0, 0);
+		return canvas.toDataURL();
+	}
+
+	document.getElementById('ditherButton').addEventListener('click', function() {
+		const images = document.getElementsByTagName('img');
+		for (let img of images){
+			const originalSrc = img.src;
+			img.onload = function () {
+				const ditheredSrc = ditherImage(this);
+				this.src = ditheredSrc;
+			}
+			img.src = originalSrc;
+		}
+	});
+
+	// function backToOriginal() {
+	// 	for (let i = 0; i < projectImageList.length; i++) {
+	// 		var currentSource = String(projectImageList[i].src);
+	// 		ditheredString = currentSource.replace('-dither', '');
+	// 		projectImageList[i].src = ditheredString;
+	// 	}
+	// 	ditherButton.onclick = replaceWithDither;
+	// }
 	
-	function replaceWithDither() {
-		for (let i = 0; i < projectImageList.length; i++) {
-			var currentSource = String(projectImageList[i].src);
-			ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
-			projectImageList[i].src = ditheredString;
-		}
-		ditherButton.onclick = backToOriginal;
-	}
+	// function replaceWithDither() {
+	// 	for (let i = 0; i < projectImageList.length; i++) {
+	// 		var currentSource = String(projectImageList[i].src);
+	// 		ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+	// 		projectImageList[i].src = ditheredString;
+	// 	}
+	// 	ditherButton.onclick = backToOriginal;
+	// }
 </script>
 </html>
