@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ggh&sf</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='../assets/the-best-fav.gif'>
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+    <link rel='stylesheet' href='../styles.css'>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='../projects.html'>projects</a>
+                /
+                <a href="gghsf.html">ggh&sf</a>
+                ]
+                <img id="dither_button" src="../assets/dither-toggle-button.png" style="float: right;" onclick="backToOriginal()">
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='../projects.html'>projects</a></li>
+                    |
+                    <li><a href='../journal.html'>journal</a></li>
+                    |
+                    <li><a href='../contact.html'>contact</a></li>
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <h2 style="text-align: center;">garrett's great hrtf (& sofa) functions (may 2025)</h2>
+            <p style="text-align: center;">unoptimized, unfiltered, unabashed.
+                <br><a href="https://github.com/hytheaway/gghf" target="_blank">github</a>
+            </p>
+            <div class="flex-container">
+                <div class="leftside">
+                    <p class="mobileCenterText" style="font-size: 80%; text-align: center;">
+                        with god as my witness, if anyone tells me to use classes in my code, <u><i><b>i will burn the whole thing down</b></i></u>.
+                        <br>
+                        <br><u><b>classes</b></u> are a <u><b>psyop</b></u> by <u><b>Big OOP</b></u> to get "polymorphism" to catch on.
+                        <br>
+                        <br><b>STOP USING CLASSES</b>
+                        <br>- objects were not meant to be given private functions
+                        <br>- YEARS OF PROGRAMMING yet NO REAL-WORLD USE FOUND for POLYMORPHISM
+                        <br>- wanted your object to do something anyway for a laugh? we had a tool for that: It was called "GLOBAL FUNCTIONS"
+                        <br>- "yes, my data has children. yes, my textbox inherits from its parent" --statements dreamed up by the utterly Deranged
+                        <br><b>They have played us for absolute fools</b>
+                        <br>
+                        <br>
+                        <br>more seriously, i'm not a remarkable programmer.
+                        <br>and this offering is <i>quite</i> bloated.
+                        <br>i mean, i'm half certain the entirety of matplotlib was included in the executable, just for a single function <sub>(lol)</sub>.
+                        <br>
+                        <br>however, what i <i>am</i> is interested in streamlining my process, and that's exactly what i did.
+                        <br>so, now you can, too.
+                        <br>
+                        <br>introducing:
+                        <br><b>garrett's great hrtf (& sofa) functions</b>
+                        <br>it's nothing fancy, but it has (or will soon have) all the functionality i really need something like this to have.
+                        <br>
+                        <br><i>but, what do i need this for? what problem does this solve?</i>
+                        <br>in short, whether it's analyzing HRTF files, or getting a closer look at the metadata of .SOFA files,
+                        or i'm just looking for a quick way to convolve a source with some filter, it's a bit of a pain to keep pulling out
+                        the terminal, wracking my brain to remember each of the commands to do what i want to do,
+                        and then just put it away without an easy way to go back to my work.
+                        <br>as far as i can tell, i haven't found someone else who has decided to present these commonly used functions in
+                        one portable and relatively straightforward GUI. and, being realistic, both myself and the people this is aimed at
+                        don't care about optimization of something like this all that much. i mean, i wrote it in python. if i wanted optimization,
+                        i would've made different life choices.
+                        <br>
+                        <br>either way, i hope you enjoy it, if it seems useful. the github contains an executable for both macOS and windows.
+                        <br>
+                        <br>oh, and, it takes about 10-15 seconds to launch on macOS. i promise it's not broken, it's just how pyinstaller handles matplotlib
+                        caching fonts. the windows version should have a splash screen, so no ambiguity there. 
+                    </p>
+                </div>
+                <div class="rightsidecenter" style="display: block; align-items: center; justify-content: center;">
+                    <img src="../assets/gghsf_main-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh;">
+                </div>
+            </div>
+            <!-- end writing here -->
+        </p>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+    <script>
+        var projectImageList = document.getElementsByClassName('borderimg1class');
+        var ditherButton = document.getElementById('dither_button');
+
+        function backToOriginal() {
+            for (let i = 0; i < projectImageList.length; i++) {
+                var currentSource = String(projectImageList[i].src);
+                ditheredString = currentSource.replace('-dither', '');
+                projectImageList[i].src = ditheredString;
+            }
+            ditherButton.onclick = replaceWithDither;
+        }
+        
+        function replaceWithDither() {
+            for (let i = 0; i < projectImageList.length; i++) {
+                var currentSource = String(projectImageList[i].src);
+                ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+                projectImageList[i].src = ditheredString;
+            }
+            ditherButton.onclick = backToOriginal;
+        }
+    </script>
+
+</body>
+
+</html>
