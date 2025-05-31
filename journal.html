@@ -41,8 +41,10 @@
 			<h2 style="text-align: center;">journal</h2>
 			<br>
 			<div id="borderimg1" class="sidenav">
+				<span style="text-align: center; background-color: gainsboro; display: block;"><b>-2025-</b></span>
+				<a class="active" href="#may2025" id="may2025nav" onclick="navBarActive('may2025nav')">may 2025</a>
 				<span style="text-align: center; background-color: gainsboro; display: block;"><b>-2024-</b></span>
-				<a class="active" href="#aug2024" id="aug2024nav" onclick="navBarActive('aug2024nav')">aug 2024</a>
+				<a href="#aug2024" id="aug2024nav" onclick="navBarActive('aug2024nav')">aug 2024</a>
 				<a href="#jul2024" id="jul2024nav" onclick="navBarActive('jul2024nav')">jul 2024</a>
 				<a href="#may2024" id="may2024nav" onclick="navBarActive('may2024nav')">may 2024</a>
 				<a href="#apr2024" id="apr2024nav" onclick="navBarActive('apr2024nav')">apr 2024</a>
@@ -53,6 +55,115 @@
 				<a href="#dec2023" id="dec2023nav" onclick="navBarActive('dec2023nav')">dec 2023</a>
 			</div>
 			<div class="main">
+				<!-- new article -->
+				<article id="may2025">
+					<!-- article title -->
+					<h3 style="text-align: left;">the desk (may 2025)</h3>
+					<div class="flex-container">
+						<div class="leftside" style="text-align: left;">
+							<p style="font-size: 90%;">
+								<span style="display: inline; font-size: 70%;">it's been a while since i had a photo in the journal, so i'll make up for that here.</span>
+								<br>
+								<br>
+								<span style="text-align: center;">
+									<img src="assets/desk-mbp-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh; margin: auto;">
+									<br>what do you notice about this photo?
+								</span>
+								<br>okay, probably not much. it's a laptop connected to a couple monitors. a keyboard, a mouse, some headphones, books, nothing worth a second thought, and you'd be entirely right. that's an m2 max macbook pro, perfectly capable of driving two montiors and plenty of peripherals through a
+								single thunderbolt port. no big deal.
+								<br>
+								<br>
+								<span style="text-align: center;">
+									<img src="assets/desk-mba-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh; margin: auto;">
+									<br>okay, well, what do you notice about <i>this</i> photo?
+								</span>
+								<br>well, uh. as long as you know that's a base m2 macbook air, that kind of changes things. base m2 macbooks only support one external display, but i've got two here. i promise, there are no tricks here, and in fact, it gets even more baffling.
+								<br>
+								<br>for one, yes, there is only one thunderbolt cable being used to attach both of these laptops, and i'm only using one dock, which is the caldigit ts3 plus. the ts3 plus is great, but it doesn't support video through the thunderbolt passthrough/daisy-chain. when you connect
+								one thunderbolt cable to this dock, you can output to one external monitor. but, hey, thunderbolt 3 handles up to 40gbps. that's a lot of bandwidth, may i found some clever way to utilize that extra bandwidth. after all, while my displays are both 1440p and 144hz, that's well under
+								the bandwidth offered by thunderbolt 3, even without display stream compression.
+								<br>
+								<br>that's where the second point comes in: i'm not even <i>really</i> using thunderbolt 3. no, that cable connected to both laptops isn't a "full" thunderbolt 3 cable. it's a 20gbps thunderbolt cable, all because i use a thunderbolt switcher. and you know what? i'm going to go on a tangent here
+								about this switcher because i've got a <b><u>lot</u></b> to say. i hate having a bunch of cables. for my laptops, it makes it really annoying to dock and un-dock. for desktops, i always lose track of which cables i do and don't have connected, and into which ports (i've had kvm switches that <i>refuse</i> to work with anything
+								besides specifically usb 3.1, including 3.2), and it wouldn't be too big of a deal if i hadn't just rebuilt a new pc in this ultra small form factor that can so easily be thrown in my backpack. so, if i ever want to throw this tiny (amazing) pc in my backpack and take it somewhere i'm
+								working, or to a lan party, or whatever, then it's a total pain to be plugging and unplugging a bunch of cables over and over again. as a result, i kinda love thunderbolt, since i can just hook it up to a dock that i'd keep anywhere i'm working and everything just pops up perfectly, and i made sure
+								that thunderbolt compatibility was nearly at the top of my list when i was building this pc. but, it'd be stupid to have two docks at the same desk in my apartment, one for my laptop and one for my desktop, so instead i wanted a thunderbolt switcher. 
+								<br>so why do nearly none exist on the market? i mean, yeah i know why, no one has a need for it. the whole thing about thunderbolt docks is that they made expansion easy with one cable, which is only valuable if you're moving the computer around a lot, and basically no one is moving their desktop
+								around. but, still, i would've paid so much more money for a much better switcher than this one, but this is the only i was able to find on the market at all, let alone the only one within a reasonable price point.
+								<br>okay, so, why am i saying all this? because with only one product available, you <i>have</i> to be okay with all its features and dis-features. and what dis-features does that include? well, sure, 20gbps, but more importantly, this switcher doesn't support more than one external monitor. so, even if i <i>did</i>
+								have a dock that was able to drive two external displays over one thunderbolt cable, this switch would've prevented that. and furthermore, i took the stupid switcher apart and the whole reason it's limited to 20gbps is because they cheaped out and only used one thunderbolt controller,
+								so the entire 40gbps bandwidth just gets chopped in half between the two inputs. or outputs. or however you want to think about it.
+							</p>
+						</div>
+					</div>
+					<div class="flex-container" style="border-bottom: 2px dashed lightgrey;">
+						<div class="leftside" style="text-align: left;">
+							<p style="font-size: 90%;">
+								for the well informed, this all seems like i'm leading up to displaylink adapters. and, yes, you're right, that's exactly how i got around this. my signal flow is computer -> 20gbps switcher -> caldigit ts3 dock, which i use the dedicated output for my main display and a displaylink adapter
+								for my secondary display. displaylink is effectively video over usb, so it requires drivers (and permissions on macos) and is limited by usb speeds, topping out at 60hz. honestly, that doesn't bother me. sure, once you've tried high refresh rate, it's hard to go back to sub 90hz speeds,
+								but i usually only have spreadsheets, references, papers, discord, or zoom on that display anyway. even if i have a youtube video playing, 60hz is more than enough.
+								<br>
+								<br>i've kind of fallen in love with this displaylink adapter, by the way, because it actually overcomes a major hole i didn't realize i had dug myself into. when i was building my new pc, i (apparently stupidly?) assumed that a thunderbolt 4 interface would probably natively support at least
+								two displays at once. i mean, thunderbolt 4 didn't increase the bandwidth from thunderbolt 3, but does overhaul the data transfer symmetry, topology, tunnelling of video, and (in later versions) even does dictate multiple displayport interfaces over the protocol. however, what i <i>didn't</i> consider was that,
+								uh, no one cares about the actual thunderbolt spec and they kinda just implement whatever the hell they want to and leave out whatever they don't want to support. this wasn't an issue until i realized that my brilliant and cute little mini itx motherboard with thunderbolt 4 only supports one display over
+								the connector.
+								<br>now, this isn't as big of a deal with my desktop, i could always just plug in just one displayport cable and get the full 144hz, but after all this work, after all this planning and trial and error, all to maintain a one-cable solution for my pc, it was unreasonably painful to
+								have gone through all that just to end up with my perfect solution, minus one cable. now, obviously, i also have the power cable plugged in. that computer draws like 450 watts, there's no way the 87 watt charger in the caldigit would suffice. and, reasonably, i also have the
+								antenna plugged in, because the bluetooth doesn't work without it (maybe this is because of the metal case, but whatever) but i could always replace the antenna with a more compact one in the future. 
+								<br>
+								<br>
+								<br>so, where does this leave me? like many people my age in similar industries, i spend a large, large amount of my time sitting at this desk, in this chair in my small, ~400 sqft apartment in midtown manhattan. don't get me wrong, i love this apartment. but what it means is that i
+								try to be intentional with this desk. if there's something on this desk that i don't use, it leaves the desk - there's just not enough space. while we're on this topic, and on the topic of noticing things, one of the things you may have picked up on is my keyboard. going back through
+								this journal, you might see some other keyboards, even one i talked about when i was particularly bored. 
+								<br>
+								<br>i have a lot of keyboards. or, i used to. i've gotten rid of a number of them, and i'm sure i could get rid of more. but i do <i>so</i> much (if not all) of my work on a computer, and the way that i interface with that computer is really important to me. in undergrad, i was often graded on how well i
+								could use a computer without touching the mouse (especially in terms of pro tools), and once you get kind of used to it, that level of fluidity feels great. the reality is, your brain often moves faster than your body, and every time i had to move my hand over to a mouse, just to move the mouse, just
+								to scroll, to click, to double click, all to open a file, it began to feel more and more like a waste. the further reality is, it's not a waste to most people. if you don't spend so much time at a computer or with a specific program, then you'd probably lose more time trying to learn a bunch of keyboard
+								shortcuts. so, my only thoughts on it are, some things are important to some people because of their life, and some things aren't as important to others because of their life. for me, having a good keyboard that feels second-nature, responds well, and doesn't fatigue me is important.
+								<br>i've really gravitated towards smaller keyboards. the difficulty of using function layers isn't nearly great enough to outweight the wasted space of using a bigger keyboard
+								to me. recently, i've been using the hhkb professional hybrid and it has basically ruined all other keyboards for me. it's small, it can connect wirelessly to up to 4 devices, it doesn't sound like a shotgun to anyone around you, it feels great, i could go on and on. and i will. they keycap
+								profile feels great, i love the position of the control and delete keys, and it feels incredibly durable. not durable in the way that it'll stand up to a sledgehammer the way that a solid block of aluminum would, but durable in the way that if i threw this in my backpack, i wouldn't think
+								twice about it. i wouldn't be worried about the keycaps falling off or chipping or some anodized finish getting scratches from my hard drive or anything stupid like this. it feels durable because it feels like i can be reasonable with this thing, and it'll be reasonable back to me.
+								<br>
+								<br>enough about the keyboard. onto the mouse. i told you, everything is intentional. i haven't gone through as many mice as i have keyboards, partially because i don't interface with it as frequently, partially because i don't know what makes a good mouse, and partially because i feel like
+								i got super lucky with one of my first picks. the mouse on my desk 99% of the time is the logitech g305. it feels perfectly right in my hand (not too long or wide), it has all the buttons i need (i love forward and back buttons, but i really wouldn't mind having one more button somewhere on it),
+								it has adjustable dpi (i move my mouse with my wrist instead of my arm, so my mouse sensitivity is usually quite high), and, probably most importantly, it's just about the perfect weight. 
+								<br>that last point has become super critical with me lately. over the past few years, i tried out a couple different mice that were supposed to be (and in many ways, were) better than this one: the logitech g pro wireless, and the logitech mx master 3s. i mean,
+								both were certainly priced considerably higher than the g305, and it made me very anxious buying them just for an experiment, but i was curious on what i was missing out on. besides, i used to daily the original mx master something like 6 or 7 years ago until mine broke, and i
+								remember liking it a lot. surprisingly, i've never realized i'd be so subject to the whole "goldilocks" dilemma. the g pro wireless was just way, way too light. it felt like a cheap toy, and it was so light that i actually felt like i wasn't able to predict where my cursor was
+								going to land by the end of it. i know this is normal, and that after an adjustment period, it'd probably be perfect, but besides it's weight, what other advantage did i get for the extra $60 i paid? it's slightly longer in the hand, which i guess feels alright, and it has rgb on it,
+								which doesn't matter at all to me because it's positioned directly under my palm, so whatever. the final nail in the coffin, and by far the biggest gripe i had with it, was that the battery life was abysmal. i think maybe the g305 has spoiled me, but i felt like i was charging the
+								g pro wireless nearly every single time i sat down at my desk. obviously, being a "super-light" gaming mouse, the battery must be tiny. but i need to get work done when i need to get work done, so that resulted in me keeping the charger draped across my desk, and if it's going to be
+								draped across my desk and always at risk of the battery dying, then why would i ever unplug it, and if i would never unplug it then why the hell did i spend $100 on a wireless mouse. so, that one didn't last very long. 
+								<br>the mx master 3s is just too heavy. that's really it, i don't have nearly as many gripes with it. sure, there are a few, but they're no big deal. and realistically, i know the mx master 3s isn't <i>that</i> much heavier than the g305, but the physical size is so much larger
+								that it feels like i'm holding a rock.
+								<br>there is another mouse i use pretty frequently, at least in comparison to any other mouse, and that's the kensington expert trackball. probably one of the best mice out there.
+								<br>
+								<br>anyway, the other stuff on my desk is usually just a water bottle, headphones (usually hd650's, but often also 1000xm4's and corsair void), books/papers i'm reading or referencing, guitar picks, a light bar, a screw tray (for whenever i take things apart on my desk), and my stream deck, which handles all my macros. i try not to rely on macros over shortcuts,
+								because i'm not always at my desk, but for things like homeassistant, media playback controls, and other operations that are completely doable with a macropad but just annoying (adjusting per program volume in particular), i keep those close on the stream deck. now, obviously, the stream deck
+								should not be confused with the steam deck, which i also have at my desk. honestly, this one is the most superfluous item on my desk, it doesn't <i>have</i> to be here, but i like how it looks, it makes it convenient for taking short 10 or 15 minute breaks from whatever project i'm
+								completing, and having it on the same desk as my laptop means that when i grab my laptop to pack away, i can very easily also grab the steam deck and not think too much about it. 
+								<br>
+								<br>
+								<br>that's it. that's my desk. i won't live in this apartment forever, so whenever i want to look back and find out how i had this whole thing set up, then i'll take a look here, and maybe write a new update for posterity.
+							</p>
+						</div>
+						<div class="rightside" style="display: flex; text-align: center; flex-direction: column; justify-content: space-between;">
+							<figure>
+								<img src="assets/desk-3d-print-tower-dither.jpg" class="borderimg1class" style="max-width: 80%; max-height: 70vh; margin: auto;">
+								<figcaption><p style="font-size: 70%;"><i>3d printed tower that holds my usb hubs, mini network switch, ts3, thunderbolt switcher, and scarlett solo.</i></p></figcaption>
+							</figure>
+							<figure>
+								<img src="assets/desk-pc-dither.jpg" class="borderimg1class" style="max-width: 80%; max-height: 70vh; margin: auto;">
+								<figcpation><p style="font-size: 70%;"><i>my pc case is the velkase velka 3; steam deck and ps5 controller for scale.</i></p></figcpation>
+							</figure>
+							<figure>
+								<img src="assets/desk-top-dither.jpg" class="borderimg1class" style="max-width: 80%; max-height: 70vh; margin: auto; align-self: flex-end;">
+								<figcaption><p style="font-size: 70%;"><i>desk from above.</i></p></figcaption>
+							</figure>
+						</div>
+					</div>
+				</article>
 				<!-- new article -->
 				<article id="aug2024">
 					<!-- article title -->
@@ -366,7 +477,7 @@
 
 	// each month for the articles are listed here in reverse chronological order (so that i=0 is always the most recent article)
 	// when a new article is published, please add the month and year here:
-	const current_articles = ['aug2024', 'jul2024', 'may2024', 'apr2024', 'dec2023'];
+	const current_articles = ['may2025', 'aug2024', 'jul2024', 'may2024', 'apr2024', 'dec2023'];
 
 	// most recent article is set to be the default:
 	var previousMonthNav = document.getElementById(current_articles[0].concat('nav'));
