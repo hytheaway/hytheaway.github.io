@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ggec</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='../assets/the-best-fav.gif'>
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+    <link rel='stylesheet' href='../styles.css'>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='../projects.html'>projects</a>
+                /
+                <a href="ggec.html">ggec</a>
+                ]
+                <img id="dither_button" src="../assets/dither-toggle-button.png" style="float: right;" onclick="backToOriginal()">
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='../projects.html'>projects</a></li>
+                    |
+                    <li><a href='../journal.html'>journal</a></li>
+                    |
+                    <li><a href='../contact.html'>contact</a></li>
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <h2 style="text-align: center;">garrett's great esp32 clock (may 2025)</h2>
+            <p style="text-align: center;">have you figured out my naming scheme?
+                <br><a href="https://github.com/hytheaway/ggec" target="_blank">github</a>
+            </p>
+            <div class="flex-container">
+                <div class="leftside">
+                    <p class="mobileCenterText" style="font-size: 85%; text-align: left;">
+                        in my project <a href="gghsf.html">garrett's great hrtf (& sofa) functions</a>, i made a joke about classes, which is obviously a very fundamental aspect of programming, but is also an aspect that
+                        i'm fine with ignoring when it's not required at all. 
+                        <br>if i'm just writing code to run a couple functions, yea, i probably don't <i>need</i> classes. but for comedic effect, i definitely made it
+                        seem like i hated classes more than i actually do.
+                        <br>
+                        <br>
+                        <span style="text-align: center;">
+                            <br>make no mistake.
+                            <br>
+                            <br>that hatred is real for c.
+                        </span>
+                        <br>
+                        <br>
+                        <br>anyway, i have this cool elgato stream deck. i love it, it replaced my old macropad in seconds. one issue i have with it, though, is that when my computer goes to sleep, so does it, and since i
+                        use it as my desk clock, then i have no clue what time it is if i'm not using my computer (which is redundant, since the computer also has a clock).
+                        <br>
+                        <br>so, there's my problem. i want a clock for my desk so that i know what time it is at a glance. but, it can't take up too much space. space is at a premium on my desk, and i hate the feeling of
+                        clutter in the space where i'm supposed to be productive. i went to amazon to find a small but easily readable clock for my desk, and honestly, i wasn't thrilled with either the options nor the prices.
+                        besides, i had this esp32 kicking around, and it so well known and utilized (along with the ssd1306 display) that i figured someone has definitely already done made a clock for the esp32 with the ssd1306.
+                        <br>
+                        <br>guess what doesn't exist? that.
+                        <br>
+                        <br>but i was still super not in the mood for writing my own software for this, so i spent the better part of 2 or 3 hours trying to retrofit other peoples' clock softwares
+                        with each other, making it all work together, but it just wasn't working, over and over again. it was half past 11pm (not that i'd know), i was tired, and decided i should handle this with a fresh
+                        pair of eyes in the morning. but, as i was trying to sleep, i just couldn't shake this frustrated feeling. it felt like i left the oven on, mixed with the knowledge that i <i>could</i> turn it off. i tried ignoring
+                        the feeling, closing my eyes, trying to unwind and decompress, but it just kept building and building until i finally angrily lept out of bed, opened up my laptop again, and in less than an hour i had
+                        a fully working, fully featured clock.
+                        <br>
+                        <br>maybe that's why i dislike c so much. with the experience level i'm at right now, it's almost always more effective to scrap everything and start from scratch than try to salvage a program that isn't
+                        working for seemingly no reason.
+                        <br>
+                        <br>so, if you have an esp32 and an ssd1306, and you want to make a clock out of it (which, to be fair, an esp32 is major overkill for just a clock), now there's a solution. if you wanted to 3d print a
+                        case like the one i have, i left the files in the same repo, too, but obviously different esp32 chips will vary, and my screen is just hot glued to the top case.
+                        <br>
+                        <br>also, it was super annoying getting photos with the refresh rate of that screen relative to the shutter speed of my camera. but they look pretty.
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>and now i have a clock. 
+                    </p>
+                </div>
+                <div class="rightsidecenter" style="display: block; align-items: center; justify-content: center;">
+                    <img src="../assets/ggec-title-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh;">
+                    <br><img src="../assets/ggec-distant-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh;">
+                    <br><img src="../assets/ggec-keyboard-clock-dither.jpg" class="borderimg1class" style="max-width: 50%; max-height: 100vh;">
+                </div>
+            </div>
+            <!-- end writing here -->
+        </p>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+    <script>
+        var projectImageList = document.getElementsByClassName('borderimg1class');
+        var ditherButton = document.getElementById('dither_button');
+
+        function backToOriginal() {
+            for (let i = 0; i < projectImageList.length; i++) {
+                var currentSource = String(projectImageList[i].src);
+                ditheredString = currentSource.replace('-dither', '');
+                projectImageList[i].src = ditheredString;
+            }
+            ditherButton.onclick = replaceWithDither;
+        }
+        
+        function replaceWithDither() {
+            for (let i = 0; i < projectImageList.length; i++) {
+                var currentSource = String(projectImageList[i].src);
+                ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+                projectImageList[i].src = ditheredString;
+            }
+            ditherButton.onclick = backToOriginal;
+        }
+    </script>
+
+</body>
+
+</html>
