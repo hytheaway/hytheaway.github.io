@@ -50,6 +50,19 @@
             <h3 style="text-align: center; font-size: 95%;">configure the website here.</h3>
             <!-- <br> -->
             <p id="storage_support_label" style="text-align: center; font-style: italic; font-size: 80%;"></p>
+            <!-- theme -->
+            <div class="flex-container">
+                <div class="leftside" style="text-align: right; padding-right: 2vw;">
+                    theme:
+                </div>
+                <div class="rightside" style="padding-left: 2vw;">
+                    <select name="theme_selection" id="theme_selection" onchange="changeTheme(this.selectedIndex+1);">
+                        <option value="1">light</option>
+                        <option value="2">dark</option>
+                    </select>
+                </div>
+            </div>
+            <!-- fonts -->
             <div class="flex-container">
                 <div class="leftside" style="text-align: right; padding-right: 2vw;">
                     font:
@@ -70,22 +83,101 @@
     <footer>
         created by garrett.
     </footer>
-
 </body>
-
 </html>
 
 <script>
+    // does this browser support sessionStorage?
+    const storage_support_label = document.getElementById("storage_support_label");
+    if (typeof(Storage) !== "undefined") {
+        storage_support_label.innerHTML = "your browser does support configuration.";
+    }
+
+    // themes
+    const styleEl = document.createElement("style");
+    const light_theme = [
+        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center;']]
+    ];
+    const dark_theme = [
+        ['body', ['color', 'white']],
+        ['body', ['background-color', 'black']],
+        ['hr', ['color', 'white']],
+        ['hr:after', ['background', 'black']],
+        ['a:hover', ['color', 'black']],
+        ['a:hover', ['background-color', 'white']],
+        ['.dropdown-content', ['background-color', 'black']],
+        ['.dropdown-content', ['border-width', '1px']],
+        ['.dropdown-content a', ['border-color', 'white']],
+        ['.dropdown-content a:hover', ['background-color', 'white']],
+        ['.dropdown-content a:hover', ['color', 'black']],
+        ['.dropdown-content a:hover', ['border-color', 'white']],
+        ['.dropdown:hover .dropbutton', ['background-color', 'white']],
+        ['.dropdown:hover .dropdown-content', ['background-color', 'black']],
+        ['.dropdown:hover .dropdown-content', ['border-width', '1px']],
+        ['.dropdown:hover .dropdown-content', ['border-color', 'white']],
+        ['.sidenav a', ['background-color', 'black']],
+        ['.sidenav a', ['color', 'white']],
+        ['.sidenav a.active', ['background-color', 'white']],
+        ['.sidenav a.active', ['color', 'black']],
+        ['.sidenav a:hover:not(.active)', ['background-color', 'white']],
+        ['.sidenav a:hover:not(.active)', ['color', 'black']],
+        ['.journal_year_span', ['background-color', 'black', true]]
+    ];
+
+    // default to light theme everytime the page is opened
+    addStyleSheetRules(light_theme);
+    sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
+
+    function addStyleSheetRules(rules) {
+        try{
+            document.head.removeChild(styleEl);
+        }
+        catch (error) {
+        }
+        document.head.appendChild(styleEl);
+        const styleSheet = styleEl.sheet;
+
+        for (let rule of rules) {
+            let i = 1, selector = rule[0], propStr = "";
+            if (Array.isArray(rule[1][0])) {
+                rule = rule[1];
+                i = 0;
+            }
+            for (; i < rule.length; i++) {
+                const prop = rule[1];
+                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
+            }
+
+            styleSheet.insertRule(
+                `${selector}{${propStr}}`,
+                styleSheet.cssRules.length,
+            );
+        }
+    }
+    function changeTheme(themeIndex) {
+        if (typeof(Storage) !== "undefined") {
+            if (themeIndex == 1) {
+                addStyleSheetRules(light_theme);
+                sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
+            }
+            if (themeIndex == 2) {
+                addStyleSheetRules(dark_theme);
+                sessionStorage.setItem("selected_theme_key", JSON.stringify(dark_theme));
+            }
+        }
+        else {
+            storage_support_label.innerHTML = "your browser does not support configuration.";
+        }
+    }
+
+    
+
+    // fonts
     const font_stylesheet = new CSSStyleSheet();
     font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
     document.adoptedStyleSheets = [font_stylesheet];
     sessionStorage.font = "html { font-family: 'DotGothic16'; }";
     fontIndex = 1;
-
-    const storage_support_label = document.getElementById("storage_support_label");
-    if (typeof(Storage) !== "undefined") {
-        storage_support_label.innerHTML = "your browser does support configuration.";
-    }
 
     function changeFont(fontIndex) {
         if (typeof(Storage) !== "undefined") {

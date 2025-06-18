@@ -282,4 +282,42 @@
     finally {
         document.adoptedStyleSheets = [font_stylesheet];
     }
+
+    // themes
+    const styleEl = document.createElement("style");
+	try {
+		const str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+		const arr_stored_theme_key = JSON.parse(str_stored_theme_key);
+		addStyleSheetRules(arr_stored_theme_key);
+	}
+	catch (error) {
+		addStyleSheetRules([['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center;']]]);
+	}
+
+	function addStyleSheetRules(rules) {
+        try{
+            document.head.removeChild(styleEl);
+        }
+        catch (error) {
+        }
+        document.head.appendChild(styleEl);
+        const styleSheet = styleEl.sheet;
+
+        for (let rule of rules) {
+            let i = 1, selector = rule[0], propStr = "";
+            if (Array.isArray(rule[1][0])) {
+                rule = rule[1];
+                i = 0;
+            }
+            for (; i < rule.length; i++) {
+                const prop = rule[1];
+                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
+            }
+
+            styleSheet.insertRule(
+                `${selector}{${propStr}}`,
+                styleSheet.cssRules.length,
+            );
+        }
+    }
 </script>

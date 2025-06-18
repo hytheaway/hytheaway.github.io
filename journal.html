@@ -48,9 +48,9 @@
 			<h2 style="text-align: center;">journal</h2>
 			<br>
 			<div id="borderimg1" class="sidenav">
-				<span style="text-align: center; background-color: gainsboro; display: block;"><b>-2025-</b></span>
+				<span class="journal_year_span" style="text-align: center; background-color: gainsboro; display: block;"><b>-2025-</b></span>
 				<a class="active" href="#may2025" id="may2025nav" onclick="navBarActive('may2025nav')">may 2025</a>
-				<span style="text-align: center; background-color: gainsboro; display: block;"><b>-2024-</b></span>
+				<span class="journal_year_span" style="text-align: center; background-color: gainsboro; display: block;"><b>-2024-</b></span>
 				<a href="#aug2024" id="aug2024nav" onclick="navBarActive('aug2024nav')">aug 2024</a>
 				<a href="#jul2024" id="jul2024nav" onclick="navBarActive('jul2024nav')">jul 2024</a>
 				<a href="#may2024" id="may2024nav" onclick="navBarActive('may2024nav')">may 2024</a>
@@ -58,7 +58,7 @@
 				<!-- <a href="#mar2024" id="mar2024nav" onclick="navBarActive('mar2024nav')">mar 2024</a>
 				<a href="#feb2024" id="feb2024nav" onclick="navBarActive('feb2024nav')">feb 2024</a>
 				<a href="#jan2024" id="jan2024nav" onclick="navBarActive('jan2024nav')">jan 2024</a> -->
-				<span style="text-align: center; background-color: gainsboro; display: block;"><b>-2023-</b></span>
+				<span class="journal_year_span" style="text-align: center; background-color: gainsboro; display: block;"><b>-2023-</b></span>
 				<a href="#dec2023" id="dec2023nav" onclick="navBarActive('dec2023nav')">dec 2023</a>
 			</div>
 			<div class="main">
@@ -554,7 +554,7 @@
 
 	const font_stylesheet = new CSSStyleSheet();
 	try {
-			font_stylesheet.insertRule(sessionStorage.font);
+		font_stylesheet.insertRule(sessionStorage.font);
 	}
 	catch (error) {
 		font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
@@ -562,5 +562,43 @@
 	finally {
 		document.adoptedStyleSheets = [font_stylesheet];
 	}
+
+	// themes
+	const styleEl = document.createElement("style");
+	try {
+		const str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+		const arr_stored_theme_key = JSON.parse(str_stored_theme_key);
+		addStyleSheetRules(arr_stored_theme_key);
+	}
+	catch (error) {
+		addStyleSheetRules([['body:before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']]]);
+	}
+
+	function addStyleSheetRules(rules) {
+        try{
+            document.head.removeChild(styleEl);
+        }
+        catch (error) {
+        }
+        document.head.appendChild(styleEl);
+        const styleSheet = styleEl.sheet;
+
+        for (let rule of rules) {
+            let i = 1, selector = rule[0], propStr = "";
+            if (Array.isArray(rule[1][0])) {
+                rule = rule[1];
+                i = 0;
+            }
+            for (; i < rule.length; i++) {
+                const prop = rule[1];
+                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
+            }
+
+            styleSheet.insertRule(
+                `${selector}{${propStr}}`,
+                styleSheet.cssRules.length,
+            );
+        }
+    }
 
 </script>

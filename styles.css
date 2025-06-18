@@ -12,7 +12,7 @@ body:before {
 	width: 100%;
 	height: 100%;
 	z-index: -10;
-	background: url('assets/bg-test-purple4.png') no-repeat center center;
+	/* background: url('assets/bg-test-purple4.png') no-repeat center center; */
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -242,6 +242,7 @@ span {
 	font-family: DotGothic16;
 	src:
 		local('DotGothic16'),
+		url('assets/fonts/DotGothic16-Regular.ttf'),
 		url('https://fonts.googleapis.com/css?family=DotGothic16');
 }
 #borderimg1 {
