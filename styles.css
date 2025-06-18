@@ -1,6 +1,6 @@
 html{
 	margin: 0;
-	font-family: 'DotGothic16';
+	/* font-family: 'DotGothic16'; */
 	/* background: rgba(219, 112, 147, 1); */
 }
 body:before {
@@ -149,6 +149,41 @@ span {
 	background-color: green;
 	color: goldenrod;
 }
+.dropbutton {
+	color: #575757;
+}
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #ddd;
+	min-width: 5vw;
+	z-index: 1;
+}
+.dropdown-content a {
+	color: #575757;
+	text-decoration: none;
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+.dropdown-content a:hover {
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+.dropdown:hover .dropbutton {
+	background-color: green;
+	color: goldenrod;
+}
 .main {
 	margin-left: 140px;
 	margin-right: 40px;
@@ -202,6 +237,12 @@ span {
 	#fourierifierImage {
 		max-width: 65% !important;
 	}
+}
+@font-face {
+	font-family: DotGothic16;
+	src:
+		local('DotGothic16'),
+		url('https://fonts.googleapis.com/css?family=DotGothic16');
 }
 #borderimg1 {
 	border: 12px solid transparent;

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='icon' type='image/x-icon' href='assets/the-best-fav.gif'>
-	<link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+	<!-- <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'> -->
 	<link rel='stylesheet' href='styles.css'>
 </head>
 
@@ -34,6 +34,13 @@
 					<li><a href='journal.html'>journal</a></li>
 					|
 					<li><a href='contact.html'>contact</a></li>
+					|
+					<div class="dropdown">
+						<span class="dropbutton"><a href="">more</a></span>
+						<div class="dropdown-content">
+							<a href="options.html">options</a>
+						</div>
+					</div>
 				</ul>
 			</div>
 			<hr>
@@ -72,6 +79,8 @@
 
 </body>
 
+</html>
+
 <script>
 	const images = ["assets/me400-1.jpg", "assets/me400-2.jpg", "assets/me400-3.jpg", "assets/me400-4.jpg", "assets/me400-5.jpg", "assets/me400-6.jpg"];
 	document.addEventListener(
@@ -79,7 +88,22 @@
 			const randImageIndex = ~~(Math.random() * images.length); document.getElementById('randImg').src = images[randImageIndex];
 		}
 	);
-
+	const font_stylesheet = new CSSStyleSheet();
+	if (!sessionStorage.getItem("visited")){
+		font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+		document.adoptedStyleSheets = [font_stylesheet];
+		sessionStorage.setItem("visited", true);
+	}
+	else {
+		try {
+			font_stylesheet.insertRule(sessionStorage.font);
+		}
+		catch (error) {
+			font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+		}
+		finally {
+			document.adoptedStyleSheets = [font_stylesheet];
+		}
+	}
+	
 </script>
-
-</html>

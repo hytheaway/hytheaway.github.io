@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>website configuration!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='assets/the-best-fav.gif'>
+    <link rel='stylesheet' href='styles.css'>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='options.html'>website configurator!</a>
+                ]
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='projects.html'>projects</a></li>
+                    |
+                    <li><a href='journal.html'>journal</a></li>
+                    |
+                    <li><a href='contact.html'>contact</a></li>
+                    |
+					<div class="dropdown">
+						<span class="dropbutton"><a href="">more</a></span>
+						<div class="dropdown-content">
+							<a href="options.html">options</a>
+						</div>
+					</div> 
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <br>
+            <h2 style="text-align: center;">options</h2>
+            <h3 style="text-align: center; font-size: 95%;">configure the website here.</h3>
+            <!-- <br> -->
+            <p id="storage_support_label" style="text-align: center; font-style: italic; font-size: 80%;"></p>
+            <div class="flex-container">
+                <div class="leftside" style="text-align: right; padding-right: 2vw;">
+                    font:
+                </div>
+                <div class="rightside" style="padding-left: 2vw;">
+                    <select name="font_selection" id="font_selection" onchange="changeFont(this.selectedIndex+1);">
+                        <option value="1">dotgothic16</option>
+                        <option value="2">system ui</option>
+                        <option value="3">courier new</option>
+                    </select>
+                </div>
+            </div>
+            <!-- end writing here -->
+        </p>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+</body>
+
+</html>
+
+<script>
+    const font_stylesheet = new CSSStyleSheet();
+    font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+    document.adoptedStyleSheets = [font_stylesheet];
+    sessionStorage.font = "html { font-family: 'DotGothic16'; }";
+    fontIndex = 1;
+
+    const storage_support_label = document.getElementById("storage_support_label");
+    if (typeof(Storage) !== "undefined") {
+        storage_support_label.innerHTML = "your browser does support configuration.";
+    }
+
+    function changeFont(fontIndex) {
+        if (typeof(Storage) !== "undefined") {
+            if (fontIndex == 1) {
+                font_stylesheet.replace("html { font-family: 'DotGothic16'; }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'DotGothic16'; }";
+            }
+            if (fontIndex == 2) {
+                font_stylesheet.replace("html { font-family: 'system-ui'; }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'system-ui'; }";
+            }
+            if (fontIndex == 3) {
+                font_stylesheet.replace("html { font-family: 'Courier New', monospace; font-weight: 600; }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'Courier New', monospace; font-weight: 600; }";
+            }
+        }
+        else {
+            storage_support_label.innerHTML = "your browser does not support configuration.";
+        }
+    }
+</script>

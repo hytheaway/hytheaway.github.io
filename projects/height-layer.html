@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" charset="utf-8" content="text/html; initial-scale=1.0; width='device-width"
     width="device-width" name="viewport">
   <link rel='icon' type="image/x-icon" href="../assets/the-best-fav.gif">
-  <link href="https://fonts.googleapis.com/css?family=DotGothic16" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=DotGothic16" rel="stylesheet"> -->
   <link rel="stylesheet" href="../styles.css">
   <title>height layer comparison</title>
 </head>
@@ -37,6 +37,13 @@
           <li><a href='../journal.html'>journal</a></li>
           |
           <li><a href='../contact.html'>contact</a></li>
+          |
+					<div class="dropdown">
+						<span class="dropbutton"><a href="">more</a></span>
+						<div class="dropdown-content">
+							<a href="../options.html">options</a>
+						</div>
+					</div>
         </ul>
       </div>
       <hr>
@@ -86,150 +93,158 @@
     </div>
   </div>
 
-  <!-- pulled (& tweaked) from user:James_Hibbard at https://www.sitepoint.com/community/t/switching-audio-between-two-clips/27407/6 -->
+  
+  <br>
+  <footer>
+    created by garrett.
+  </footer>
+</body>
 
-  <script>
-    var startButton = document.getElementById("start");
-    var toggleButton = document.getElementById("toggle");
-    var track1 = document.getElementById("audio1");
-    var track2 = document.getElementById("audio2");
-    var currTrack = document.getElementById("currTrack");
-    var currentRenderer = document.getElementById("currentRenderer");
-    var delayValue = 10;
-    var stopButton = document.getElementById("stop");
-    var layer1_src = "../assets/atmos-layer1.wav";
-    var layer2_src = "../assets/atmos-layer2.wav";
-    var track1source = document.getElementById('audio1Source');
-    var track2source = document.getElementById('audio2Source');
-    var micPositionSource = document.getElementById('micPositionsPic');
-    var micPositionsTextSource = document.getElementById('micPositionsText');
+</html>
 
-    stopButton.disabled = true;
-    toggleButton.disabled = true;
+<!-- pulled (& tweaked) from user:James_Hibbard at https://www.sitepoint.com/community/t/switching-audio-between-two-clips/27407/6 -->
 
-    function changeRenderer(rendererIndex) {
-      if (rendererIndex == 1) {
-        track1.pause();
-        track2.pause();
-        track1source.src = "../assets/atmos-layer1.wav";
-        track2source.src = "../assets/atmos-layer2.wav";
-        currentRenderer.innerHTML = "atmos";
-        track1.load();
-        track2.load();
-        console.log('the renderer is now atmos');
-      }
-      if (rendererIndex == 2) {
-        track1.pause();
-        track2.pause();
-        track1source.src = "../assets/virtuoso-layer1.wav";
-        track2source.src = "../assets/virtuoso-layer2.wav";
-        currentRenderer.innerHTML = "virtuoso";
-        track1.load();
-        track2.load();
-        console.log('the renderer is now virtuoso');
-      }
-      if (rendererIndex == 3) {
-        track1.pause();
-        track2.pause();
-        track1source.src = "../assets/dearvr-layer1.wav";
-        track2source.src = "../assets/dearvr-layer2.wav";
-        currentRenderer.innerHTML = "dearvr";
-        track1.load();
-        track2.load();
-        console.log('the renderer is now dearvr');
-      }
-    }
+<script>
+  var startButton = document.getElementById("start");
+  var toggleButton = document.getElementById("toggle");
+  var track1 = document.getElementById("audio1");
+  var track2 = document.getElementById("audio2");
+  var currTrack = document.getElementById("currTrack");
+  var currentRenderer = document.getElementById("currentRenderer");
+  var delayValue = 10;
+  var stopButton = document.getElementById("stop");
+  var layer1_src = "../assets/atmos-layer1.wav";
+  var layer2_src = "../assets/atmos-layer2.wav";
+  var track1source = document.getElementById('audio1Source');
+  var track2source = document.getElementById('audio2Source');
+  var micPositionSource = document.getElementById('micPositionsPic');
+  var micPositionsTextSource = document.getElementById('micPositionsText');
 
-    function updatePlayStatus(track, status, t) {
-      if (track.paused == true) {
-        status.innerHTML = "stopped";
-        clearInterval(t);
-        startButton.disabled = false;
-        toggleButton.disabled = true;
-        stopButton.disabled = true;
-        currTrack.innerHTML = "nothing";
-      }
-    }
+  stopButton.disabled = true;
+  toggleButton.disabled = true;
 
-    startButton.onclick = function () {
-      this.disabled = true;
-      track1.volume = 0.5;
-      track2.volume = 0.5;
-      track1.play();
-      track2.play();
-      track2.muted = true;
-      currTrack.innerHTML = "mix a (heights coincident with main array)";
-      micPositionSource.src = "../assets/height_layer_mix-a.png";
-      micPositionsTextSource.innerHTML = "the highlighted microphones are active.";
-      toggleButton.disabled = false;
-      stopButton.disabled = false;
-
-      var t1 = window.setInterval(function () { updatePlayStatus(track1, t1) }, 500);
-      var t2 = window.setInterval(function () { updatePlayStatus(track2, t2) }, 500);
-
-    }
-
-    stopButton.onclick = function () {
-      this.disabled = true;
-      toggleButton.disabled = true;
-      currTrack.innerHTML = "nothing";
-      micPositionSource.src = "../assets/height_layer_no-mix.png";
-      micPositionsTextSource.innerHTML = "there is no mix selected.";
+  function changeRenderer(rendererIndex) {
+    if (rendererIndex == 1) {
       track1.pause();
       track2.pause();
+      track1source.src = "../assets/atmos-layer1.wav";
+      track2source.src = "../assets/atmos-layer2.wav";
+      currentRenderer.innerHTML = "atmos";
       track1.load();
       track2.load();
+      console.log('the renderer is now atmos');
     }
+    if (rendererIndex == 2) {
+      track1.pause();
+      track2.pause();
+      track1source.src = "../assets/virtuoso-layer1.wav";
+      track2source.src = "../assets/virtuoso-layer2.wav";
+      currentRenderer.innerHTML = "virtuoso";
+      track1.load();
+      track2.load();
+      console.log('the renderer is now virtuoso');
+    }
+    if (rendererIndex == 3) {
+      track1.pause();
+      track2.pause();
+      track1source.src = "../assets/dearvr-layer1.wav";
+      track2source.src = "../assets/dearvr-layer2.wav";
+      currentRenderer.innerHTML = "dearvr";
+      track1.load();
+      track2.load();
+      console.log('the renderer is now dearvr');
+    }
+  }
 
-    function volumeFade(old_mix, new_mix) {
-      var max_volume = 0.5;
-      var volume_multiplier = 0.5;
-      var ninety = 0.9 * 1.207;
-      var eighty = 0.8 * 1.207;
-      var seventy = 0.7 * 1.207;
-      var sixty = 0.6 * 1.207;
-      var fifty = 0.5 * 1.207;
-      var fourty = 0.4 * 1.207;
-      var thirty = 0.3 * 1.207;
-      var twenty = 0.2 * 1.207;
-      var ten = 0.1 * 1.207;
+  function updatePlayStatus(track, status, t) {
+    if (track.paused == true) {
+      status.innerHTML = "stopped";
+      clearInterval(t);
+      startButton.disabled = false;
+      toggleButton.disabled = true;
+      stopButton.disabled = true;
+      currTrack.innerHTML = "nothing";
+    }
+  }
+
+  startButton.onclick = function () {
+    this.disabled = true;
+    track1.volume = 0.5;
+    track2.volume = 0.5;
+    track1.play();
+    track2.play();
+    track2.muted = true;
+    currTrack.innerHTML = "mix a (heights coincident with main array)";
+    micPositionSource.src = "../assets/height_layer_mix-a.png";
+    micPositionsTextSource.innerHTML = "the highlighted microphones are active.";
+    toggleButton.disabled = false;
+    stopButton.disabled = false;
+
+    var t1 = window.setInterval(function () { updatePlayStatus(track1, t1) }, 500);
+    var t2 = window.setInterval(function () { updatePlayStatus(track2, t2) }, 500);
+
+  }
+
+  stopButton.onclick = function () {
+    this.disabled = true;
+    toggleButton.disabled = true;
+    currTrack.innerHTML = "nothing";
+    micPositionSource.src = "../assets/height_layer_no-mix.png";
+    micPositionsTextSource.innerHTML = "there is no mix selected.";
+    track1.pause();
+    track2.pause();
+    track1.load();
+    track2.load();
+  }
+
+  function volumeFade(old_mix, new_mix) {
+    var max_volume = 0.5;
+    var volume_multiplier = 0.5;
+    var ninety = 0.9 * 1.207;
+    var eighty = 0.8 * 1.207;
+    var seventy = 0.7 * 1.207;
+    var sixty = 0.6 * 1.207;
+    var fifty = 0.5 * 1.207;
+    var fourty = 0.4 * 1.207;
+    var thirty = 0.3 * 1.207;
+    var twenty = 0.2 * 1.207;
+    var ten = 0.1 * 1.207;
+    setTimeout(() => {
+      old_mix.volume = max_volume;
+      new_mix.volume = 0.0;
+      new_mix.muted = false;
       setTimeout(() => {
-        old_mix.volume = max_volume;
-        new_mix.volume = 0.0;
-        new_mix.muted = false;
+        old_mix.volume = ninety * volume_multiplier;
+        new_mix.volume = ten * volume_multiplier;
         setTimeout(() => {
-          old_mix.volume = ninety * volume_multiplier;
-          new_mix.volume = ten * volume_multiplier;
+          old_mix.volume = eighty * volume_multiplier;
+          new_mix.volume = twenty * volume_multiplier;
           setTimeout(() => {
-            old_mix.volume = eighty * volume_multiplier;
-            new_mix.volume = twenty * volume_multiplier;
+            old_mix.volume = seventy * volume_multiplier;
+            new_mix.volume = thirty * volume_multiplier;
             setTimeout(() => {
-              old_mix.volume = seventy * volume_multiplier;
-              new_mix.volume = thirty * volume_multiplier;
+              old_mix.volume = sixty * volume_multiplier;
+              new_mix.volume = fourty * volume_multiplier;
               setTimeout(() => {
-                old_mix.volume = sixty * volume_multiplier;
-                new_mix.volume = fourty * volume_multiplier;
+                old_mix.volume = fifty * volume_multiplier;
+                new_mix.volume = fifty * volume_multiplier;
                 setTimeout(() => {
-                  old_mix.volume = fifty * volume_multiplier;
-                  new_mix.volume = fifty * volume_multiplier;
+                  old_mix.volume = fourty * volume_multiplier;
+                  new_mix.volume = sixty * volume_multiplier;
                   setTimeout(() => {
-                    old_mix.volume = fourty * volume_multiplier;
-                    new_mix.volume = sixty * volume_multiplier;
+                    old_mix.volume = thirty * volume_multiplier;
+                    new_mix.volume = seventy * volume_multiplier;
                     setTimeout(() => {
-                      old_mix.volume = thirty * volume_multiplier;
-                      new_mix.volume = seventy * volume_multiplier;
+                      old_mix.volume = twenty * volume_multiplier;
+                      new_mix.volume = eighty * volume_multiplier;
                       setTimeout(() => {
-                        old_mix.volume = twenty * volume_multiplier;
-                        new_mix.volume = eighty * volume_multiplier;
+                        old_mix.volume = ten * volume_multiplier;
+                        new_mix.volume = ninety * volume_multiplier;
                         setTimeout(() => {
-                          old_mix.volume = ten * volume_multiplier;
-                          new_mix.volume = ninety * volume_multiplier;
+                          old_mix.volume = 0.0;
+                          new_mix.volume = max_volume;
                           setTimeout(() => {
-                            old_mix.volume = 0.0;
-                            new_mix.volume = max_volume;
-                            setTimeout(() => {
-                              old_mix.muted = true;
-                            }, delayValue);
+                            old_mix.muted = true;
                           }, delayValue);
                         }, delayValue);
                       }, delayValue);
@@ -241,25 +256,30 @@
           }, delayValue);
         }, delayValue);
       }, delayValue);
-    }
+    }, delayValue);
+  }
 
-    toggleButton.onclick = function () {
-      if (track1.muted == true) {
-        volumeFade(track2, track1);
-        currTrack.innerHTML = "mix a (heights coincident with main array)";
-        micPositionSource.src = "../assets/height_layer_mix-a.png";
-      }
-      if (track2.muted == true) {
-        volumeFade(track1, track2);
-        currTrack.innerHTML = "mix b (heights 2m above main array)";
-        micPositionSource.src = "../assets/height_layer_mix-b.png";
-      }
+  toggleButton.onclick = function () {
+    if (track1.muted == true) {
+      volumeFade(track2, track1);
+      currTrack.innerHTML = "mix a (heights coincident with main array)";
+      micPositionSource.src = "../assets/height_layer_mix-a.png";
     }
-  </script>
-  <br>
-  <footer>
-    created by garrett.
-  </footer>
-</body>
+    if (track2.muted == true) {
+      volumeFade(track1, track2);
+      currTrack.innerHTML = "mix b (heights 2m above main array)";
+      micPositionSource.src = "../assets/height_layer_mix-b.png";
+    }
+  }
 
-</html>
+  const font_stylesheet = new CSSStyleSheet();
+    try {
+            font_stylesheet.insertRule(sessionStorage.font);
+    }
+    catch (error) {
+        font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+    }
+    finally {
+        document.adoptedStyleSheets = [font_stylesheet];
+    }
+</script>
