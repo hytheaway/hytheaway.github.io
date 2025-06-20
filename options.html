@@ -71,7 +71,10 @@
                     <select name="font_selection" id="font_selection" onchange="changeFont(this.selectedIndex+1);">
                         <option value="1">dotgothic16</option>
                         <option value="2">system ui</option>
-                        <option value="3">courier new</option>
+                        <option value="3">times new roman</option>
+                        <option value="4">courier new</option>
+                        <option value="5">cormorant</option>
+                        <option value="6">coral pixels</option>
                     </select>
                 </div>
             </div>
@@ -193,9 +196,24 @@
                 sessionStorage.font = "html { font-family: 'system-ui'; }";
             }
             if (fontIndex == 3) {
+                font_stylesheet.replace("html { font-family: 'Times New Roman'; }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'Times New Roman'; }";
+            }
+            if (fontIndex == 4) {
                 font_stylesheet.replace("html { font-family: 'Courier New', monospace; font-weight: 600; }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'Courier New', monospace; font-weight: 600; }";
+            }
+            if (fontIndex == 5) {
+                font_stylesheet.replace("html { font-family: 'Cormorant', serif; }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'Cormorant', serif; }";
+            }
+            if (fontIndex == 6) {
+                font_stylesheet.replace("html { font-family: 'CoralPixels' }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'CoralPixels'; }";
             }
         }
         else {

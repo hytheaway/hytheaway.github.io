@@ -1,6 +1,5 @@
 html{
 	margin: 0;
-	/* font-family: 'DotGothic16'; */
 	/* background: rgba(219, 112, 147, 1); */
 }
 body:before {
@@ -239,11 +238,42 @@ span {
 	}
 }
 @font-face {
-	font-family: DotGothic16;
+	font-family: 'DotGothic16';
 	src:
 		local('DotGothic16'),
 		url('assets/fonts/DotGothic16-Regular.ttf'),
 		url('https://fonts.googleapis.com/css?family=DotGothic16');
+	size-adjust: 100%;
+}
+@font-face {
+	font-family: 'Times New Roman';
+	src:
+		local('Times New Roman'),
+		url('assets/fonts/TimesNewRoman-Regular.ttf');
+	size-adjust: 125%;
+}
+@font-face {
+	font-family: 'Courier New';
+	src:
+		local('Courier New'),
+		url('assets/fonts/CourierNew-Regular.ttf');
+	size-adjust: 110%;
+}
+@font-face {
+	font-family: 'Cormorant';
+	src:
+		local('Cormorant'),
+		url('assets/fonts/Cormorant-Regular.ttf'),
+		url('https://fonts.googleapis.com/css2?family=Cormorant');
+	size-adjust: 125%;
+}
+@font-face {
+	font-family: 'CoralPixels';
+	src:
+		local('CoralPixels'),
+		url('assets/fonts/CoralPixels-Regular.ttf'),
+		url('https://fonts.googleapis.com/css2?family=Coral+Pixels');
+	size-adjust: 100%;
 }
 #borderimg1 {
 	border: 12px solid transparent;
