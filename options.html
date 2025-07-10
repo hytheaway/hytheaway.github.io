@@ -45,39 +45,42 @@
             </div>
             <hr>
             <!-- begin writing here -->
-            <br>
-            <h2 style="text-align: center;">options</h2>
-            <h3 style="text-align: center; font-size: 95%;">configure the website here.</h3>
-            <!-- <br> -->
-            <p id="storage_support_label" style="text-align: center; font-style: italic; font-size: 80%;"></p>
-            <!-- theme -->
-            <div class="flex-container">
-                <div class="leftside" style="text-align: right; padding-right: 2vw;">
-                    theme:
+            <span style="font-size: 1.65vmin;">
+                <br>
+                <h2 style="text-align: center;">options</h2>
+                <h3 style="text-align: center; font-size: 95%;">configure the website here.</h3>
+                <!-- <br> -->
+                <p id="storage_support_label" style="text-align: center; font-style: italic; font-size: 80%;"></p>
+                <!-- theme -->
+                <div class="flex-container">
+                    <div class="leftside" style="text-align: right; padding-right: 2vw;">
+                        theme:
+                    </div>
+                    <div class="rightside" style="padding-left: 2vw;">
+                        <select name="theme_selection" id="theme_selection" onchange="changeTheme(this.selectedIndex+1);" style="font-size: 1.5vmin;">
+                            <option value="1">light</option>
+                            <option value="2">dark</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="rightside" style="padding-left: 2vw;">
-                    <select name="theme_selection" id="theme_selection" onchange="changeTheme(this.selectedIndex+1);">
-                        <option value="1">light</option>
-                        <option value="2">dark</option>
-                    </select>
+                <!-- fonts -->
+                <div class="flex-container">
+                    <div class="leftside" style="text-align: right; padding-right: 2vw;">
+                        font:
+                    </div>
+                    <div class="rightside" style="padding-left: 2vw;">
+                        <select name="font_selection" id="font_selection" onchange="changeFont(this.selectedIndex+1);" style="font-size: 1.5vmin;">
+                            <option value="1">dotgothic16</option>
+                            <option value="2">system ui</option>
+                            <option value="3">times new roman</option>
+                            <option value="4">courier new</option>
+                            <option value="5">cormorant</option>
+                            <option value="6">coral pixels</option>
+                            <option value="7">lilex</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <!-- fonts -->
-            <div class="flex-container">
-                <div class="leftside" style="text-align: right; padding-right: 2vw;">
-                    font:
-                </div>
-                <div class="rightside" style="padding-left: 2vw;">
-                    <select name="font_selection" id="font_selection" onchange="changeFont(this.selectedIndex+1);">
-                        <option value="1">dotgothic16</option>
-                        <option value="2">system ui</option>
-                        <option value="3">times new roman</option>
-                        <option value="4">courier new</option>
-                        <option value="5">cormorant</option>
-                        <option value="6">coral pixels</option>
-                    </select>
-                </div>
-            </div>
+            </span>
             <!-- end writing here -->
         </p>
         </div>
@@ -214,6 +217,11 @@
                 font_stylesheet.replace("html { font-family: 'CoralPixels' }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'CoralPixels'; }";
+            }
+            if (fontIndex == 7) {
+                font_stylesheet.replace("html { font-family: 'Lilex' }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'Lilex'; }";
             }
         }
         else {

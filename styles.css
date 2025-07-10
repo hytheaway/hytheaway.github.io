@@ -2,6 +2,9 @@ html{
 	margin: 0;
 	/* background: rgba(219, 112, 147, 1); */
 }
+body {
+	margin: 1vmin;
+}
 body:before {
 	content: "";
 	display: block;
@@ -16,42 +19,51 @@ body:before {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-  }
+}
 h1 {
+	font-size: 3.4vmin;
 	text-align: center;
-	line-height: 0.5;
+	line-height: 0.8vmin;
 }
 h2 {
-	letter-spacing: 0.5px;
-	line-height: 1.0;
+	font-size: 2.5vmin;
+	letter-spacing: 0.05vmin;
+	line-height: 1.0vmin;
 }
 h6 {
+	font-size: 1.2vmin;
 	text-align: center;
-	letter-spacing: 0.5px;
-	line-height: 0.5;
+	letter-spacing: 0.05vmin;
+	line-height: 0.5vmin;
 }
 hr {
 	border: none;
-	border-top: 3px double #333;
+	/* border-top: 3px double #333; */
+	border-top: 0.4vmin double #333;
 	color: #333;
 	overflow: visible;
 	text-align: center;
-	height: 5px;
+	height: 1vmin;
+	font-size: 1.7vmin;
 }
 hr:after {
 	background: rgba(213,108,140,255);
 	content: '§';
-	padding: 0 4px;
+	/* padding: 0 4px; */
+	padding: 0 0.3vmin;
 	position: relative;
-	top: -13px;
+	/* top: -13px; */
+	top: -1.5vmin;
+	font-size: 1.7vmin;
 }
 p {
-	letter-spacing: 0.5px;
+	letter-spacing: 0.05vmin;
 }
 li {
 	display: inline;
 }
 ul {
+	padding: 0;
 	text-align: center;
 }
 a {
@@ -65,11 +77,11 @@ a:hover {
 	background-color: green;
 }
 footer {
-	border-top: 2px solid;
+	border-top: 0.3vmin solid;
 	text-align: center;
-	font-size: 50%;
-	padding-top: 20px;
-	padding-bottom:20px;
+	font-size: 1.0vmin;
+	padding-top: 2vmin;
+	padding-bottom:2vmin;
 }
 span {
 	display: block;
@@ -77,32 +89,43 @@ span {
 .header {
 	top: 0;
 	left: 0;
-	border-bottom: 2px solid;
+	/* border-bottom: 2px solid; */
+	border-bottom: 0.3vmin solid;
 	text-align: left;
-	padding-bottom: 9px;
-	padding-left: 20px;
+	padding-bottom: 0.9vmin;
+	padding-left: 2.0vmin;
 }
 /* .header span {
 	padding-left: 20px;
 } */
 .header img {
-	padding-right: 20px;
+	padding-right: 2.0vmin;
+}
+.links {
+	font-size: 1.7vmin;
+}
+.title {
+	padding-top: 1vmin;
+}
+.navigationbar {
+	font-size: 1.7vmin;
 }
 .leftside {
 	flex: 1;
 	text-align: center;
-	padding-left: 5px;
+	padding-left: 0.5vmin;
 }
 .rightside {
 	flex: 1;
-	padding-right: 5px;
+	padding-right: 0.5vmin;
 }
 .rightsidecenter{
 	flex: 1;
 	text-align: center;
-	padding-right: 5px;
+	padding-right: 0.5vmin;
 }
 .flex-container {
+	font-size: 1.7vmin;
 	display: flex;
 }
 .hiddenText {
@@ -125,16 +148,17 @@ span {
 	display: flex;
 }
 .sidenav {
-	margin-left: 15px;
+	margin-left: 1.5vmin;
 	padding: 0;
-	width: 100px;
+	width: 10.5vmin;
 	position: fixed;
 	overflow: auto;
+	font-size: 1.73vmin;
 }
 .sidenav a {
 	display: block;
 	color: black;
-	padding: 16px;
+	padding: 1.6vmin;
 	text-decoration: none;
 	background-color: gainsboro;
 }
@@ -167,13 +191,13 @@ span {
 	text-decoration: none;
 	display: block;
 	border-style: solid;
-	border-width: 1px;
+	border-width: 0.2vmin;
 	border-color: black;
 }
 .dropdown-content a:hover {
 	background-color: white;
 	border-style: solid;
-	border-width: 1px;
+	border-width: 0.2vmin;
 	border-color: black;
 }
 .dropdown:hover .dropdown-content {
@@ -184,10 +208,11 @@ span {
 	color: goldenrod;
 }
 .main {
-	margin-left: 140px;
-	margin-right: 40px;
+	margin-left: 14vmin;
+	margin-right: 4vmin;
 	overflow: auto;
-	padding: 1px 16px;
+	padding: 0.1vmin 1.6vmin;
+	font-size: 1.7vmin;
 
 }
 @media only screen and (max-width: 800px){
@@ -195,6 +220,7 @@ span {
 		display: none;
 	}
 	.flex-container {
+		flex-flow: column !important;
 		flex-direction: column;
 	}
 	.rightside {
@@ -275,13 +301,22 @@ span {
 		url('https://fonts.googleapis.com/css2?family=Coral+Pixels');
 	size-adjust: 100%;
 }
+@font-face {
+	font-family: 'Lilex';
+	src:
+		local('Lilex'),
+		url('assets/fonts/LilexNerdFontPropo-Italic.ttf');
+	size-adjust: 110%;
+}
 #borderimg1 {
 	border: 12px solid transparent;
+	border-width: 1.4vmin;
 	padding: 0px;
 	border-image: url('assets/img-border.png') 50 stretch;
 }
 .borderimg1class {
 	border: 12px solid transparent;
+	border-width: 1.4vmin;
 	padding: 0px;
 	border-image: url('assets/img-border.png') 50 stretch;
 }
@@ -293,9 +328,9 @@ span {
 }
 #randImg {
 	border: 12px solid transparent;
+	border-width: 1.4vmin;
 	padding: 0px;
 	border-image: url('assets/img-border.png') 50 stretch;
-	max-width: 35%; 
-	max-height: 100vh; 
+	width: 35vmin;
 	margin: auto;
 }
