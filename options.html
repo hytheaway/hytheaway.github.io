@@ -74,9 +74,8 @@
                             <option value="2">system ui</option>
                             <option value="3">times new roman</option>
                             <option value="4">courier new</option>
-                            <option value="5">cormorant</option>
-                            <option value="6">coral pixels</option>
-                            <option value="7">lilex</option>
+                            <option value="5">coral pixels</option>
+                            <option value="6">open dyslexic</option>
                         </select>
                     </div>
                 </div>
@@ -209,19 +208,14 @@
                 sessionStorage.font = "html { font-family: 'Courier New', monospace; font-weight: 600; }";
             }
             if (fontIndex == 5) {
-                font_stylesheet.replace("html { font-family: 'Cormorant', serif; }");
-                document.adoptedStyleSheets = [font_stylesheet];
-                sessionStorage.font = "html { font-family: 'Cormorant', serif; }";
-            }
-            if (fontIndex == 6) {
                 font_stylesheet.replace("html { font-family: 'CoralPixels' }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'CoralPixels'; }";
             }
-            if (fontIndex == 7) {
-                font_stylesheet.replace("html { font-family: 'Lilex' }");
+            if (fontIndex == 6) {
+                font_stylesheet.replace("html { font-family: 'OpenDyslexic3' }");
                 document.adoptedStyleSheets = [font_stylesheet];
-                sessionStorage.font = "html { font-family: 'Lilex'; }";
+                sessionStorage.font = "html { font-family: 'OpenDyslexic3'; }";
             }
         }
         else {

@@ -1,6 +1,7 @@
 html{
 	margin: 0;
 	/* background: rgba(219, 112, 147, 1); */
+	scrollbar-width: none;
 }
 body {
 	margin: 1vmin;
@@ -58,6 +59,7 @@ hr:after {
 }
 p {
 	letter-spacing: 0.05vmin;
+	font-size: 1.7vmin;
 }
 li {
 	display: inline;
@@ -286,14 +288,6 @@ span {
 	size-adjust: 110%;
 }
 @font-face {
-	font-family: 'Cormorant';
-	src:
-		local('Cormorant'),
-		url('assets/fonts/Cormorant-Regular.ttf'),
-		url('https://fonts.googleapis.com/css2?family=Cormorant');
-	size-adjust: 125%;
-}
-@font-face {
 	font-family: 'CoralPixels';
 	src:
 		local('CoralPixels'),
@@ -302,10 +296,10 @@ span {
 	size-adjust: 100%;
 }
 @font-face {
-	font-family: 'Lilex';
+	font-family: 'OpenDyslexic3';
 	src:
-		local('Lilex'),
-		url('assets/fonts/LilexNerdFontPropo-Italic.ttf');
+		local('OpenDyslexic3'),
+		url('assets/fonts/OpenDyslexic3-Regular.ttf');
 	size-adjust: 110%;
 }
 #borderimg1 {
