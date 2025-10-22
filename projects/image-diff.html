@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>image diff</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='../assets/the-best-fav.gif'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'> -->
+    <link rel='stylesheet' href='../styles.css'>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='../projects.html'>projects</a>
+                /
+                <a href="image-diff.html">image diff</a>
+                ]
+                <img id="dither_button" src="../assets/dither-toggle-button.png" style="float: right; width: 10vmin;" onclick="backToOriginal()">
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='../projects.html'>projects</a></li>
+                    |
+                    <li><a href='../journal.html'>journal</a></li>
+                    |
+                    <li><a href='../contact.html'>contact</a></li>
+                    |
+					<div class="dropdown">
+						<span class="dropbutton"><a href="">more</a></span>
+						<div class="dropdown-content">
+							<a href="../options.html">options</a>
+						</div>
+					</div>
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <h2 style="text-align: center;">image diff (aug 2025)</h2>
+            <p style="text-align: center;">quippy text goes here.
+                <br><a href="https://github.com/hytheaway/image-diff" target="_blank">github</a>
+            </p>
+            <div class="flex-container">
+                <div class="leftside">
+                    <p class="mobileCenterText" style="font-size: 85%; text-align: left;">
+                        not that long ago, i was working on a super secret project.
+                        <br>
+                        <br>
+                        <span style="text-align: right;">
+                            <br>
+                            <br>
+                            <i>"what kind of project?"</i>
+                        </span>
+                        <br>
+                        <br>
+                        <span style="text-align: center;">
+                            the secret kind. don't worry about it.
+                        </span>
+                        <br>
+                        <br> regardless, i found myself needing to compare two images that <i>should</i> be completely identical, but i needed to be sure.
+                        i needed to know, beyond reasonable doubt, that these images were, for all intents and purposes, the same.
+                        <br>
+                        <br>doing what any sane person does, i found the first image diff tool online and started batch uploading these pairs of images.
+                        of course, this world being what it is, and with money costing... money, i guess... i was only able to compare like 4 pairs of images
+                        before being prompted to pay an extra fee.
+                        <br>
+                        <br>i mean, i could've. it would've saved me some time. but what kind of precedent would that have set? how utterly trivial would something
+                        have to be for me to finally put my foot down and not pay for it?
+                        <br>
+                        <br>
+                        <span style="text-align: center;">
+                            <b>i shan't disgrace my name like that!</b>
+                            <br>
+                            <br>...or something along those lines.
+                        </span>
+                        <br>in reality, i was incredibly motivated to <i>not</i> enter my credit card information into the first website
+                        i found that vaguely accomplished my goal. there's no reason for yet another completely faceless and morally removed incorporated business
+                        to have access to my personal information. <b>besides, how hard could it be?</b>
+                        <br>
+                        <br>i've said that line a lot on this website before, always preceding one of the most complicated and difficult projects i've faced. and yet, for some reason, i can't help thinking that. my success rate of "build a trivial thing to expedite this process" is, honestly, remarkably low, but my brain somehow manages to convince myself that this time, it'll be different. every time.
+                        <br>
+                        <br>for once, maybe i wasn't so wrong after all. maybe i'm getting better at learning my limits and skills. or maybe i just got lucky this time.
+                        <br>
+                        <br>either way, i present to you the most utility of utility tools i've yet built: image-diff.py. you give it two images, tell it where you want to export to, and then it highlights the difference between the two images.
+                        <br>
+                        <br>have fun.
+                    </p>
+                </div>
+                <div class="rightsidecenter" style="display: block; align-items: center; justify-content: center; position: relative;">
+                    <img src="../assets/image-diff-dither.png" class="borderimg1class" style="max-width: 70%; max-height: 100vh; position: relative; top: 30%;">
+                </div>
+            </div>
+            <!-- end writing here -->
+        </p>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+</body>
+
+</html>
+
+<script>
+    var projectImageList = document.getElementsByClassName('borderimg1class');
+    var ditherButton = document.getElementById('dither_button');
+
+    function backToOriginal() {
+        for (let i = 0; i < projectImageList.length; i++) {
+            var currentSource = String(projectImageList[i].src);
+            ditheredString = currentSource.replace('-dither', '');
+            projectImageList[i].src = ditheredString;
+        }
+        ditherButton.onclick = replaceWithDither;
+    }
+    
+    function replaceWithDither() {
+        for (let i = 0; i < projectImageList.length; i++) {
+            var currentSource = String(projectImageList[i].src);
+            ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+            projectImageList[i].src = ditheredString;
+        }
+        ditherButton.onclick = backToOriginal;
+    }
+    
+    const font_stylesheet = new CSSStyleSheet();
+    try {
+            font_stylesheet.insertRule(sessionStorage.font);
+    }
+    catch (error) {
+        font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+    }
+    finally {
+        document.adoptedStyleSheets = [font_stylesheet];
+    }
+
+    // themes
+    const styleEl = document.createElement("style");
+	try {
+		const str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+		const arr_stored_theme_key = JSON.parse(str_stored_theme_key);
+		addStyleSheetRules(arr_stored_theme_key);
+	}
+	catch (error) {
+		addStyleSheetRules([['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center;']], ['body:before', ['background-size', 'cover']]]);
+	}
+
+	function addStyleSheetRules(rules) {
+        try{
+            document.head.removeChild(styleEl);
+        }
+        catch (error) {
+        }
+        document.head.appendChild(styleEl);
+        const styleSheet = styleEl.sheet;
+
+        for (let rule of rules) {
+            let i = 1, selector = rule[0], propStr = "";
+            if (Array.isArray(rule[1][0])) {
+                rule = rule[1];
+                i = 0;
+            }
+            for (; i < rule.length; i++) {
+                const prop = rule[1];
+                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
+            }
+
+            styleSheet.insertRule(
+                `${selector}{${propStr}}`,
+                styleSheet.cssRules.length,
+            );
+        }
+    }
+</script>
