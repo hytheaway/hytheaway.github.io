@@ -225,8 +225,68 @@ span {
 		flex-flow: column !important;
 		flex-direction: column;
 	}
+	.links {
+		font-size: 2.5vw !important;
+	}
+	.title h1 {
+		font-size: 6vw !important;
+	}
+	.title h6 {
+		font-size: 2.5vw !important;
+		margin-bottom: 2%;
+	}
+	.navigationbar {
+		font-size: 3.25vw !important;
+	}
+	h2 {
+		font-size: 4.5vw !important;
+		line-height: normal !important;
+		margin-top: 0%;
+		margin-bottom: 1vw;
+	}
+	p {
+		font-size: 70%;
+	}
+	hr {
+		margin-top: 2%;
+		border-top: 0.8vmin double #333;
+	}
+	hr:after {
+		top: -2.5vw !important;
+		font-size: 2.5vw;
+	}
+	.leftside figcaption { /* used for homepage */
+		font-size:2.5vw;
+	}
+	.leftside p {
+		font-size: 175% !important;
+	}
+	#randImg {
+		width:45vmin !important;
+	}
+	.borderimg1class {
+		max-width: 55% !important;
+	}
 	.rightside {
 		text-align: center;
+	}
+	.rightside h2 {
+		font-size: 250% !important;
+	}
+	.rightside p {
+		font-size:175% !important;
+		margin-bottom:0%;
+	}
+	.rightsidecenter {
+		font-size:125% !important;
+	}
+	.main h3 {
+		margin-top: 0vh;
+		font-size: 200%;
+		margin-bottom: 0%;
+	}
+	footer {
+		font-size:2.5vw;
 	}
 	.mobileCenterText {
 		text-align: center !important;
@@ -238,6 +298,12 @@ span {
 	}
 	.cerialEntry {
 		justify-content: center !important;
+	}
+	#micPositionsPic {
+		width: auto !important;
+	}
+	#dither_button {
+		width: 13vw !important;
 	}
 }
 @media only screen and (max-width: 1630px){
