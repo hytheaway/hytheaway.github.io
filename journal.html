@@ -552,5 +552,6 @@
 		ditherButton.onclick = backToOriginal;
 	}
 
-	setTheme({r:142,g:142,b:142,a:255}, {r:100,g:200,b:150,a:0.25});
+	let str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+	setTheme(str_stored_theme_key, {r:142,g:142,b:142,a:255}, {r:100,g:200,b:150,a:0.25});
 </script>

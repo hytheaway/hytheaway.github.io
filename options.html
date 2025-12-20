@@ -221,5 +221,6 @@
         }
     }
 
-    setTheme({r:142,g:142,b:142,a:255}, {r:255,g:0,b:110,a:0.35});
+    let str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+    setTheme(str_stored_theme_key, {r:142,g:142,b:142,a:255}, {r:255,g:0,b:110,a:0.35});
 </script>
