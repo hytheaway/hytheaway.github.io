@@ -21,8 +21,9 @@ function setTheme(bg, fg) {
         addStyleSheetRules(arr_stored_theme_key);
     }
     catch (error) {
-        console.log("Error!")
-        addStyleSheetRules([['body:before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center fixed;']], ['body:before', ['background-size', 'cover']]]);
+        console.log(error);
+        console.log("Error!");
+        addStyleSheetRules([['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center fixed;']], ['body:before', ['background-size', 'cover']]]);
     }
 }
 
