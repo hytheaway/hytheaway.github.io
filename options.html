@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='icon' type='image/x-icon' href='assets/the-best-fav.gif'>
     <link rel='stylesheet' href='styles.css'>
+    <script src="scripts.js"></script>
 </head>
 
 <body>
@@ -39,6 +40,7 @@
 						<span class="dropbutton"><a href="">more</a></span>
 						<div class="dropdown-content">
 							<a href="options.html">options</a>
+                            <a href="/huh/somewhereelse.html">somewhere else</a>
 						</div>
 					</div> 
                 </ul>
@@ -116,6 +118,7 @@
 </style>
 
 <script>
+    
     // does this browser support sessionStorage?
     const storage_support_label = document.getElementById("storage_support_label");
     if (typeof(Storage) !== "undefined") {
@@ -123,10 +126,10 @@
     }
 
     // themes
-    const styleEl = document.createElement("style");
     const light_theme = [
-        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center;']],
-        ['body:before', ['background-size', 'cover']]
+        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4-dither.png") no-repeat center center fixed;']],
+        ['body:before', ['background-size', 'cover']],
+        ['body:before', ['background-attachment', 'fixed']]
     ];
     const dark_theme = [
         ['body', ['color', 'white']],
@@ -158,32 +161,6 @@
     addStyleSheetRules(light_theme);
     sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
 
-    function addStyleSheetRules(rules) {
-        try{
-            document.head.removeChild(styleEl);
-        }
-        catch (error) {
-        }
-        document.head.appendChild(styleEl);
-        const styleSheet = styleEl.sheet;
-
-        for (let rule of rules) {
-            let i = 1, selector = rule[0], propStr = "";
-            if (Array.isArray(rule[1][0])) {
-                rule = rule[1];
-                i = 0;
-            }
-            for (; i < rule.length; i++) {
-                const prop = rule[1];
-                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
-            }
-
-            styleSheet.insertRule(
-                `${selector}{${propStr}}`,
-                styleSheet.cssRules.length,
-            );
-        }
-    }
     function changeTheme(themeIndex) {
         if (typeof(Storage) !== "undefined") {
             if (themeIndex == 1) {
@@ -200,10 +177,7 @@
         }
     }
 
-    
-
     // fonts
-    const font_stylesheet = new CSSStyleSheet();
     font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
     document.adoptedStyleSheets = [font_stylesheet];
     sessionStorage.font = "html { font-family: 'DotGothic16'; }";
@@ -246,4 +220,6 @@
             storage_support_label.innerHTML = "your browser does not support configuration.";
         }
     }
+
+    setTheme({r:142,g:142,b:142,a:255}, {r:255,g:0,b:110,a:0.35});
 </script>

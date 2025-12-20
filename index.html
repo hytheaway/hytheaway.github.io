@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='icon' type='image/x-icon' href='assets/the-best-fav.gif'>
 	<link rel='stylesheet' href='styles.css'>
+	<script src="scripts.js"></script>
 </head>
 
 <body>
@@ -37,6 +38,7 @@
 						<span class="dropbutton"><a href="">more</a></span>
 						<div class="dropdown-content">
 							<a href="options.html">options</a>
+							<a href="/huh/somewhereelse.html">somewhere else</a>
 						</div>
 					</div>
 				</ul>
@@ -52,10 +54,10 @@
 				</div>
 				<div class='rightside'>
 					<br>
-					<h2>welcome to <i>myspace!</i></h2>
+					<h2 class="shaking-text">welcome to <i><a href="huh/"><span>m</span><span>y</span><span>s</span><span>p</span><span>a</span><span>c</span><span>e</span></a>!</i></h2>
 					<p title='there is always a hidden meaning.'><small>this is my second paragraph with no hidden meaning.</small></p>
 					<br>
-					<p>i like to work with <a href="fav-music/index.html">music</a> and electronics.</p>
+					<p>i like to work with <a href="fav-music/">music</a> and electronics.</p>
 					<p style="text-align: center; line-height: 0.1;"><small>sometimes combining the two.</small></p>
 					<br>
 					<p>this is where i keep records of my <a href='projects.html'>projects</a>.</p>
@@ -70,9 +72,9 @@
 		</div>
 	</div>
 	<footer>
-		created by garrett. | this website is designed to be viewed on desktop with the <a href="https://www.firefox.com/">firefox</a> browser.
+		handmade by <a href="me.html">garrett</a>. | this <a href="https://motherfuckingwebsite.com/">website</a> is designed to be viewed on desktop with the <a href="https://www.firefox.com/" target="_">firefox</a> browser.
 		<br>
-		<br>created 13 dec 2023. | last updated:
+		<br><a href="https://justinjackson.ca/webmaster/">created</a> 13 dec 2023. | last updated:
 		<span id="lastUpdateDate" style="display: initial;">19 dec 2025</span>.
 	</footer>
 
@@ -87,8 +89,6 @@
 			const randImageIndex = ~~(Math.random() * images.length); document.getElementById('randImg').src = images[randImageIndex];
 		}
 	);
-	const font_stylesheet = new CSSStyleSheet();
-	const styleEl = document.createElement("style");
 	if (!sessionStorage.getItem("visited")){
 		font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
 		document.adoptedStyleSheets = [font_stylesheet];
@@ -106,7 +106,10 @@
 			document.adoptedStyleSheets = [font_stylesheet];
 		}
 		try {
-			const str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+			let str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+			if (str_stored_theme_key.length < 250){
+				str_stored_theme_key = customizeBackgroundColor(bg, fg, str_stored_theme_key);
+			}
 			const arr_stored_theme_key = JSON.parse(str_stored_theme_key);
 			addStyleSheetRules(arr_stored_theme_key);
 		}
@@ -114,37 +117,60 @@
 			addStyleSheetRules([['body:before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body:before', ['background-size', 'cover']]]);
 		}
 	}
-
-	// function for theme switching
-	function addStyleSheetRules(rules) {
-        try{
-            document.head.removeChild(styleEl);
-        }
-        catch (error) {
-        }
-        document.head.appendChild(styleEl);
-        const styleSheet = styleEl.sheet;
-
-        for (let rule of rules) {
-            let i = 1, selector = rule[0], propStr = "";
-            if (Array.isArray(rule[1][0])) {
-                rule = rule[1];
-                i = 0;
-            }
-            for (; i < rule.length; i++) {
-                const prop = rule[1];
-                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
-            }
-
-            styleSheet.insertRule(
-                `${selector}{${propStr}}`,
-                styleSheet.cssRules.length,
-            );
-        }
-    }
 	
 </script>
 
 <style>
-
+	@keyframes shake {
+        0%, 100% {
+            transform: translateY(0); 
+        }
+        10%, 50%, 90% {
+            transform: translateY(-3px);
+        }
+        20%, 60% {
+            transform: translateY(3px);
+        }
+        30%, 70% {
+            transform: translateY(5px);
+        }
+        40%, 80% {
+            transform: translateY(-1px);
+        }
+    }
+    .shaking-text {
+        display: block;
+    }
+    .shaking-text span {
+        display: inline-block;
+        animation: shake 2.0s infinite;
+    }
+    .shaking-text span:nth-child(1) {
+        color: #ddd;
+        animation-delay: 0.05s;
+    }
+    .shaking-text span:nth-child(2) {
+        color: #ddd;
+        animation-delay: 0.1s;
+    }
+    .shaking-text span:nth-child(3) {
+        color: #ddd;
+        animation-delay: 0.07s;
+    }
+    .shaking-text span:nth-child(4) {
+        color:#ddd;
+        animation-delay: 0.09s;
+    }
+    .shaking-text span:nth-child(5) {
+        color:#ddd;
+        animation-delay: 0.03s;
+    }
+    .shaking-text span:nth-child(6) {
+        color: #ddd;
+        animation-delay: 0.04s;
+    }
+	.shaking-text span:nth-child(7) {
+        color: #ddd;
+        animation-delay: 0.03s;
+    }
 </style>

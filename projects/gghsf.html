@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='icon' type='image/x-icon' href='../assets/the-best-fav.gif'>
-    <!-- <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'> -->
     <link rel='stylesheet' href='../styles.css'>
+    <script src="../scripts.js"></script>
 </head>
 
 <body>
@@ -43,6 +43,7 @@
 						<span class="dropbutton"><a href="">more</a></span>
 						<div class="dropdown-content">
 							<a href="../options.html">options</a>
+                            <a href="../huh/somewhereelse.html">somewhere else</a>
 						</div>
 					</div>
                 </ul>
@@ -134,52 +135,5 @@
         ditherButton.onclick = backToOriginal;
     }
     
-    const font_stylesheet = new CSSStyleSheet();
-    try {
-            font_stylesheet.insertRule(sessionStorage.font);
-    }
-    catch (error) {
-        font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
-    }
-    finally {
-        document.adoptedStyleSheets = [font_stylesheet];
-    }
-
-    // themes
-    const styleEl = document.createElement("style");
-	try {
-		const str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
-		const arr_stored_theme_key = JSON.parse(str_stored_theme_key);
-		addStyleSheetRules(arr_stored_theme_key);
-	}
-	catch (error) {
-		addStyleSheetRules([['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center;']], ['body:before', ['background-size', 'cover']]]);
-	}
-
-	function addStyleSheetRules(rules) {
-        try{
-            document.head.removeChild(styleEl);
-        }
-        catch (error) {
-        }
-        document.head.appendChild(styleEl);
-        const styleSheet = styleEl.sheet;
-
-        for (let rule of rules) {
-            let i = 1, selector = rule[0], propStr = "";
-            if (Array.isArray(rule[1][0])) {
-                rule = rule[1];
-                i = 0;
-            }
-            for (; i < rule.length; i++) {
-                const prop = rule[1];
-                propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
-            }
-
-            styleSheet.insertRule(
-                `${selector}{${propStr}}`,
-                styleSheet.cssRules.length,
-            );
-        }
-    }
+    setTheme({r:142,g:142,b:142,a:255}, {r:255,g:0,b:255,a:0.2});
 </script>
