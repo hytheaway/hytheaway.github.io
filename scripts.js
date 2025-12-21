@@ -12,7 +12,7 @@ finally {
 // themes
 const styleEl = document.createElement("style");
 function setTheme(str_stored_theme_key, bg, fg) {
-    try {;
+    try {
         if (str_stored_theme_key.length < 250){
             str_stored_theme_key = customizeBackgroundColor(bg, fg, str_stored_theme_key);
         }
