@@ -83,6 +83,11 @@
 </html>
 
 <script>
+	const light_theme = [
+        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4-dither.png") no-repeat center center fixed;']],
+        ['body:before', ['background-size', 'cover']],
+        ['body:before', ['background-attachment', 'fixed']]
+    ];
 	const images = ["assets/me400-1.jpg", "assets/me400-2.jpg", "assets/me400-3.jpg", "assets/me400-4.jpg", "assets/me400-5.jpg", "assets/me400-6.jpg"];
 	document.addEventListener(
 		'DOMContentLoaded', _ => {
@@ -92,6 +97,8 @@
 	if (!sessionStorage.getItem("visited")){
 		font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
 		document.adoptedStyleSheets = [font_stylesheet];
+		addStyleSheetRules(light_theme);
+		sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
 		addStyleSheetRules([['body:before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body:before', ['background-size', 'cover']]]);
 		sessionStorage.setItem("visited", true);
 	}
