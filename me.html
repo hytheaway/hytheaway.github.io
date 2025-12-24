@@ -121,11 +121,12 @@
         }
         #meAnswers {
             text-align: center !important;
-		    margin-right: 0vh !important;
+            margin-right: 0vh !important;
         }
     }
 </style>
 
 <script>
-    setTheme({r:142,g:142,b:142,a:255}, {r:0,g:255,b:0,a:0.1});
+    let str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+    setTheme(str_stored_theme_key, {r:142,g:142,b:142,a:255}, {r:0,g:255,b:0,a:0.1});
 </script>
