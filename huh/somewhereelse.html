@@ -50,7 +50,7 @@
             <hr>
             <!-- begin writing here -->
             <h2 class="shaking-text" style="text-align: center;"><i><span>*</span> <sub><span>❅</span></sub> <span>❄</span> somewhere else <span>❄</span> <sup><span>❅</span></sup> <sub><span>*</span></sub></i></h2>
-            <span style="text-align: center; font-size: 90%;">
+            <span style="text-align: center; font-size: 1.5vmin;">
                 welcome to the teleportation portal.
                 <br>these are websites i've taken inspiration from, or that i generally like.
             </span>
@@ -95,20 +95,37 @@
 </html>
 
 <style>
+    @media only screen and (max-width: 800px){
+        .link_table {
+            margin-left:10vw !important;
+            margin-right:10vw !important;
+            font-size: 3vmin !important;
+        }
+        span {
+            font-size: 2.7vmin !important;
+        }
+        td {
+            border: 0.3vmin solid !important;
+        }
+    }
     table {
         width: 100%;
         border-collapse: collapse;
         table-layout: fixed;
     }
     td {
-        border: 1.5px solid;
+        border: 0.2vmin solid;
         text-wrap-mode: wrap;
         vertical-align: top;
     }
     .link_table {
+        border-image: url('../assets/img-border.png') 50 stretch;
+        border-width: 1.5vh;
+        border-style: solid;
         margin-top: 1vh;
         margin-left: 25vw;
         margin-right:25vw;
+        font-size: 1.7vmin;
     }
     @keyframes shake {
         0%, 100% {
