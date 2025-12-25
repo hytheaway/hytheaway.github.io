@@ -127,8 +127,9 @@
 
     // themes
     const light_theme = [
-        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4-dither.png") no-repeat center center fixed;']],
+        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4-dither.png") no-repeat center center fixed']],
         ['body:before', ['background-size', 'cover']],
+        ['@media only screen and (max-width: 800px)', ['body:before', ['background-attachment', 'scroll', true]]],
         ['body:before', ['background-attachment', 'fixed']]
     ];
     const dark_theme = [
