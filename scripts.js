@@ -13,7 +13,7 @@ finally {
 const styleEl = document.createElement("style");
 function setTheme(str_stored_theme_key, bg, fg) {
     try {
-        if (str_stored_theme_key.length < 250){
+        if (str_stored_theme_key.length < 500){
             str_stored_theme_key = customizeBackgroundColor(bg, fg, str_stored_theme_key);
         }
         const arr_stored_theme_key = JSON.parse(str_stored_theme_key);
@@ -22,7 +22,7 @@ function setTheme(str_stored_theme_key, bg, fg) {
     catch (error) {
         console.log(error);
         console.log("Error!");
-        addStyleSheetRules([['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center fixed;']], ['body:before', ['background-size', 'cover']]]);
+        addStyleSheetRules([['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center fixed']], ['body:before', ['background-size', 'cover']]]);
     }
 }
 
@@ -43,9 +43,12 @@ function addStyleSheetRules(rules) {
         }
         for (; i < rule.length; i++) {
             const prop = rule[1];
+            if (Array.isArray(prop[1])){ // this is a really bad way to handle this because it's extremely rigid and hard to follow, but it should be fine for now.
+                propStr += `${prop[0]}{${prop[1][0]}:${prop[1][1]}${prop[1][2] ? " !important" : "}"};\n`;
+                continue;
+            }
             propStr += `${prop[0]}: ${prop[1]}${prop[2] ? " !important" : ""};\n`;
         }
-
         styleSheet.insertRule(
             `${selector}{${propStr}}`,
             styleSheet.cssRules.length,
@@ -80,7 +83,7 @@ function customizeBackgroundColor(bg, fg, theme_key) {
     const foreground_color = Object.entries(foreground_color_obj).map(([key,value]) => `${value}`).join(', ');
     let first_part = str_stored_theme_key.slice(0, 30);
     let second_part = str_stored_theme_key.slice(30);
-    str_stored_theme_key = first_part + `"linear-gradient(rgba(${foreground_color}), rgba(${foreground_color})) no-repeat center center fixed;"]], ["body",["background-attachment","fixed"]], ["body", ["background",` + second_part;
+    str_stored_theme_key = first_part + `"linear-gradient(rgba(${foreground_color}), rgba(${foreground_color})) no-repeat center center fixed"]], ["body",["background-attachment","fixed"]], ["body", ["background",` + second_part;
     str_stored_theme_key = str_stored_theme_key.slice(0, -1);
     str_stored_theme_key += `, ["hr:after", ["background", "rgba(${final_rgba_value})"]]]`;
     return str_stored_theme_key;
