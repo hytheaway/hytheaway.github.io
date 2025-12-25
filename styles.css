@@ -227,7 +227,7 @@ span {
 
 }
 @media only screen and (max-width: 800px){
-	body::before {
+	body {
 		content: '' !important;
 		position: fixed !important;
 		top: 0;
