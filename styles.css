@@ -2,31 +2,32 @@ html{
 	margin: 0;
 	/* background: rgba(219, 112, 147, 1); */
 	scrollbar-width: none;
+	overflow-x: hidden;
 }
 body {
+	overflow-x:hidden;
 	margin: 1vmin;
 	display: block;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size:cover;
+	background-size: cover;
 	background-attachment: fixed;
 }
-body:before {
+body::before { 
 	content: "";
 	display: block;
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	z-index: -10;
-	/* background: url('assets/bg-test-purple4.png') no-repeat center center; */
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background-attachment: fixed;
+	background-attachment: scroll;
 }
 h1 {
 	font-size: 3.4vmin;
@@ -227,15 +228,6 @@ span {
 
 }
 @media only screen and (max-width: 800px){
-	body {
-		content: '' !important;
-		position: fixed !important;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		z-index: -1;
-	}
 	.mobileHidden {
 		display: none;
 	}
