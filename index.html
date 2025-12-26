@@ -84,10 +84,9 @@
 
 <script>
 	const light_theme = [
-        ['body:before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4-dither.png") no-repeat center center fixed;']],
-        ['body:before', ['background-size', 'cover']],
-		// ['@media only screen and (max-width: 800px)', ['body:before', ['background-attachment', 'scroll', true]]],
-        ['body:before', ['background-attachment', 'fixed']]
+        ['body::before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4-dither.png") no-repeat center center;']],
+        ['body::before', ['background-size', 'cover']],
+        // ['body::before', ['background-attachment', 'fixed']]
     ];
 	const images = ["assets/me400-1.jpg", "assets/me400-2.jpg", "assets/me400-3.jpg", "assets/me400-4.jpg", "assets/me400-5.jpg", "assets/me400-6.jpg"];
 	document.addEventListener(
@@ -100,7 +99,7 @@
 		document.adoptedStyleSheets = [font_stylesheet];
 		addStyleSheetRules(light_theme);
 		sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
-		addStyleSheetRules([['body:before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body:before', ['background-size', 'cover']]]);
+		addStyleSheetRules([['body::before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body::before', ['background-size', 'cover']]]);
 		sessionStorage.setItem("visited", true);
 	}
 	else {
@@ -122,13 +121,16 @@
 			addStyleSheetRules(arr_stored_theme_key);
 		}
 		catch (error) {
-			addStyleSheetRules([['body:before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body:before', ['background-size', 'cover']]]);
+			addStyleSheetRules([['body::before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center fixed;']], ['body::before', ['background-size', 'cover']]]);
 		}
 	}
 	
 </script>
 
 <style>
+	html, body {
+		overflow-y: hidden;
+	}
 	@keyframes shake {
         0%, 100% {
             transform: translateY(0); 
