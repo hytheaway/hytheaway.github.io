@@ -87,6 +87,5 @@ function customizeBackgroundColor(bg, fg, theme_key) {
     str_stored_theme_key = first_part + `", "linear-gradient(rgba(${foreground_color}), rgba(${foreground_color})), ` + second_part;
     str_stored_theme_key = str_stored_theme_key.slice(0, -1);
     str_stored_theme_key += `, ["body", ["background-color", "rgba(${final_rgba_value})"]], ["hr:after", ["background", "rgba(${final_rgba_value})"]]]`;
-    console.log(str_stored_theme_key);
     return str_stored_theme_key;
 }
