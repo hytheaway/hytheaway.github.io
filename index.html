@@ -72,10 +72,10 @@
 		</div>
 	</div>
 	<footer>
-		handmade by <a href="me.html">garrett</a>. | this <a href="https://motherfuckingwebsite.com/">website</a> is designed to be viewed on desktop with the <a href="https://www.firefox.com/" target="_">firefox</a> browser.
+		handmade by <a href="me.html">garrett</a>. | this <a href="https://motherfuckingwebsite.com/" target="_">website</a> is designed to be viewed on desktop with the <a href="https://www.firefox.com/" target="_">firefox</a> browser.
 		<br>
-		<br><a href="https://justinjackson.ca/webmaster/">created</a> 13 dec 2023. | last updated:
-		<span id="lastUpdateDate" style="display: initial;">25 dec 2025</span>.
+		<br><a href="https://justinjackson.ca/webmaster/" target="_">created</a> 13 dec 2023. | last updated:
+		<span id="lastUpdateDate" style="display: initial;">28 dec 2025</span>.
 	</footer>
 
 </body>
@@ -98,7 +98,7 @@
 		document.adoptedStyleSheets = [font_stylesheet];
 		addStyleSheetRules(light_theme);
 		sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
-		addStyleSheetRules([['body::before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body::before', ['background-size', 'cover']]]);
+		addStyleSheetRules([['body::before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center;']], ['body::before', ['background-size', 'cover']], ['body', ['background-color', 'rgba(213,108,140,255)']]]);
 		sessionStorage.setItem("visited", true);
 	}
 	else {
@@ -120,7 +120,7 @@
 			addStyleSheetRules(arr_stored_theme_key);
 		}
 		catch (error) {
-			addStyleSheetRules([['body::before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center fixed;']], ['body::before', ['background-size', 'cover']]]);
+			addStyleSheetRules([['body::before', ['background', 'url("assets/bg-test-purple4.png") no-repeat center center fixed;']], ['body::before', ['background-size', 'cover']], ['body', ['background-color', 'rgba(213,108,140,255)']]]);
 		}
 	}
 	
