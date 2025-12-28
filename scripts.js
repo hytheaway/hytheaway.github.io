@@ -22,7 +22,7 @@ function setTheme(str_stored_theme_key, bg, fg) {
     catch (error) {
         console.log(error);
         console.log("Error!");
-        addStyleSheetRules([['body::before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center']], ['body::before', ['background-size', 'cover']]]);
+        addStyleSheetRules([['body::before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center']], ['body::before', ['background-size', 'cover']], ['body', ['background-color', 'rgba(213,108,140,255)']]]);
     }
 }
 
@@ -86,6 +86,7 @@ function customizeBackgroundColor(bg, fg, theme_key) {
     let second_part = str_stored_theme_key.slice(index_to_slice+13);
     str_stored_theme_key = first_part + `", "linear-gradient(rgba(${foreground_color}), rgba(${foreground_color})), ` + second_part;
     str_stored_theme_key = str_stored_theme_key.slice(0, -1);
-    str_stored_theme_key += `, ["hr:after", ["background", "rgba(${final_rgba_value})"]]]`;
+    str_stored_theme_key += `, ["body", ["background-color", "rgba(${final_rgba_value})"]], ["hr:after", ["background", "rgba(${final_rgba_value})"]]]`;
+    console.log(str_stored_theme_key);
     return str_stored_theme_key;
 }
