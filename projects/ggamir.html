@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ggamir</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='../assets/the-best-fav.gif'>
+    <link rel='stylesheet' href='../styles.css'>
+    <script src="../scripts.js"></script>
+</head>
+
+<body>
+    <div class='content'>
+        <div class='header'>
+            <div class='links'>
+                [ path:
+                <a href="/">home</a>
+                /
+                <a href='../projects.html'>projects</a>
+                /
+                <a href="ggamir.html">ggamir</a>
+                ]
+                <img id="dither_button" src="../assets/dither-toggle-button.png" style="float: right; width: 10vmin;" onclick="backToOriginal()">
+            </div>
+        </div>
+        <div class='container'>
+            <div class='title'>
+                <h1>hytheaway</h1>
+                <h6><i>(.github.io)</i></h6>
+            </div>
+            <div class='navigationbar'>
+                <ul>
+                    <li><a href='/'>home</a></li>
+                    |
+                    <li><a href='../projects.html'>projects</a></li>
+                    |
+                    <li><a href='../journal.html'>journal</a></li>
+                    |
+                    <li><a href='../contact.html'>contact</a></li>
+                    |
+					<div class="dropdown">
+						<span class="dropbutton"><a href="">more</a></span>
+						<div class="dropdown-content">
+							<a href="../options.html">options</a>
+                            <a href="../huh/somewhereelse.html">somewhere else</a>
+						</div>
+					</div>
+                </ul>
+            </div>
+            <hr>
+            <!-- begin writing here -->
+            <h2 style="text-align: center;">garrett's great analyzer of mono impulse responses (jan 2026)</h2>
+            <p style="text-align: center;">coming to a store near you!
+                <br><a href="https://github.com/hytheaway/ggamir" target="_blank">github</a>
+            </p>
+            <div class="flex-container">
+                <div class="leftside">
+                    <p class="mobileCenterText" style="font-size: 85%; text-align: center;">
+                        since i started working on it, i've been using <a href="gghsf.html">ggh&sf</a> really consistently.
+                        <br>for me, it's proved to be exactly what i need in a number of instances. sometimes, things just aren't lining up, and it's great to have such an easy way to take a closer look.
+                        <br>
+                        <br>of course, there are two relevant major shortcomings in that tool.
+                    </p>
+                    <ol style="font-size: 85%; text-align: left;">
+                        <li style="display: list-item;">
+                            mono files can't be used as the filter for operations that employ fourier transforms, including the non-spectrogram graphs.
+                            <ul style="text-align: left;">
+                                <li style="display: list-item;">
+                                    the workflow is pretty single minded, but it doesn't have a lot of guardrails making sure that you use it that way.
+                                </li>
+                                <li style="display: list-item;">
+                                    this is kind of intentional, or maybe it's more correct to say that i intentionally only expect stereo files for those calculations. after all, it's meant for analyzing files that are inherently representative of stereo listening.
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="display: list-item;">
+                            even if i were to directly incorporate mono audio file analysis, the user interface is not well-designed enough to easily allow for that.
+                            <ul style="text-align: left;">
+                                <li style="display: list-item;">
+                                    while this is definitely on my to-do list, i'm not a user interface designer, nor do i trust user design convention when creating a tool for a particularly technical audience.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p class="mobileCenterText" style="font-size: 85%; text-align: center;">
+                        a "not bad" way to resolve this and prevent any individual software suite from becoming an utterly bloated mess is to just create a dedicated tool for it. <b>enter</b> <i><s>shikari</s></i> <b>ggamir</b>.
+                        <br>
+                        <br>
+                        <i>ok, dude, but what use is this, really?</i>
+                        <br>
+                        <br>well, i can tell you the use-case that i built it for: evaluating perceptual encoders.
+                        <br>obviously, it can be used for a number of things beyond that (<i>room IRs from different microphones, audio file frequency analysis, etc.</i>), but i specifically wanted a tool that made it easy to see how different perceptual encoders did their perceptual encoding.
+                        <br>
+                        <br>i encoded a unit impulse using <a href="https://en.wikipedia.org/wiki/MP3">mpeg-1 layer iii (mp3)</a> and <a href="https://en.wikipedia.org/wiki/Advanced_Audio_Coding">advanced audio coding (aac)</a>. with this tool, it took no time for me to open each of the resulting .wav files, capture graphs of their outputs, and cross reference them.
+                        <br>in the time domain, transformer-based artifacts like pre-echo and temporal smearing were pretty easy to zoom in on and see, and this is expected because both mp3 and aac are heavily based on the <a href="https://en.wikipedia.org/wiki/Modified_discrete_cosine_transform">mdct</a>.
+                        <br>
+                        <br>of course, this isn't the most robust tool it <i>could</i> be for evaluating perceptual encoders - it's very surface level. more specialized tools might be able to provide more information on, say, what content of the input is classified as noise by the encoder. the benefit of this simplicity, however, is that the tool isn't so specific to one use-case that it becomes impossible for anyone to use it for anything else.
+                        <br>
+                        <br>so, uh, go forth and enjoy it.
+                    </p>
+                </div>
+                <div class="rightsidecenter" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <img src="../assets/ggamir-gui-dither.jpg" class="borderimg1class" style="max-width: 60%; max-height: 100vh;">
+                </div>
+            </div>
+            <!-- end writing here -->
+        </p>
+        </div>
+    </div>
+    <br>
+    <footer>
+        created by garrett.
+    </footer>
+
+</body>
+
+</html>
+
+<script>
+    var projectImageList = document.getElementsByClassName('borderimg1class');
+    var ditherButton = document.getElementById('dither_button');
+
+    function backToOriginal() {
+        for (let i = 0; i < projectImageList.length; i++) {
+            var currentSource = String(projectImageList[i].src);
+            ditheredString = currentSource.replace('-dither', '');
+            projectImageList[i].src = ditheredString;
+        }
+        ditherButton.onclick = replaceWithDither;
+    }
+    
+    function replaceWithDither() {
+        for (let i = 0; i < projectImageList.length; i++) {
+            var currentSource = String(projectImageList[i].src);
+            ditheredString = currentSource.slice(0,currentSource.length-4)+'-dither'+currentSource.slice(currentSource.length-4);
+            projectImageList[i].src = ditheredString;
+        }
+        ditherButton.onclick = backToOriginal;
+    }
+    let str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
+    setTheme(str_stored_theme_key, {r:142,g:142,b:142,a:255}, {r:255,g:0,b:255,a:0.2});
+</script>
+
+<style>
+    ol ul {
+        padding-left: 2vw;
+    }
+</style>
