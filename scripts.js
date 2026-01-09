@@ -22,7 +22,7 @@ function setTheme(str_stored_theme_key, bg, fg) {
     catch (error) {
         console.log(error);
         console.log("Error!");
-        addStyleSheetRules([['body::before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center']], ['body::before', ['background-size', 'cover']], ['body', ['background-color', 'rgba(213,108,140,255)']]]);
+        addStyleSheetRules([['body::before', ['background', 'url("https://hytheaway.github.io/assets/bg-test-purple4.png") no-repeat center center']], ['body::before', ['background-size', 'cover']], ['body', ['background-color', 'rgba(213,108,140,255)']], ['.header', ['background-color', 'rgba(213,108,140,255)']]]);
     }
 }
 

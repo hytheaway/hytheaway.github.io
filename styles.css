@@ -244,6 +244,9 @@ ol {
 	.links {
 		font-size: 2.5vw !important;
 	}
+	.header {
+		height:4vmin;
+	}
 	.title h1 {
 		font-size: 6vw !important;
 	}
@@ -270,6 +273,10 @@ ol {
 	hr:after {
 		top: -2.5vw !important;
 		font-size: 2.5vw;
+	}
+	ol {
+		font-size: 175% !important;
+		margin-left:3vw;
 	}
 	.leftside figcaption { /* used for homepage */
 		font-size:2.5vw;
