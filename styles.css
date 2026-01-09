@@ -93,6 +93,9 @@ footer {
 span {
 	display: block;
 }
+ol {
+	padding-left: 3vw;
+}
 .header {
 	top: 0;
 	left: 0;
