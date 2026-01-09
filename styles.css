@@ -47,7 +47,6 @@ h6 {
 }
 hr {
 	border: none;
-	/* border-top: 3px double #333; */
 	border-top: 0.4vmin double #333;
 	color: #333;
 	overflow: visible;
@@ -58,10 +57,8 @@ hr {
 hr:after {
 	background: rgba(213,108,140,255);
 	content: '§';
-	/* padding: 0 4px; */
 	padding: 0 0.3vmin;
 	position: relative;
-	/* top: -13px; */
 	top: -1.5vmin;
 	font-size: 1.7vmin;
 }
@@ -99,20 +96,26 @@ span {
 .header {
 	top: 0;
 	left: 0;
-	/* border-bottom: 2px solid; */
 	border-bottom: 0.3vmin solid;
 	text-align: left;
-	padding-bottom: 0.9vmin;
+	padding-bottom: 1.0vmin;
 	padding-left: 2.0vmin;
+	padding-right: 2.0vmin;
+	padding-top: 0.8vmin;
+	position: fixed;
+	width: 100%;
+	height: 2.5vmin;
+	z-index: 1;
 }
-/* .header span {
-	padding-left: 20px;
-} */
 .header img {
 	padding-right: 2.0vmin;
+	margin-right: 2.0vmin;
 }
 .links {
 	font-size: 1.7vmin;
+}
+.content {
+	padding-top: 3vmin;
 }
 .title {
 	padding-top: 1vmin;
