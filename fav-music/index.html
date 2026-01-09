@@ -47,7 +47,7 @@
             </div>
             <hr>
             <!-- begin writing here -->
-            <h3 style="text-align: center;">my favorite music</h3>
+            <h3 style="text-align: center; font-size: 2.5vmin;">my favorite music</h3>
             <div class="flex-container">
                 <div class="leftside" style="text-align: left;">
                     <p style="font-size: 90%;">
@@ -126,3 +126,12 @@
     let str_stored_theme_key = sessionStorage.getItem("selected_theme_key");
     setTheme(str_stored_theme_key, {r:142,g:142,b:142,a:255}, {r:50,g:100,b:255,a:0.4});
 </script>
+
+<style>
+    @media only screen and (max-width: 800px){
+        h3 {
+            font-size: 150% !important;
+            margin-bottom: 0;
+        }
+    }
+</style>
