@@ -260,6 +260,9 @@ ol {
 	.navigationbar {
 		font-size: 3.25vw !important;
 	}
+	.navigationbar a {
+		font-size: 3.25vw !important;
+	}
 	h2 {
 		font-size: 4.5vw !important;
 		line-height: normal !important;
