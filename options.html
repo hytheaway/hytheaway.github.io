@@ -79,6 +79,7 @@
                             <option value="4">courier new</option>
                             <option value="5">coral pixels</option>
                             <option value="6">open dyslexic</option>
+                            <option value="7">verdana</option>
                         </select>
                     </div>
                 </div>
@@ -89,7 +90,7 @@
     </div>
     <br>
     <footer>
-        created by garrett.
+        created by me.
     </footer>
 </body>
 </html>
@@ -216,6 +217,11 @@
                 font_stylesheet.replace("html { font-family: 'OpenDyslexic3' }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'OpenDyslexic3'; }";
+            }
+            if (fontIndex == 7) {
+                font_stylesheet.replace("html { font-family: 'Verdana' }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'Verdana'; }";
             }
         }
         else {
