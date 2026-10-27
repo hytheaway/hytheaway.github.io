@@ -3,7 +3,7 @@ try {
     font_stylesheet.insertRule(sessionStorage.font);
 }
 catch (error) {
-    font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+    font_stylesheet.insertRule("html { font-family: 'PixelOperator'; }");
 }
 finally {
     document.adoptedStyleSheets = [font_stylesheet];

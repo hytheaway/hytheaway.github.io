@@ -76,7 +76,7 @@
 		<a href="https://github.com/hytheaway/hytheaway.github.io" target="_">handmade</a> by <a href="me.html">me</a>. | this <a href="https://motherfuckingwebsite.com/" target="_">website</a> is designed to be viewed on desktop with the <a href="https://www.firefox.com/" target="_">firefox</a> browser.
 		<br>
 		<br><a href="https://github.com/hytheaway/hytheaway.github.io" target="_">created</a> 13 dec 2023. | last updated:
-		<span id="lastUpdateDate" style="display: initial;">29 aug 2026</span>.
+		<span id="lastUpdateDate" style="display: initial;">27 oct 2026</span>.
 	</footer>
 
 </body>
@@ -95,7 +95,7 @@
 		}
 	);
 	if (!sessionStorage.getItem("visited")){
-		font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+		font_stylesheet.insertRule("html { font-family: 'PixelOperator'; }");
 		document.adoptedStyleSheets = [font_stylesheet];
 		addStyleSheetRules(light_theme);
 		sessionStorage.setItem("selected_theme_key", JSON.stringify(light_theme));
@@ -107,7 +107,7 @@
 			font_stylesheet.insertRule(sessionStorage.font);
 		}
 		catch (error) {
-			font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+			font_stylesheet.insertRule("html { font-family: 'PixelOperator'; }");
 		}
 		finally {
 			document.adoptedStyleSheets = [font_stylesheet];

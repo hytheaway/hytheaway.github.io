@@ -73,13 +73,14 @@
                     </div>
                     <div class="rightside" style="padding-left: 2vw;">
                         <select name="font_selection" id="font_selection" onchange="changeFont(this.selectedIndex+1);" style="font-size: 1.5vmin;">
-                            <option value="1">dotgothic16</option>
-                            <option value="2">system ui</option>
-                            <option value="3">times new roman</option>
-                            <option value="4">courier new</option>
-                            <option value="5">coral pixels</option>
-                            <option value="6">open dyslexic</option>
-                            <option value="7">verdana</option>
+                            <option value="1">pixel operator</option>
+                            <option value="2">dotgothic16</option>
+                            <option value="3">system ui</option>
+                            <option value="4">times new roman</option>
+                            <option value="5">courier new</option>
+                            <option value="6">coral pixels</option>
+                            <option value="7">open dyslexic</option>
+                            <option value="8">verdana</option>
                         </select>
                     </div>
                 </div>
@@ -181,44 +182,49 @@
     }
 
     // fonts
-    font_stylesheet.insertRule("html { font-family: 'DotGothic16'; }");
+    font_stylesheet.insertRule("html { font-family: 'PixelOperator'; }");
     document.adoptedStyleSheets = [font_stylesheet];
-    sessionStorage.font = "html { font-family: 'DotGothic16'; }";
+    sessionStorage.font = "html { font-family: 'PixelOperator'; }";
     fontIndex = 1;
 
     function changeFont(fontIndex) {
         if (typeof(Storage) !== "undefined") {
             if (fontIndex == 1) {
+                font_stylesheet.replace("html { font-family: 'PixelOperator'; }");
+                document.adoptedStyleSheets = [font_stylesheet];
+                sessionStorage.font = "html { font-family: 'PixelOperator'; }";
+            }
+            if (fontIndex == 2) {
                 font_stylesheet.replace("html { font-family: 'DotGothic16'; }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'DotGothic16'; }";
             }
-            if (fontIndex == 2) {
+            if (fontIndex == 3) {
                 font_stylesheet.replace("html { font-family: 'system-ui'; }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'system-ui'; }";
             }
-            if (fontIndex == 3) {
+            if (fontIndex == 4) {
                 font_stylesheet.replace("html { font-family: 'Times New Roman'; }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'Times New Roman'; }";
             }
-            if (fontIndex == 4) {
+            if (fontIndex == 5) {
                 font_stylesheet.replace("html { font-family: 'Courier New', monospace; font-weight: 600; }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'Courier New', monospace; font-weight: 600; }";
             }
-            if (fontIndex == 5) {
+            if (fontIndex == 6) {
                 font_stylesheet.replace("html { font-family: 'CoralPixels' }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'CoralPixels'; }";
             }
-            if (fontIndex == 6) {
+            if (fontIndex == 7) {
                 font_stylesheet.replace("html { font-family: 'OpenDyslexic3' }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'OpenDyslexic3'; }";
             }
-            if (fontIndex == 7) {
+            if (fontIndex == 8) {
                 font_stylesheet.replace("html { font-family: 'Verdana' }");
                 document.adoptedStyleSheets = [font_stylesheet];
                 sessionStorage.font = "html { font-family: 'Verdana'; }";
